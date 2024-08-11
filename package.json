@@ -1,0 +1,47 @@
+{
+  "name": "jeongmintax.tistory.com",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build && vite build && sh scripts/postbuild.sh",
+    "dev": "vite",
+    "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,scss}'",
+    "lint": "eslint src --cache --fix --report-unused-disable-directives",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "@stylexjs/open-props": "^0.7.5",
+    "@stylexjs/stylex": "^0.7.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swiper": "^11.1.9"
+  },
+  "devDependencies": {
+    "@stylexjs/eslint-plugin": "^0.7.5",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.3.4",
+    "vite-plugin-stylex-dev": "^0.8.0",
+    "vite-plugin-svgr": "^4.2.0"
+  },
+  "overrides": {
+    "vite-plugin-stylex-dev": {
+      "@stylexjs/babel-plugin": "0.4.1"
+    }
+  }
+}
