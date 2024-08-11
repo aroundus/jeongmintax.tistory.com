@@ -40,6 +40,7 @@ module.exports = [
         },
       ],
       '@stylexjs/valid-styles': 'error',
+      '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'import/no-anonymous-default-export': [
         'warn',

@@ -4,10 +4,17 @@
   "private": true,
   "scripts": {
     "build": "tsc --build && vite build && sh scripts/postbuild.sh",
+    "build-storybook": "storybook build",
     "dev": "vite",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,scss}'",
     "lint": "eslint src --cache --fix --report-unused-disable-directives",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev --port 6006"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
@@ -18,6 +25,15 @@
     "swiper": "^11.1.9"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.8",
+    "@storybook/addon-interactions": "^8.2.8",
+    "@storybook/addon-links": "^8.2.8",
+    "@storybook/addon-onboarding": "^8.2.8",
+    "@storybook/blocks": "^8.2.8",
+    "@storybook/react": "^8.2.8",
+    "@storybook/react-vite": "^8.2.8",
+    "@storybook/test": "^8.2.8",
     "@stylexjs/eslint-plugin": "^0.7.5",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.3",
@@ -31,8 +47,10 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-storybook": "^0.8.0",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
+    "storybook": "^8.2.8",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.3.4",
