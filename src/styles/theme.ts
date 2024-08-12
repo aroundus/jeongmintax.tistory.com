@@ -4,10 +4,10 @@ import { color } from './color.stylex';
 
 export const darkTheme = stylex.createTheme(color, {
   primary: color.yellow,
-  secondary: '',
+  secondary: color.gray,
 });
 
 export const lightTheme = stylex.createTheme(color, {
   primary: color.green,
-  secondary: '',
+  secondary: color.gray,
 });

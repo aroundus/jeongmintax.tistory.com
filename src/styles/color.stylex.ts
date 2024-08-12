@@ -2,8 +2,8 @@ import * as stylex from '@stylexjs/stylex';
 import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 
 export const color = stylex.defineVars({
-  primary: '',
-  secondary: '',
+  primary: '#94b080',
+  secondary: '#aaa59b',
 
   black: colors.gray9,
   gray: '#aaa59b',

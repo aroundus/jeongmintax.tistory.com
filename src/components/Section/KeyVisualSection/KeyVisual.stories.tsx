@@ -6,7 +6,7 @@ const meta = {
   argTypes: {},
   component: KeyVisual,
   parameters: {},
-  title: 'Section/KeyVisualSection/KeyVisual',
+  title: 'Components/Section/KeyVisualSection/KeyVisual',
 } satisfies Meta<typeof KeyVisual>;
 
 export default meta;

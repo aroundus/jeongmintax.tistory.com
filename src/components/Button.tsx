@@ -89,21 +89,18 @@ const styles = stylex.create({
   // Size
   sm: {
     borderRadius: size[4],
-    minHeight: size[40],
-    minWidth: size[100],
-    padding: `${size[8]} ${size[16]}`,
+    minWidth: size[80],
+    padding: `${size[4]} ${size[12]}`,
   },
   md: {
     borderRadius: size[8],
-    minHeight: size[48],
     minWidth: size[120],
-    padding: `${size[12]} ${size[16]}`,
+    padding: `${size[8]} ${size[16]}`,
   },
   lg: {
-    borderRadius: size[16],
-    minHeight: size[56],
+    borderRadius: size[12],
     minWidth: size[140],
-    padding: `${size[14]} ${size[24]}`,
+    padding: `${size[12]} ${size[24]}`,
   },
 
   // Variant
@@ -114,11 +111,11 @@ const styles = stylex.create({
   }),
   outlined: (colorProp: Color) => ({
     borderColor: color[colorProp],
-    color: color.black,
+    color: 'CanvasText',
   }),
   text: (colorProp: Color) => ({
     color: {
-      default: color.black,
+      default: 'CanvasText',
       ':hover': color[colorProp],
     },
   }),

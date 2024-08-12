@@ -35,6 +35,7 @@ export function KeyVisual({ coverItem, isGradientEnabled }: KeyVisualProps) {
         <Button
           color="primary"
           variant="outlined"
+          size="lg"
           style={styles.button}
           onClick={() => {
             location.href = coverItem.path;
