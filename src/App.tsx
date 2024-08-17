@@ -2,7 +2,7 @@ import { Layout } from '@/components';
 import { KeyVisualSection, ListSection, ProfileSection } from '@/components/Section';
 
 import '@/assets/styles/reset.scss';
-import '@/assets/styles/style.scss';
+import '@/assets/styles/global.scss';
 
 import 'virtual:stylex.css';
 
