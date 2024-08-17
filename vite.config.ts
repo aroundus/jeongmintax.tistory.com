@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import { resolve } from 'path';
 import { stylex } from 'vite-plugin-stylex-dev';
 import svgr from 'vite-plugin-svgr';
 
@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, 'index.html'),
+        main: resolve(__dirname, 'index.html'),
       },
       output: {
         entryFileNames: 'script.js',
@@ -29,7 +29,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': resolve(__dirname, './src'),
     },
   },
 });
