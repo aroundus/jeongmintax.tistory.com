@@ -5,7 +5,9 @@ import { KeyVisual } from './KeyVisual';
 const meta = {
   argTypes: {},
   component: KeyVisual,
-  parameters: {},
+  parameters: {
+    layout: 'fullscreen',
+  },
   title: 'Components/Section/KeyVisualSection/KeyVisual',
 } satisfies Meta<typeof KeyVisual>;
 

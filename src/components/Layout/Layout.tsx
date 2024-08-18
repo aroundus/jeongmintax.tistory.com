@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { getBlog } from '@/data/blog';
 import { useIsDarkScheme } from '@/hooks';
 import { darkTheme, lightTheme } from '@/styles';
 
@@ -13,9 +14,11 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const isDarkScheme = useIsDarkScheme();
 
+  const blog = getBlog();
+
   return (
     <div {...stylex.props(isDarkScheme ? darkTheme : lightTheme)}>
-      <Header />
+      <Header title={blog.title} />
       <Content>{children}</Content>
     </div>
   );

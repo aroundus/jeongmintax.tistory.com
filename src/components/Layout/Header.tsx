@@ -1,49 +1,59 @@
+import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import SymbolmarkIcon from '@/assets/images/icons/symbolmark.svg?react';
-import { getBlog } from '@/data/blog';
-import { getMenu } from '@/data/menu';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
-export function Header() {
-  const isMobile = useIsMobile();
+import { NavigationDrawer } from './NavigationDrawer';
+import { SearchField } from './SearchField';
 
-  const blog = getBlog();
-  const menu = getMenu();
+interface HeaderProps {
+  title: string;
+}
+
+export function Header({ title }: HeaderProps) {
+  const isMobile = useIsMobile();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <header {...stylex.props(styles.container)}>
-      <div {...stylex.props(styles.inner)}>
-        <a
-          {...stylex.props(styles.title, mixinStyles.font(16, 900))}
-          href="/"
-        >
-          <SymbolmarkIcon
-            fill={color.primary}
-            height={16}
-          />
-          {blog.title}
-        </a>
-        {isMobile ? (
-          <div>모바일</div>
-        ) : (
-          <nav {...stylex.props(navigationStyles.container)}>
-            <ul {...stylex.props(navigationStyles.menu, mixinStyles.font(16, 500))}>
-              {menu.map((menuItem) => (
-                <li key={menuItem.path}>
-                  <a href={menuItem.path}>{menuItem.name}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-      </div>
-    </header>
+    <>
+      <header {...stylex.props(styles.container)}>
+        <div {...stylex.props(styles.inner)}>
+          <a
+            {...stylex.props(styles.title, mixinStyles.font(16, 900))}
+            href="/"
+          >
+            <SymbolmarkIcon
+              fill={color.primary}
+              height={16}
+            />
+            {title}
+          </a>
+          {isMobile ? (
+            <RiMenuFoldLineIcon
+              style={{ height: 24, width: 24 }}
+              onClick={() => {
+                setIsDrawerOpen(true);
+              }}
+            />
+          ) : (
+            <SearchField />
+          )}
+        </div>
+      </header>
+      <NavigationDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => {
+          setIsDrawerOpen(false);
+        }}
+      />
+    </>
   );
 }
 
@@ -53,7 +63,7 @@ const styles = stylex.create({
     boxShadow: shadows.shadow2,
     position: 'sticky',
     top: 0,
-    zIndex: 16,
+    zIndex: 1,
   },
   inner: {
     alignItems: 'center',
@@ -67,14 +77,6 @@ const styles = stylex.create({
     alignItems: 'center',
     display: 'flex',
     gap: size[8],
-  },
-});
-
-const navigationStyles = stylex.create({
-  container: {},
-  menu: {
-    display: 'flex',
-    gap: size[36],
-    justifyContent: 'center',
+    whiteSpace: 'nowrap',
   },
 });

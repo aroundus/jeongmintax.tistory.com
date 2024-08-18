@@ -5,7 +5,9 @@ import { Profile } from './Profile';
 const meta = {
   argTypes: {},
   component: Profile,
-  parameters: {},
+  parameters: {
+    layout: 'centered',
+  },
   title: 'Components/Section/ProfileSection/Profile',
 } satisfies Meta<typeof Profile>;
 
