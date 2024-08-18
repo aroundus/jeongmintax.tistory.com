@@ -27,12 +27,12 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
       <div {...stylex.props(styles.container, mixinStyles.hideScrollbar('y'), isOpen && styles.isOpen)}>
         <div {...stylex.props(headerStyles.container)}>
           <RiMenuFold2LineIcon
-            style={{ height: 24, width: 24 }}
+            {...stylex.props(headerStyles.icon)}
             onClick={handleClose}
           />
         </div>
         <div {...stylex.props(contentStyles.container, (isDesktop || isPortrait) && contentStyles.height100)}>
-          <SearchField isFullWidth />
+          <SearchField />
         </div>
       </div>
     </>
@@ -45,6 +45,7 @@ const styles = stylex.create({
     borderBottomLeftRadius: size[24],
     borderTopLeftRadius: size[24],
     bottom: 0,
+    color: color.black,
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '360px',
@@ -83,6 +84,10 @@ const headerStyles = stylex.create({
     position: 'sticky',
     top: 0,
     zIndex: 1,
+  },
+  icon: {
+    height: 24,
+    width: 24,
   },
 });
 

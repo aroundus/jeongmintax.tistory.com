@@ -51,7 +51,6 @@ const styles = stylex.create({
     borderColor: color.gray,
     display: 'flex',
     justifyContent: 'space-between',
-    width: 240,
   },
   width100: {
     width: '100%',
@@ -60,6 +59,7 @@ const styles = stylex.create({
     color: {
       '::placeholder': color.gray,
     },
+    minWidth: 200,
     outline: 'none',
     padding: size[8],
   },
