@@ -1,5 +1,5 @@
 import { Layout } from '@/components';
-import { KeyVisualSection, ListSection, ProfileSection } from '@/components/Section';
+import { KeyVisualSection, PostListSection, ProfileSection } from '@/components/Section';
 
 import '@/assets/styles/reset.scss';
 import '@/assets/styles/global.scss';
@@ -12,9 +12,9 @@ export function App() {
       {document.getElementById('tt-body-index') && document.querySelector('[data-cover-group="KEY_VISUAL"]') && (
         <KeyVisualSection />
       )}
-      <ProfileSection />
+      {document.getElementById('tt-body-index') && <ProfileSection />}
       {document.getElementById('tt-body-index') && document.querySelector('[data-cover-group="LIST"]') && (
-        <ListSection />
+        <PostListSection />
       )}
     </Layout>
   );

@@ -1,6 +1,7 @@
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
+import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
@@ -13,6 +14,8 @@ interface ProfileProps {
 }
 
 export function Profile({ description, imageURL, name }: ProfileProps) {
+  const isMobile = useIsMobile();
+
   return (
     <div {...stylex.props(styles.container)}>
       <div
@@ -21,7 +24,7 @@ export function Profile({ description, imageURL, name }: ProfileProps) {
       />
       <div {...stylex.props(contentStyles.container)}>
         <div {...stylex.props(mixinStyles.font(18, 700))}>{name}</div>
-        <p {...stylex.props(contentStyles.description, mixinStyles.font(14, 400))}>{description}</p>
+        <p {...stylex.props(contentStyles.description, mixinStyles.font(isMobile ? 14 : 16, 400))}>{description}</p>
       </div>
     </div>
   );
@@ -33,7 +36,7 @@ const styles = stylex.create({
     gap: size[16],
     margin: 'auto',
     maxWidth: viewport.contentWidth,
-    padding: `${size[24]} ${size[16]}`,
+    padding: size[24],
   },
 });
 

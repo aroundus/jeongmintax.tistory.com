@@ -12,6 +12,16 @@ export const gradient = stylex.keyframes({
   },
 });
 
+export const gradient2 = stylex.keyframes({
+  '0%': {
+    backgroundPosition: '100% 50%',
+  },
+  '100%': {
+    backgroundPosition: '0% 50%',
+  },
+});
+
 export const keyframes = stylex.defineVars({
   gradient,
+  gradient2,
 });

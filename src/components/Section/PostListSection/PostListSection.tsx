@@ -2,18 +2,22 @@ import * as stylex from '@stylexjs/stylex';
 
 import { getCoverItems } from '@/data/cover';
 import { size } from '@/styles/size.stylex';
-import { viewport } from '@/styles/viewport.stylex';
 
-export function ListSection() {
+import { PostList } from './PostList';
+
+export function PostListSection() {
   const coverItems = getCoverItems('LIST');
 
-  return <section {...stylex.props(styles.container)}>{JSON.stringify(coverItems)}</section>;
+  return (
+    <section {...stylex.props(styles.container)}>
+      <PostList posts={coverItems} />
+    </section>
+  );
 }
 
 const styles = stylex.create({
   container: {
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
-    padding: size[24],
+    padding: `${size[24]} 0`,
   },
 });

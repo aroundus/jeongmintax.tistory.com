@@ -1,3 +1,3 @@
 export { KeyVisualSection } from './KeyVisualSection';
-export { ListSection } from './ListSection';
+export { PostListSection } from './PostListSection';
 export { ProfileSection } from './ProfileSection';

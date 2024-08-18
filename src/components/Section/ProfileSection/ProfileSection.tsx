@@ -21,6 +21,6 @@ export function ProfileSection() {
 
 const styles = stylex.create({
   container: {
-    boxShadow: shadows.shadow3,
+    boxShadow: shadows.shadow2,
   },
 });

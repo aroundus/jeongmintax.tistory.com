@@ -75,7 +75,9 @@ const styles = stylex.create({
       default: 'brightness(120%)',
       ':active:not(:disabled)': 'brightness(140%)',
       ':disabled': 'contrast(50%)',
-      ':hover': 'brightness(100%)',
+      ':hover': {
+        '@media (hover: hover)': 'brightness(100%)',
+      },
     },
     gap: size[8],
     justifyContent: 'center',

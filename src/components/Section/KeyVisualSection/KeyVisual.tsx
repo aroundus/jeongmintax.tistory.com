@@ -95,7 +95,13 @@ const styles = stylex.create({
       '::before': 'ease',
     },
     backgroundImage: {
-      '::before': `linear-gradient(-45deg, black, pink, blue, white)`,
+      '::before': `linear-gradient(
+        -45deg,
+        ${color.black},
+        pink,
+        blue,
+        white
+      )`,
     },
   },
   inner: {
