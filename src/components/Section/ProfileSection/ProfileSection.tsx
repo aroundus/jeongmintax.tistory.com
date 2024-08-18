@@ -11,14 +11,14 @@ export function ProfileSection() {
   const menu = getMenu();
 
   return (
-    <div {...stylex.props(styles.container)}>
+    <section {...stylex.props(styles.container)}>
       <Profile
         description={blog.description}
         imageURL={blog.imageURL}
         menu={menu}
         name={blog.blogger}
       />
-    </div>
+    </section>
   );
 }
 
