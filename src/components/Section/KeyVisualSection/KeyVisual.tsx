@@ -108,11 +108,15 @@ const styles = stylex.create({
   },
   category: {
     color: {
-      ':hover': 'white',
+      ':hover': {
+        '@media (hover: hover)': 'white',
+      },
     },
     opacity: {
       default: 0.6,
-      ':hover': 1,
+      ':hover': {
+        '@media (hover: hover)': 1,
+      },
     },
   },
   title: {
