@@ -1,6 +1,7 @@
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
+import { Button } from '@/components';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -10,10 +11,14 @@ import { viewport } from '@/styles/viewport.stylex';
 interface ProfileProps {
   description: string;
   imageURL: string;
+  menu?: {
+    name: string;
+    path: string;
+  }[];
   name: string;
 }
 
-export function Profile({ description, imageURL, name }: ProfileProps) {
+export function Profile({ description, imageURL, menu, name }: ProfileProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -25,6 +30,24 @@ export function Profile({ description, imageURL, name }: ProfileProps) {
       <div {...stylex.props(contentStyles.container)}>
         <div {...stylex.props(mixinStyles.font(18, 700))}>{name}</div>
         <p {...stylex.props(contentStyles.description, mixinStyles.font(isMobile ? 14 : 16, 400))}>{description}</p>
+        {menu && (
+          <nav {...stylex.props(navigationStyles.container)}>
+            <ul {...stylex.props(navigationStyles.list, mixinStyles.font(14, 500))}>
+              {menu?.map((link) => (
+                <li key={link.path}>
+                  <a href={link.path}>
+                    <Button
+                      size="sm"
+                      variant="outlined"
+                    >
+                      {link.name}
+                    </Button>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </div>
   );
@@ -61,5 +84,16 @@ const contentStyles = stylex.create({
   },
   description: {
     color: color.gray,
+  },
+});
+
+const navigationStyles = stylex.create({
+  container: {
+    marginTop: size[12],
+  },
+  list: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: size[8],
   },
 });

@@ -90,9 +90,9 @@ const styles = stylex.create({
 
   // Size
   sm: {
-    borderRadius: size[4],
-    minWidth: size[80],
-    padding: `${size[4]} ${size[12]}`,
+    borderRadius: size[8],
+    minWidth: size[60],
+    padding: `${size[2]} ${size[12]}`,
   },
   md: {
     borderRadius: size[8],
@@ -109,7 +109,7 @@ const styles = stylex.create({
   contained: (colorProp: Color) => ({
     backgroundColor: color[colorProp],
     borderColor: color[colorProp],
-    color: colorProp === 'primary' ? 'white' : 'black',
+    color: color.black,
   }),
   outlined: (colorProp: Color) => ({
     borderColor: color[colorProp],
