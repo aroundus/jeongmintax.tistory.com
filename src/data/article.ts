@@ -26,23 +26,26 @@ const INITIAL_ARTICLE: Article = {
   dateTime: '',
 };
 
-export function getArticle() {
+export function getArticles() {
   const blog = getBlog();
-  const element = document.getElementById('article')!;
-  const contentElement = document.querySelector(`[data-article="content"] .contents_style`)!;
+  const elements = document.getElementById('article')!.querySelectorAll('.article');
 
-  try {
-    const article = JSON.parse(element.innerHTML) as Article;
-    const content = contentElement.innerHTML;
-    const summary = contentElement.querySelector('p')?.innerText;
+  return Array.from(elements).map((element) => {
+    try {
+      const articleElement = element.querySelector('[data-article="article"]')!;
+      const article = JSON.parse(articleElement.innerHTML) as Article;
+      const contentElement = element.querySelector(`[data-article="content"] .contents_style`)!;
+      const content = contentElement.innerHTML;
+      const summary = contentElement.querySelector('p')?.innerText;
 
-    return {
-      ...article,
-      summary: summary || article.summary,
-      content,
-      category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
-    };
-  } catch {
-    return INITIAL_ARTICLE;
-  }
+      return {
+        ...article,
+        summary: summary || article.summary,
+        content,
+        category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
+      };
+    } catch {
+      return INITIAL_ARTICLE;
+    }
+  });
 }
