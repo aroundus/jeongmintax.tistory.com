@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'Components/Layout/Header',
+  title: 'components/Layout/Header',
 } satisfies Meta<typeof Header>;
 
 export default meta;

@@ -3,16 +3,19 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { getCoverItems } from '@/data/cover';
+import type { Post } from '@/data/post';
 
 import { KeyVisual } from './KeyVisual';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export function KeyVisualSection() {
-  const coverItems = getCoverItems('KEY_VISUAL');
+interface KeyVisualSectionProps {
+  isButtonVisible?: boolean;
+  posts: Post[];
+}
 
+export function KeyVisualSection({ isButtonVisible, posts }: KeyVisualSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
       <Swiper
@@ -21,11 +24,12 @@ export function KeyVisualSection() {
         modules={[Autoplay, A11y, Navigation]}
         navigation={true}
       >
-        {coverItems.map((coverItem, index) => (
-          <SwiperSlide key={coverItem.path}>
+        {posts.map((post, index) => (
+          <SwiperSlide key={post.path}>
             <KeyVisual
-              coverItem={coverItem}
-              isGradientEnabled={index === 0}
+              post={post}
+              isButtonVisible={isButtonVisible}
+              isGradientEnabled={posts.length > 1 && index === 0}
             />
           </SwiperSlide>
         ))}

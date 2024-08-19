@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 import { Button } from '@/components';
-import type { CoverItem } from '@/data/cover';
+import type { Post } from '@/data/post';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -9,40 +9,47 @@ import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
 
 interface KeyVisualProps {
-  coverItem: CoverItem;
+  isButtonVisible?: boolean;
   isGradientEnabled?: boolean;
+  post: Post;
 }
 
-export function KeyVisual({ coverItem, isGradientEnabled }: KeyVisualProps) {
+export function KeyVisual({ post, isButtonVisible, isGradientEnabled }: KeyVisualProps) {
   const isMobile = useIsMobile();
 
   return (
     <div
       {...stylex.props(styles.container, isGradientEnabled && styles.isGradientEnabled)}
-      key={coverItem.path}
-      style={{ backgroundImage: `url(${coverItem.thumbnailURL})` }}
+      key={post.path}
+      style={{
+        backgroundImage: `url(${post.thumbnailURL}), url(https://c.pxhere.com/photos/32/a0/bamboo_plant-108294.jpg!d)`,
+      }}
     >
       <div {...stylex.props(styles.inner, mixinStyles.absoluteCenter())}>
         <a
           {...stylex.props(styles.category, mixinStyles.font(16, 500))}
-          href={coverItem.categoryPath}
+          href={post.categoryPath}
         >
-          #{coverItem.category}
+          {post.category}
         </a>
-        <h2 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{coverItem.title}</h2>
-        <p>{coverItem.summary.length < 120 ? coverItem.summary : `${coverItem.summary.slice(0, 120)}...`}</p>
-        <div {...stylex.props(styles.date)}>{coverItem.date}</div>
-        <Button
-          color="primary"
-          variant="outlined"
-          size="lg"
-          style={styles.button}
-          onClick={() => {
-            location.href = coverItem.path;
-          }}
-        >
-          내용 읽기
-        </Button>
+        <h2 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{post.title}</h2>
+        <p {...stylex.props(styles.summary)}>
+          {post.summary.length < 120 ? post.summary : `${post.summary.slice(0, 120)}...`}
+        </p>
+        <div {...stylex.props(styles.date)}>{post.date}</div>
+        {isButtonVisible && (
+          <Button
+            color="primary"
+            variant="outlined"
+            size="lg"
+            style={styles.button}
+            onClick={() => {
+              location.href = post.path;
+            }}
+          >
+            내용 읽기
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -126,7 +133,10 @@ const styles = stylex.create({
     },
   },
   title: {
-    marginTop: size[2],
+    marginTop: size[8],
+  },
+  summary: {
+    marginTop: size[16],
   },
   date: {
     marginBottom: size[24],

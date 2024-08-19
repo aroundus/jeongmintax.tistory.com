@@ -90,9 +90,9 @@ ul,
 var,
 video {
   margin: 0;
-  border: 0;
   padding: 0;
   vertical-align: baseline;
+  border: 0;
 }
 
 article,
@@ -156,18 +156,18 @@ var {
 
 a,
 button {
+  appearance: none;
   outline: none;
-  -webkit-appearance: none;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
-  background-color: transparent;
   color: inherit;
+  background-color: transparent;
 }
 
 input,
@@ -183,7 +183,7 @@ select {
   font-family: inherit;
 }
 
-input::-webkit-input-placeholder {
+input::placeholder {
   color: inherit;
 }
 
@@ -194,8 +194,8 @@ input[type='search']::-webkit-search-decoration {
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 
   th {
     font-weight: 400;

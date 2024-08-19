@@ -1,11 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 
-import type { CoverItem } from '@/data/cover';
+import type { Post } from '@/data/post';
 
 import { PostListItem } from './PostListItem';
 
 interface ListProps {
-  posts: CoverItem[];
+  posts: Post[];
 }
 
 export function PostList({ posts }: ListProps) {
@@ -13,9 +13,9 @@ export function PostList({ posts }: ListProps) {
     <div {...stylex.props(styles.container)}>
       {posts.map((post, index) => (
         <PostListItem
-          {...post}
           isLast={posts.length === index + 1}
           key={post.path}
+          post={post}
         />
       ))}
     </div>

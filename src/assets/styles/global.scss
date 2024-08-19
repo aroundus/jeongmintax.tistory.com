@@ -1,28 +1,26 @@
 @use './variable' as variable;
 
-:root {
-  --primary-color: #94b080;
-  --secondary-color: #aaa59b;
+$primary-color: variable.$color-green;
+$primary-color-alpha: rgba($primary-color, 0.7);
+$secondary-color: variable.$color-gray;
 
+:root {
+  --primary-color: #{$primary-color};
+  --primary-color-alpha: #{$primary-color-alpha};
+  --secondary-color: #{$secondary-color};
   --swiper-navigation-color: white;
   --swiper-navigation-size: 24px;
 
-  -webkit-font-smoothing: auto;
-  -webkit-text-size-adjust: none;
-  font-feature-settings:
-    'case' 1,
-    'ss01' 1,
-    'ss03' 1;
-
   @media (prefers-color-scheme: dark) {
-    --primary-color: #e1d160;
+    $primary-color: variable.$color-yellow;
+    $primary-color-alpha: rgba($primary-color, 0.7);
+
+    --primary-color: #{$primary-color};
+    --primary-color-alpha: #{$primary-color-alpha};
   }
 }
 
 body {
-  background-color: Canvas;
-  color: CanvasText;
-  color-scheme: light dark;
   font-family:
     Pretendard,
     'SF Pro KR',
@@ -35,11 +33,22 @@ body {
     'Segoe UI Symbol',
     sans-serif;
   font-size: 16px;
+  font-feature-settings:
+    'case' 1,
+    'ss01' 1,
+    'ss03' 1;
   font-weight: 400;
+  -webkit-font-smoothing: auto;
   line-height: 1.5;
-  overflow-wrap: break-word;
-  -webkit-tap-highlight-color: transparent;
+  color: CanvasText;
+  text-size-adjust: none;
   word-break: keep-all;
+  overflow-wrap: break-word;
+
+  color-scheme: light dark;
+  background-color: Canvas;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 button,
@@ -51,42 +60,9 @@ section {
   position: relative;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.35;
-  margin-top: 1.6em;
-  margin-bottom: 0.4em;
-}
-
-h1 {
-  font-size: 48px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-h3 {
-  font-size: 32px;
-}
-
-h4 {
-  font-size: 28px;
-  line-height: 1.5;
-}
-
-h5 {
-  font-size: 24px;
-  line-height: 1.5;
-}
-
-h6 {
-  font-size: 20px;
-  line-height: 1.5;
+a,
+u {
+  text-decoration: none;
 }
 
 a {
@@ -97,4 +73,14 @@ a {
       color: var(--primary-color);
     }
   }
+}
+
+u {
+  border-bottom: 0.2em solid var(--primary-color);
+}
+
+mark {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(to top, var(--primary-color-alpha) 40%, transparent 10%, transparent 50%);
 }

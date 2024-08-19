@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'Components/Layout/SearchField',
+  title: 'components/Layout/SearchField',
 } satisfies Meta<typeof SearchField>;
 
 export default meta;

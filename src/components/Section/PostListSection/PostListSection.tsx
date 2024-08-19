@@ -1,16 +1,16 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { getCoverItems } from '@/data/cover';
+import { getPosts } from '@/data/post';
 import { size } from '@/styles/size.stylex';
 
 import { PostList } from './PostList';
 
 export function PostListSection() {
-  const coverItems = getCoverItems('LIST');
+  const posts = getPosts('LIST');
 
   return (
     <section {...stylex.props(styles.container)}>
-      <PostList posts={coverItems} />
+      <PostList posts={posts} />
     </section>
   );
 }

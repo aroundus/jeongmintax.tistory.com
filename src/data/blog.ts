@@ -1,4 +1,4 @@
-interface Blog {
+export interface Blog {
   title: string; // 블로그 제목
   description: string; // 블로그 설명
   blogger: string; // 블로그 소유자 이름

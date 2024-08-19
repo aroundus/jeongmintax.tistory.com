@@ -81,21 +81,21 @@
         <s_article_rep>
           <pre id="article">
             {
-              "url": "[##_article_rep_link_##]",
               "title": "[##_article_rep_title_##]",
-              "content": "[##_article_rep_desc_##]",
+              "summary": "[##_article_rep_summary_##]",
+              "path": "[##_article_rep_link_##]",
               "author": "[##_article_rep_author_##]",
-              "date": {
-                "date": "[##_article_rep_simple_date_##]",
-                "datetime": "[##_article_rep_date_##]",
-                "year": "[##_article_rep_date_year_##]",
-                "month": "[##_article_rep_date_month_##]",
-                "day": "[##_article_rep_date_day_##]",
-                "hour": "[##_article_rep_date_hour_##]",
-                "second": "[##_article_rep_date_second_##]"
-              }
+              <s_article_rep_thumbnail>"thumbnailURL": "[##_article_rep_thumbnail_raw_url_##]",</s_article_rep_thumbnail>
+              "category": "[##_article_rep_category_##]",
+              "categoryPath": "[##_article_rep_category_link_##]",
+              "date": "[##_article_rep_simple_date_##]",
+              "dateTime": "[##_article_rep_date_##]"
             }
           </pre>
+
+          <div data-article="content">
+            [##_article_rep_desc_##]
+          </div>
         </s_article_rep>
 
       </div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import type { CoverItem } from '@/data/cover';
+import type { Post } from '@/data/post';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -10,18 +10,19 @@ import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
-interface PostListItemProps extends CoverItem {
+interface PostListItemProps {
   isLast?: boolean;
+  post: Post;
 }
 
-export function PostListItem({ category, commentCount, date, isLast, path, summary, title }: PostListItemProps) {
+export function PostListItem({ isLast, post }: PostListItemProps) {
   const isMobile = useIsMobile();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
   return (
     <a
       {...stylex.props(styles.container, isLast && styles.isLast)}
-      href={path}
+      href={post.path}
       onMouseEnter={() => {
         setIsMouseEnter(true);
       }}
@@ -29,18 +30,18 @@ export function PostListItem({ category, commentCount, date, isLast, path, summa
         setIsMouseEnter(false);
       }}
     >
-      <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>#{category}</div>
+      <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>{post.category}</div>
       <div
         {...stylex.props(styles.title, mixinStyles.font(isMobile ? 32 : 36, 700), isMouseEnter && styles.isMouseEnter)}
       >
-        {title}
+        {post.title}
       </div>
       <p {...stylex.props(styles.summary, mixinStyles.font(16, 400))}>
-        {summary.length < 150 ? summary : `${summary.slice(0, 150)}...`}
+        {post.summary.length < 150 ? post.summary : `${post.summary.slice(0, 150)}...`}
       </p>
       <div {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.date)}>{date}</span>
-        {commentCount > 0 && (
+        <span {...stylex.props(styles.date)}>{post.date}</span>
+        {typeof post.commentCount === 'number' && post.commentCount > 0 && (
           <div {...stylex.props(styles.commentCount, mixinStyles.font(14, 400))}>
             <MdOutlineCommentIcon
               style={{
@@ -48,7 +49,7 @@ export function PostListItem({ category, commentCount, date, isLast, path, summa
                 width: 20,
               }}
             />
-            {new Intl.NumberFormat().format(commentCount)}
+            {new Intl.NumberFormat().format(post.commentCount)}
           </div>
         )}
       </div>

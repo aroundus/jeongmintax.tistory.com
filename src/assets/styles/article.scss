@@ -1,0 +1,95 @@
+#article {
+  // 헤더
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+    line-height: 1.35;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+
+  h5 {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  h6 {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  // 문단
+  p {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+  }
+
+  a {
+    color: var(--primary-color);
+    border-bottom: 0.2em solid var(--primary-color);
+
+    @media (hover: hover) {
+      &:hover {
+        color: color-mix(in srgb, var(--primary-color) 70%, CanvasText 30%);
+        border-bottom-color: color-mix(in srgb, var(--primary-color) 70%, CanvasText 30%);
+      }
+    }
+  }
+
+  // 인용문
+
+  // 목록
+  ol,
+  ul {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+
+    li {
+      margin-top: 0.2em;
+      margin-left: 1em;
+      list-style-type: initial;
+
+      ol,
+      ul {
+        margin-top: 0.2em;
+        margin-bottom: 0.4em;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 수평선
+
+  // 링크
+
+  // 강조
+
+  // 이미지
+  img {
+    box-shadow: 0 4px 24px -16px var(--secondary-color);
+  }
+}
