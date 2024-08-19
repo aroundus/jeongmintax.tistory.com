@@ -8,6 +8,7 @@
     "dev": "vite",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,scss}'",
     "lint": "eslint src --cache --fix --report-unused-disable-directives",
+    "lint:style": "stylelint --fix --ignore-path .gitignore '**/*.(css|scss)'",
     "preview": "vite preview",
     "storybook": "storybook dev --port 6006"
   },
@@ -52,6 +53,10 @@
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
     "storybook": "^8.2.8",
+    "stylelint": "^16.8.2",
+    "stylelint-config-clean-order": "^6.1.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^13.1.0",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.3.4",
