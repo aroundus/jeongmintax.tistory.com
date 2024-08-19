@@ -1,6 +1,6 @@
 import { getBlog } from '@/data/blog';
 
-interface Article {
+export interface Article {
   title: string;
   summary: string;
   content: string;
@@ -34,9 +34,11 @@ export function getArticle() {
   try {
     const article = JSON.parse(element.innerHTML) as Article;
     const content = contentElement.innerHTML;
+    const summary = contentElement.querySelector('p')?.innerText;
 
     return {
       ...article,
+      summary: summary || article.summary,
       content,
       category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
     };

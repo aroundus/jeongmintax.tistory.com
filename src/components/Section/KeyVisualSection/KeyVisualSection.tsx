@@ -3,6 +3,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import type { Article } from '@/data/article';
 import type { Post } from '@/data/post';
 
 import { KeyVisual } from './KeyVisual';
@@ -10,12 +11,17 @@ import { KeyVisual } from './KeyVisual';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-interface KeyVisualSectionProps {
-  isButtonVisible?: boolean;
-  posts: Post[];
-}
+type KeyVisualSectionProps =
+  | {
+      type: 'ARTICLE';
+      contents: Article[];
+    }
+  | {
+      type: 'MAIN';
+      contents: Post[];
+    };
 
-export function KeyVisualSection({ isButtonVisible, posts }: KeyVisualSectionProps) {
+export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
       <Swiper
@@ -24,13 +30,21 @@ export function KeyVisualSection({ isButtonVisible, posts }: KeyVisualSectionPro
         modules={[Autoplay, A11y, Navigation]}
         navigation={true}
       >
-        {posts.map((post, index) => (
-          <SwiperSlide key={post.path}>
-            <KeyVisual
-              post={post}
-              isButtonVisible={isButtonVisible}
-              isGradientEnabled={posts.length > 1 && index === 0}
-            />
+        {contents.map((content, index) => (
+          <SwiperSlide key={content.path}>
+            {type === 'MAIN' && (
+              <KeyVisual
+                {...content}
+                isButtonVisible
+                isGradientEnabled={contents.length > 1 && index === 0}
+              />
+            )}
+            {type === 'ARTICLE' && (
+              <KeyVisual
+                {...content}
+                date={content.dateTime}
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

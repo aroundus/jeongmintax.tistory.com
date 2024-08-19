@@ -16,8 +16,8 @@ export function App() {
     <Layout>
       {document.getElementById('tt-body-index') && document.querySelector('[data-cover-group="KEY_VISUAL"]') && (
         <KeyVisualSection
-          isButtonVisible
-          posts={posts}
+          contents={posts}
+          type="MAIN"
         />
       )}
       {document.getElementById('tt-body-index') && <ProfileSection />}
@@ -26,7 +26,10 @@ export function App() {
       )}
       {document.getElementById('tt-body-page') && (
         <>
-          <KeyVisualSection posts={[article]} />
+          <KeyVisualSection
+            contents={[article]}
+            type="ARTICLE"
+          />
           <ArticleSection html={article.content} />
         </>
       )}

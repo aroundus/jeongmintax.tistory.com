@@ -7,7 +7,7 @@ export interface Post {
   thumbnailURL: string; // 썸네일 주소
   category: string; // 카테고리 이름
   categoryPath: string; // 카테고리 경로
-  commentCount?: number; // 댓글 수
+  commentCount: number; // 댓글 수
   date: string; // 발행 일자
   dateTime: string; // 발행 일시
 }
