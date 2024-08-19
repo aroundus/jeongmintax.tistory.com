@@ -10,7 +10,8 @@ import 'virtual:stylex.css';
 
 export function App() {
   const articles = getArticles();
-  const posts = getPosts('KEY_VISUAL');
+  const keyVisualPosts = getPosts('KEY_VISUAL');
+  const listPosts = getPosts('LIST');
 
   return (
     <Layout>
@@ -18,12 +19,12 @@ export function App() {
         <>
           {document.querySelector('[data-cover-group="KEY_VISUAL"]') && (
             <KeyVisualSection
-              contents={posts}
+              contents={keyVisualPosts}
               type="MAIN"
             />
           )}
           <ProfileSection />
-          {document.querySelector('[data-cover-group="LIST"]') && <PostListSection />}
+          {document.querySelector('[data-cover-group="LIST"]') && <PostListSection contents={listPosts} />}
         </>
       )}
 
@@ -34,6 +35,12 @@ export function App() {
             type="ARTICLE"
           />
           <ArticleSection html={articles[0].content} />
+        </>
+      )}
+
+      {document.getElementById('tt-body-search') && (
+        <>
+          <PostListSection contents={articles} />
         </>
       )}
     </Layout>

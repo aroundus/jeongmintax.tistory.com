@@ -1,21 +1,20 @@
 import * as stylex from '@stylexjs/stylex';
 
-import type { Post } from '@/data/post';
-
 import { PostListItem } from './PostListItem';
+import type { Content } from './PostListItem';
 
 interface ListProps {
-  posts: Post[];
+  contents: Content[];
 }
 
-export function PostList({ posts }: ListProps) {
+export function PostList({ contents }: ListProps) {
   return (
     <div {...stylex.props(styles.container)}>
-      {posts.map((post, index) => (
+      {contents.map((content, index) => (
         <PostListItem
-          isLast={posts.length === index + 1}
-          key={post.path}
-          post={post}
+          {...content}
+          isLast={contents.length === index + 1}
+          key={content.path}
         />
       ))}
     </div>

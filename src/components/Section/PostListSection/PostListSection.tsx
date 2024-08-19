@@ -1,16 +1,18 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { getPosts } from '@/data/post';
 import { size } from '@/styles/size.stylex';
 
 import { PostList } from './PostList';
+import type { Content } from './PostListItem';
 
-export function PostListSection() {
-  const posts = getPosts('LIST');
+interface PostListSectionProps {
+  contents: Content[];
+}
 
+export function PostListSection({ contents }: PostListSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
-      <PostList posts={posts} />
+      <PostList contents={contents} />
     </section>
   );
 }
