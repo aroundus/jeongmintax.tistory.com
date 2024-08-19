@@ -39,10 +39,10 @@ export function PostListItem({ isLast, post }: PostListItemProps) {
       <p {...stylex.props(styles.summary, mixinStyles.font(16, 400))}>
         {post.summary.length < 150 ? post.summary : `${post.summary.slice(0, 150)}...`}
       </p>
-      <div {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.date)}>{post.date}</span>
+      <div {...stylex.props(metaStyles.container)}>
+        <span {...stylex.props(metaStyles.date)}>{post.date}</span>
         {typeof post.commentCount === 'number' && post.commentCount > 0 && (
-          <div {...stylex.props(styles.commentCount, mixinStyles.font(14, 400))}>
+          <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
             <MdOutlineCommentIcon
               style={{
                 height: 20,
@@ -106,7 +106,10 @@ const styles = stylex.create({
     marginTop: size[16],
     transition: '200ms ease-out',
   },
-  meta: {
+});
+
+const metaStyles = stylex.create({
+  container: {
     alignItems: 'center',
     display: 'flex',
     gap: size[12],

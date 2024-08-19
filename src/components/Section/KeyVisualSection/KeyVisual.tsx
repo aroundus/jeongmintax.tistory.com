@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
+import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { Button } from '@/components';
 import { useIsMobile } from '@/hooks';
@@ -51,7 +52,21 @@ export function KeyVisual({
         </a>
         <h2 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h2>
         <p {...stylex.props(styles.summary)}>{summary.length < 120 ? summary : `${summary.slice(0, 120)}...`}</p>
-        <div {...stylex.props(styles.date)}>{date}</div>
+        <div></div>
+        <div {...stylex.props(metaStyles.container)}>
+          <span {...stylex.props(metaStyles.date)}>{date}</span>
+          {typeof commentCount === 'number' && commentCount > 0 && (
+            <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
+              <MdOutlineCommentIcon
+                style={{
+                  height: 20,
+                  width: 20,
+                }}
+              />
+              {new Intl.NumberFormat().format(commentCount)}
+            </div>
+          )}
+        </div>
         {isButtonVisible && (
           <Button
             color="primary"
@@ -153,12 +168,25 @@ const styles = stylex.create({
   summary: {
     marginTop: size[16],
   },
-  date: {
-    marginBottom: size[24],
-    marginTop: size[24],
-    opacity: 0.5,
-  },
   button: {
     color: 'white',
+    marginTop: size[24],
+  },
+});
+
+const metaStyles = stylex.create({
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: size[12],
+    marginTop: size[16],
+  },
+  date: {
+    color: color.gray,
+  },
+  commentCount: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: size[2],
   },
 });
