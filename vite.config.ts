@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
+import checker from 'vite-plugin-checker';
 import { stylex } from 'vite-plugin-stylex-dev';
 import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), stylex(), svgr()],
   build: {
     rollupOptions: {
       input: {
@@ -27,6 +27,14 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    checker({
+      typescript: true,
+    }),
+    react(),
+    stylex(),
+    svgr(),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
