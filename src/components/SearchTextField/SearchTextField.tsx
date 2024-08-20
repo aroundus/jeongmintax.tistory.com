@@ -6,11 +6,11 @@ import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
 
-interface SearchFieldProps {
+interface SearchTextFieldProps {
   isFullWidth?: boolean;
 }
 
-export function SearchField({ isFullWidth }: SearchFieldProps) {
+export function SearchTextField({ isFullWidth }: SearchTextFieldProps) {
   const [value, setValue] = useState('');
 
   const handleIconClick = () => {

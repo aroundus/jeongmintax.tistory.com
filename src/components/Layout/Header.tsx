@@ -4,7 +4,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import SymbolmarkIcon from '@/assets/images/icons/symbolmark.svg?react';
-import { SearchField } from '@/components/SearchField';
+import { SearchTextField } from '@/components/SearchTextField';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -43,7 +43,7 @@ export function Header({ title }: HeaderProps) {
               }}
             />
           ) : (
-            <SearchField />
+            <SearchTextField />
           )}
         </div>
       </header>

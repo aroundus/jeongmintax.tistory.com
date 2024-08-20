@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { RiMenuFold2Line as RiMenuFold2LineIcon } from 'react-icons/ri';
 
-import { SearchField } from '@/components/SearchField';
+import { SearchTextField } from '@/components/SearchTextField';
 import { useBrowser, useMediaQuery } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -31,7 +31,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
           />
         </div>
         <div {...stylex.props(contentStyles.container, (isDesktop || isPortrait) && contentStyles.height100)}>
-          <SearchField />
+          <SearchTextField />
         </div>
       </div>
     </>
