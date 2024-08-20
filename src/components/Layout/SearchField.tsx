@@ -57,6 +57,7 @@ const styles = stylex.create({
   },
   input: {
     color: {
+      default: color.black,
       '::placeholder': color.gray,
     },
     minWidth: 200,
@@ -70,8 +71,8 @@ const styles = stylex.create({
       },
     },
     cursor: 'pointer',
-    height: 24,
+    height: size[24],
     transition: 'color 300ms ease',
-    width: 24,
+    width: size[24],
   },
 });

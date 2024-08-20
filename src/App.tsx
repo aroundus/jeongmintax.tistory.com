@@ -2,6 +2,7 @@ import { Layout } from '@/components';
 import { ArticleSection, KeyVisualSection, PostListSection, ProfileSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 import { getPosts } from '@/data/post';
+import { SearchResult } from '@/pages/search-result/SearchResult';
 
 import '@/assets/styles/reset.scss';
 import '@/assets/styles/global.scss';
@@ -38,11 +39,7 @@ export function App() {
         </>
       )}
 
-      {document.getElementById('tt-body-search') && (
-        <>
-          <PostListSection contents={articles} />
-        </>
-      )}
+      {document.getElementById('tt-body-search') && <SearchResult />}
     </Layout>
   );
 }
