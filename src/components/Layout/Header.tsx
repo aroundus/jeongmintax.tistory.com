@@ -4,6 +4,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import SymbolmarkIcon from '@/assets/images/icons/symbolmark.svg?react';
+import { SearchField } from '@/components/SearchField';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -11,7 +12,6 @@ import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
 import { NavigationDrawer } from './NavigationDrawer';
-import { SearchField } from './SearchField';
 
 interface HeaderProps {
   title: string;

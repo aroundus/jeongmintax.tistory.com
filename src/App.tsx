@@ -1,4 +1,4 @@
-import { Layout } from '@/components';
+import { Layout } from '@/components/Layout';
 import { ArticleSection, KeyVisualSection, PostListSection, ProfileSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 import { getPosts } from '@/data/post';
@@ -39,6 +39,7 @@ export function App() {
         </>
       )}
 
+      {document.getElementById('tt-body-category') && <SearchResult />}
       {document.getElementById('tt-body-search') && <SearchResult />}
     </Layout>
   );

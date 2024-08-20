@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import { Button } from '@/components';
+import { Button } from '@/components/Button/Button';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';

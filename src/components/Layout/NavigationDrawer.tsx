@@ -1,12 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 import { RiMenuFold2Line as RiMenuFold2LineIcon } from 'react-icons/ri';
 
+import { SearchField } from '@/components/SearchField';
 import { useBrowser, useMediaQuery } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
-
-import { SearchField } from './SearchField';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
