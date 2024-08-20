@@ -31,7 +31,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
           />
         </div>
         <div {...stylex.props(contentStyles.container, (isDesktop || isPortrait) && contentStyles.height100)}>
-          <SearchTextField />
+          <SearchTextField textColor={color.black} />
         </div>
       </div>
     </>

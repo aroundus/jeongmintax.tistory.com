@@ -8,9 +8,10 @@ import { size } from '@/styles/size.stylex';
 
 interface SearchTextFieldProps {
   isFullWidth?: boolean;
+  textColor?: string;
 }
 
-export function SearchTextField({ isFullWidth }: SearchTextFieldProps) {
+export function SearchTextField({ isFullWidth, textColor = '' }: SearchTextFieldProps) {
   const [value, setValue] = useState('');
 
   const handleIconClick = () => {
@@ -26,9 +27,9 @@ export function SearchTextField({ isFullWidth }: SearchTextFieldProps) {
   };
 
   return (
-    <div {...stylex.props(styles.container, isFullWidth && styles.width100)}>
+    <div {...stylex.props(styles.container, isFullWidth && styles.isFullWidth)}>
       <input
-        {...stylex.props(styles.input, mixinStyles.font(16, 400))}
+        {...stylex.props(styles.input(textColor), mixinStyles.font(16, 400))}
         placeholder="검색어를 입력해 주세요."
         type="text"
         value={value}
@@ -52,18 +53,18 @@ const styles = stylex.create({
     display: 'flex',
     justifyContent: 'space-between',
   },
-  width100: {
+  isFullWidth: {
     width: '100%',
   },
-  input: {
+  input: (textColor: string) => ({
     color: {
-      default: color.black,
+      default: textColor || 'CanvasText',
       '::placeholder': color.gray,
     },
     minWidth: 200,
     outline: 'none',
     padding: size[8],
-  },
+  }),
   icon: {
     color: {
       ':hover': {
