@@ -1,9 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
-import { BiSearch as BiSearchIcon } from 'react-icons/bi';
 
+import { SearchTextField } from '@/components/SearchTextField';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
+import { viewport } from '@/styles/viewport.stylex';
 
 interface SearchResultHeaderProps {
   keyword: string; // 검색어
@@ -13,11 +14,11 @@ interface SearchResultHeaderProps {
 export function SearchResultHeader({ keyword, postCount }: SearchResultHeaderProps) {
   return (
     <div {...stylex.props(styles.container)}>
-      <BiSearchIcon {...stylex.props(styles.icon)} />
       <div {...stylex.props(styles.keyword, mixinStyles.font(36, 700))}>{keyword}</div>
       <p {...stylex.props(styles.description, mixinStyles.font(18, 500))}>
         총 <strong>{postCount}개</strong>의 글이 있습니다.
       </p>
+      <SearchTextField isFullWidth />
     </div>
   );
 }
@@ -29,14 +30,14 @@ const styles = stylex.create({
     flexDirection: 'column',
     gap: size[12],
     margin: 'auto',
+    maxWidth: '100%',
     padding: `${size[60]} ${size[24]} ${size[24]}`,
+    width: viewport.contentInnerWidth,
   },
   keyword: {
     color: color.primary,
   },
-  description: {},
-  icon: {
-    height: size[56],
-    width: size[56],
+  description: {
+    marginBottom: size[20],
   },
 });
