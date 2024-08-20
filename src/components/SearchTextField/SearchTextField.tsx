@@ -64,6 +64,7 @@ const styles = stylex.create({
     minWidth: 200,
     outline: 'none',
     padding: size[8],
+    width: '100%',
   }),
   icon: {
     color: {
