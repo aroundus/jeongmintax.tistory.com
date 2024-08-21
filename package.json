@@ -37,6 +37,7 @@
     "@storybook/react-vite": "^8.2.8",
     "@storybook/test": "^8.2.8",
     "@stylexjs/eslint-plugin": "^0.7.5",
+    "@stylistic/eslint-plugin-ts": "1.0.1",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

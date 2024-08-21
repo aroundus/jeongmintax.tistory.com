@@ -27,6 +27,7 @@ module.exports = [
     },
     plugins: {
       '@stylexjs': require('@stylexjs/eslint-plugin'),
+      '@stylistic/ts': require('@stylistic/eslint-plugin-ts'),
       import: require('eslint-plugin-import'),
       n: require('eslint-plugin-n'),
       promise: require('eslint-plugin-promise'),
@@ -40,6 +41,7 @@ module.exports = [
         },
       ],
       '@stylexjs/valid-styles': 'error',
+      '@stylistic/ts/padding-line-between-statements': ['error', { blankLine: 'always', prev: '*', next: 'return' }],
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'import/no-anonymous-default-export': [
