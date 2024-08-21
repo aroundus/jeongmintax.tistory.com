@@ -1,16 +1,16 @@
 import { getBlog } from '@/data/blog';
 
 export interface Article {
-  title: string;
-  summary: string;
-  content: string;
-  path: string;
-  author: string;
-  thumbnailURL: string;
-  category: string;
-  categoryPath: string;
-  date: string;
-  dateTime: string;
+  title: string; // 글 제목
+  summary: string; // 글 요약 내용
+  content: string; // 글 본문
+  path: string; // 주소 경로
+  author: string; // 작성자
+  thumbnailURL: string; // 썸네일 주소
+  category: string; // 카테고리 이름
+  categoryPath: string; // 카테고리 경로
+  date: string; // 발행 일자
+  dateTime: string; // 발행 일시
 }
 
 const INITIAL_ARTICLE: Article = {
