@@ -1,7 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { size } from '@/styles/size.stylex';
-
 import { PostList } from './PostList';
 import type { Content } from './PostListItem';
 
@@ -20,6 +18,5 @@ export function PostListSection({ contents }: PostListSectionProps) {
 const styles = stylex.create({
   container: {
     margin: 'auto',
-    padding: `${size[24]} 0`,
   },
 });

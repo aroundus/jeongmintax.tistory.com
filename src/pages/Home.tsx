@@ -1,9 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { CategoryField } from '@/components/CategoryField';
 import { KeyVisualSection, PostListSection, ProfileSection } from '@/components/Section';
+import { getCategories } from '@/data/category';
 import { getPosts } from '@/data/post';
 
 export function Home() {
+  const categories = getCategories();
   const keyVisualPosts = getPosts('KEY_VISUAL');
   const listPosts = getPosts('LIST');
 
@@ -16,6 +19,7 @@ export function Home() {
         />
       )}
       <ProfileSection />
+      <CategoryField categories={categories} />
       {document.querySelector('[data-cover-group="LIST"]') && <PostListSection contents={listPosts} />}
     </div>
   );
