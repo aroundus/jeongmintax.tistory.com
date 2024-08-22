@@ -2,7 +2,7 @@ import { Layout } from '@/components/Layout';
 import { ArticleSection, KeyVisualSection, PostListSection, ProfileSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 import { getPosts } from '@/data/post';
-import { SearchResult } from '@/pages/search-result/SearchResult';
+import { SearchResult } from '@/pages/search/SearchResult';
 
 import '@/assets/styles/reset.scss';
 import '@/assets/styles/global.scss';
