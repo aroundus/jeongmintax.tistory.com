@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { ArticleSection, KeyVisualSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 
-export function Page() {
+export function Article() {
   const articles = getArticles();
 
   return (

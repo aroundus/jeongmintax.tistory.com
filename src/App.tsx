@@ -1,6 +1,6 @@
 import { Layout } from '@/components/Layout';
 import { Home } from '@/pages/Home';
-import { Page } from '@/pages/page/Page';
+import { Article } from '@/pages/page/Article';
 import { SearchResult } from '@/pages/search/SearchResult';
 
 import '@/assets/styles/reset.scss';
@@ -12,7 +12,7 @@ export function App() {
   return (
     <Layout>
       {document.getElementById('tt-body-index') && <Home />}
-      {document.getElementById('tt-body-page') && <Page />}
+      {document.getElementById('tt-body-page') && <Article />}
       {document.getElementById('tt-body-category') && <SearchResult />}
       {document.getElementById('tt-body-search') && <SearchResult />}
     </Layout>
