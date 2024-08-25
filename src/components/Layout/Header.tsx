@@ -26,7 +26,7 @@ export function Header({ title }: HeaderProps) {
       <header {...stylex.props(styles.container)}>
         <div {...stylex.props(styles.inner)}>
           <a
-            {...stylex.props(styles.title, mixinStyles.font(16, 900))}
+            {...stylex.props(styles.title, mixinStyles.font(isMobile ? 16 : 18, 900))}
             href="/"
           >
             <SymbolmarkIcon
