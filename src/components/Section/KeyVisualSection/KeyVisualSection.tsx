@@ -3,8 +3,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import type { Article } from '@/data/article';
-import type { Post } from '@/data/post';
+import type { Article, CoverArticle } from '@/data/article';
 
 import { KeyVisual } from './KeyVisual';
 
@@ -13,12 +12,12 @@ import 'swiper/css/navigation';
 
 type KeyVisualSectionProps =
   | {
-      type: 'ARTICLE';
       contents: Article[];
+      type: 'ARTICLE';
     }
   | {
-      type: 'MAIN';
-      contents: Post[];
+      contents: CoverArticle[];
+      type: 'HOME';
     };
 
 export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
@@ -32,7 +31,7 @@ export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
       >
         {contents.map((content, index) => (
           <SwiperSlide key={content.path}>
-            {type === 'MAIN' && (
+            {type === 'HOME' && (
               <KeyVisual
                 {...content}
                 isButtonVisible

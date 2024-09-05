@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import type { Category } from '@/data/category';
@@ -17,17 +18,19 @@ export function CategoryField({ categories }: CategoryFieldProps) {
   return (
     <div {...stylex.props(styles.container)}>
       {categories.map((category) => (
-        <a
-          {...stylex.props(categoryStyles.container)}
-          href={`/category${category.name === '전체' ? '' : `/${category.name}`}`}
-        >
-          <span {...stylex.props(mixinStyles.font(isMobile ? 14 : 16, 500))}>
-            {category.name === '전체' ? category.name : `#${category.name}`}
-          </span>
-          <span {...stylex.props(categoryStyles.postCount, mixinStyles.font(isMobile ? 14 : 16, 400))}>
-            {new Intl.NumberFormat().format(category.postCount)}
-          </span>
-        </a>
+        <Fragment key={category.name}>
+          <a
+            {...stylex.props(categoryStyles.container)}
+            href={`/category${category.name === '전체' ? '' : `/${category.name}`}`}
+          >
+            <span {...stylex.props(mixinStyles.font(isMobile ? 14 : 16, 500))}>
+              {category.name === '전체' ? category.name : `#${category.name}`}
+            </span>
+            <span {...stylex.props(categoryStyles.postCount, mixinStyles.font(isMobile ? 14 : 16, 400))}>
+              {new Intl.NumberFormat().format(category.postCount)}
+            </span>
+          </a>
+        </Fragment>
       ))}
     </div>
   );

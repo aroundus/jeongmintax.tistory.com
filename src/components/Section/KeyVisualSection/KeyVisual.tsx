@@ -1,27 +1,24 @@
 import * as stylex from '@stylexjs/stylex';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import { Button } from '@/components/Button/Button';
+import { Button } from '@/components/Button';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
 
-interface Content {
+interface KeyVisualProps {
   category: string;
   categoryPath: string;
   commentCount?: number;
   date: string;
+  isButtonVisible?: boolean;
+  isGradientEnabled?: boolean;
   path: string;
   summary: string;
   thumbnailURL: string;
   title: string;
-}
-
-interface KeyVisualProps extends Content {
-  isButtonVisible?: boolean;
-  isGradientEnabled?: boolean;
 }
 
 export function KeyVisual({
