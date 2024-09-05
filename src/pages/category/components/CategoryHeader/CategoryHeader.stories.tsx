@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const CategoryHeaderStory: Story = {
   args: {
     keyword: '증여세',
-    postCount: 10,
+    articleCount: 10,
   },
 };
 

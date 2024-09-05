@@ -13,7 +13,7 @@ export function SearchResult() {
     <div {...stylex.props(styles.container)}>
       <SearchResultHeader
         keyword={keyword}
-        postCount={articles.length}
+        articleCount={articles.length}
       />
       <ArticleListSection contents={articles} />
     </div>

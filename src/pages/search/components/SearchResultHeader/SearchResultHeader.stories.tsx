@@ -16,8 +16,8 @@ type Story = StoryObj<typeof meta>;
 
 export const SearchResultHeaderStory: Story = {
   args: {
+    articleCount: 10,
     keyword: '증여세',
-    postCount: 10,
   },
 };
 

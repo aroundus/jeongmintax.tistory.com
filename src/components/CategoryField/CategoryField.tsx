@@ -26,8 +26,8 @@ export function CategoryField({ categories }: CategoryFieldProps) {
             <span {...stylex.props(mixinStyles.font(isMobile ? 14 : 16, 500))}>
               {category.name === '전체' ? category.name : `#${category.name}`}
             </span>
-            <span {...stylex.props(categoryStyles.postCount, mixinStyles.font(isMobile ? 14 : 16, 400))}>
-              {new Intl.NumberFormat().format(category.postCount)}
+            <span {...stylex.props(categoryStyles.articleCount, mixinStyles.font(isMobile ? 14 : 16, 400))}>
+              {new Intl.NumberFormat().format(category.articleCount)}
             </span>
           </a>
         </Fragment>
@@ -56,7 +56,7 @@ const categoryStyles = stylex.create({
     display: 'flex',
     gap: size[4],
   },
-  postCount: {
+  articleCount: {
     color: color.gray,
   },
 });

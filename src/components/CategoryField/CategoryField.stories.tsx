@@ -20,24 +20,24 @@ export const CategoryFieldStory: Story = {
   args: {
     categories: [
       {
+        articleCount: getRandomNumber(4),
         name: '전체',
-        postCount: getRandomNumber(4),
       },
       {
+        articleCount: getRandomNumber(4),
         name: '사과',
-        postCount: getRandomNumber(4),
       },
       {
+        articleCount: getRandomNumber(4),
         name: '바나나',
-        postCount: getRandomNumber(4),
       },
       {
+        articleCount: getRandomNumber(4),
         name: '딸기',
-        postCount: getRandomNumber(4),
       },
       {
+        articleCount: getRandomNumber(4),
         name: '토마토',
-        postCount: getRandomNumber(4),
       },
     ],
   },

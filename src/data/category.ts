@@ -1,6 +1,6 @@
 export interface Category {
+  articleCount: number;
   name: string;
-  postCount: number;
 }
 
 export function getCategories() {
@@ -8,7 +8,10 @@ export function getCategories() {
 
   try {
     const categories: Category[] = [
-      { name: '전체', postCount: Number(element.querySelector('.link_tit .c_cnt')!.textContent?.replace(/[\D]/g, '')) },
+      {
+        articleCount: Number(element.querySelector('.link_tit .c_cnt')!.textContent?.replace(/[\D]/g, '')),
+        name: '전체',
+      },
     ];
 
     const categoryElements = element.querySelectorAll('.category_list .link_item')!;
@@ -16,11 +19,11 @@ export function getCategories() {
     Array.from(categoryElements).forEach((categoryElement) => {
       const text = categoryElement.textContent || '';
       const name = text.replace(/\(\d+\)/g, '').trim() || ''; // 증여세 (2) -> 증여세
-      const matchedPostCountText = text.match(/\(\d+\)/g);
+      const matchedArticleCountText = text.match(/\(\d+\)/g);
 
       categories.push({
+        articleCount: matchedArticleCountText ? Number(matchedArticleCountText[0].replace(/[\D]/g, '')) : 0, // (2) -> 2
         name,
-        postCount: matchedPostCountText ? Number(matchedPostCountText[0].replace(/[\D]/g, '')) : 0, // (2) -> 2
       });
     });
 

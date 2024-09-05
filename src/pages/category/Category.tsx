@@ -8,18 +8,18 @@ import { getCategories } from '@/data/category';
 import { CategoryHeader } from './components/CategoryHeader';
 
 export function Category() {
-  const posts = getArticles();
+  const articles = getArticles();
   const categories = getCategories();
   const keyword = location.pathname.split('/')[2];
 
   return (
     <div {...stylex.props(styles.container)}>
       <CategoryHeader
+        articleCount={articles.length}
         keyword={keyword ? `#${decodeURIComponent(keyword)}` : '전체'}
-        postCount={posts.length}
       />
       <CategoryField categories={categories} />
-      <ArticleListSection contents={posts} />
+      <ArticleListSection contents={articles} />
     </div>
   );
 }
