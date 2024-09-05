@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PostList } from './PostList';
+import { ArticleList } from './ArticleList';
 
 const meta = {
   argTypes: {},
-  component: PostList,
+  component: ArticleList,
   parameters: {},
-  title: 'components/Section/PostListSection/PostList',
-} satisfies Meta<typeof PostList>;
+  title: 'components/Section/ArticleListSection/ArticleList',
+} satisfies Meta<typeof ArticleList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const PostListStory: Story = {
+export const ArticleListStory: Story = {
   args: {
     contents: [
       {
@@ -55,4 +55,4 @@ export const PostListStory: Story = {
   },
 };
 
-PostListStory.storyName = 'PostList';
+ArticleListStory.storyName = 'ArticleList';

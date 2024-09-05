@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { PostListSection } from '@/components/Section';
+import { ArticleListSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 
 import { SearchResultHeader } from './components/SearchResultHeader';
@@ -15,7 +15,7 @@ export function SearchResult() {
         keyword={keyword}
         postCount={articles.length}
       />
-      <PostListSection contents={articles} />
+      <ArticleListSection contents={articles} />
     </div>
   );
 }

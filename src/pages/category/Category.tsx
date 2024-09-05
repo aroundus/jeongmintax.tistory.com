@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 import { CategoryField } from '@/components/CategoryField';
-import { PostListSection } from '@/components/Section';
+import { ArticleListSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 import { getCategories } from '@/data/category';
 
@@ -19,7 +19,7 @@ export function Category() {
         postCount={posts.length}
       />
       <CategoryField categories={categories} />
-      <PostListSection contents={posts} />
+      <ArticleListSection contents={posts} />
     </div>
   );
 }

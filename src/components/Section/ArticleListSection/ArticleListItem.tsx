@@ -9,20 +9,13 @@ import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
-export interface Content {
-  category: string;
-  commentCount?: number;
-  date: string;
-  path: string;
-  summary: string;
-  title: string;
-}
+import type { ArticleListItemContent } from './types';
 
-interface PostListItemProps extends Content {
+interface ArticleListItemProps extends ArticleListItemContent {
   isLast?: boolean;
 }
 
-export function PostListItem({ category, commentCount, date, isLast, path, summary, title }: PostListItemProps) {
+export function ArticleListItem({ category, commentCount, date, isLast, path, summary, title }: ArticleListItemProps) {
   const isMobile = useIsMobile();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
