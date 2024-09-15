@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 import { RiMenuFold2Line as RiMenuFold2LineIcon } from 'react-icons/ri';
 
 import { SearchTextField } from '@/components/SearchTextField';
+import { getCategories } from '@/data/category';
 import { useBrowser, useMediaQuery } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -14,6 +15,8 @@ interface NavigationDrawerProps {
 export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDrawerProps) {
   const { isDesktop } = useBrowser();
   const isPortrait = useMediaQuery('(orientation: portrait)');
+
+  const categories = getCategories();
 
   return (
     <>
@@ -32,6 +35,21 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
         </div>
         <div {...stylex.props(contentStyles.container, (isDesktop || isPortrait) && contentStyles.height100)}>
           <SearchTextField textColor={color.black} />
+          <ul {...stylex.props(categoryStyles.container)}>
+            {categories.map((category) => (
+              <li
+                key={category.name}
+                {...stylex.props(categoryStyles.category)}
+              >
+                <a href={`/category${category.name === '전체' ? '' : `/${category.name}`}`}>
+                  {category.name === '전체' ? <strong>{category.name}</strong> : `#${category.name}`}
+                </a>
+                <span {...stylex.props(categoryStyles.articleCount)}>
+                  {new Intl.NumberFormat().format(category.articleCount)}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
@@ -92,9 +110,27 @@ const headerStyles = stylex.create({
 
 const contentStyles = stylex.create({
   container: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: size[24],
     padding: size[24],
   },
   height100: {
     height: '100%',
+  },
+});
+
+const categoryStyles = stylex.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: size[8],
+  },
+  category: {
+    display: 'flex',
+    gap: size[4],
+  },
+  articleCount: {
+    color: color.gray,
   },
 });
