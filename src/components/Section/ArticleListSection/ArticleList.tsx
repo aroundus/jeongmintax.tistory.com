@@ -1,10 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
 
 import { ArticleListItem } from './ArticleListItem';
-import type { Content } from './ArticleListItem';
+import type { ArticleListItemContent } from './types';
 
 interface ListProps {
-  contents: Content[];
+  contents: ArticleListItemContent[];
 }
 
 export function ArticleList({ contents }: ListProps) {
