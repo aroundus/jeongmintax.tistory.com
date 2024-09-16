@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
   <information>
-    <name>어라운드어스</name>
+    <name>Around Story</name>
     <version>1.0</version>
     <description>
-      <![CDATA[어라운드어스 블로그 스킨입니다.]]>
+      <![CDATA[AROUNDUS(어라운드어스) 블로그 스킨입니다.]]>
     </description>
     <license>
       <![CDATA[CCL]]>
@@ -51,4 +51,19 @@
       ]
     </cover>
   </default>
+  <variables>
+    <variablegroup name="심벌마크">
+      <variable>
+        <name>LIGHT_MODE_SYMBOL_MARK_URL</name>
+        <label><![CDATA[ 라이트 모드 URL ]]></label>
+        <type>STRING</type>
+        <default>/favicon.ico</default>
+      </variable>
+      <variable>
+        <name>DARK_MODE_SYMBOL_MARK_URL</name>
+        <label><![CDATA[ 다크 모드 URL ]]></label>
+        <type>STRING</type>
+      </variable>
+    </variablegroup>
+  </variables>
 </skin>

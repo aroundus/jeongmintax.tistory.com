@@ -35,7 +35,7 @@ export function useMediaQuery(query: string) {
   return isTargetReached;
 }
 
-export function useIsDarkScheme() {
+export function useIsDarkMode() {
   return useMediaQuery('(prefers-color-scheme: dark)');
 }
 

@@ -3,21 +3,20 @@ import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
-import SymbolmarkIcon from '@/assets/images/icons/symbolmark.svg?react';
 import { SearchTextField } from '@/components/SearchTextField';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
-import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
 import { NavigationDrawer } from './NavigationDrawer';
 
 interface HeaderProps {
+  symbolMarkURL: string;
   title: string;
 }
 
-export function Header({ title }: HeaderProps) {
+export function Header({ symbolMarkURL, title }: HeaderProps) {
   const isMobile = useIsMobile();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -29,9 +28,10 @@ export function Header({ title }: HeaderProps) {
             {...stylex.props(styles.title, mixinStyles.font(isMobile ? 16 : 18, 900))}
             href="/"
           >
-            <SymbolmarkIcon
-              fill={color.primary}
-              height={16}
+            <img
+              {...stylex.props(styles.symbolmark)}
+              alt="로고"
+              src={symbolMarkURL}
             />
             {title}
           </a>
@@ -78,5 +78,8 @@ const styles = stylex.create({
     display: 'flex',
     gap: size[8],
     whiteSpace: 'nowrap',
+  },
+  symbolmark: {
+    height: size[16],
   },
 });

@@ -16,6 +16,17 @@
       <div id="root"></div>
 
       <div style="display: none;">
+        <pre id="symbolMark">
+          {
+            <s_if_var_DARK_MODE_SYMBOL_MARK_URL>
+              "darkModeURL": "[##_var_DARK_MODE_SYMBOL_MARK_URL_##]",
+            </s_if_var_DARK_MODE_SYMBOL_MARK_URL>
+            <s_not_var_DARK_MODE_SYMBOL_MARK_URL>
+              "darkModeURL": "[##_var_LIGHT_MODE_SYMBOL_MARK_URL_##]",
+            </s_not_var_DARK_MODE_SYMBOL_MARK_URL>
+            "lightModeURL": "[##_var_LIGHT_MODE_SYMBOL_MARK_URL_##]"
+          }
+        </pre>
 
         <pre id="blog">
           {

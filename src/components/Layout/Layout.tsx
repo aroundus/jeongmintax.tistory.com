@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import { getBlog } from '@/data/blog';
-import { useIsDarkScheme } from '@/hooks';
+import { getSymbolMarkURL } from '@/data/symbolMark';
+import { useIsDarkMode } from '@/hooks';
 import { darkTheme, lightTheme } from '@/styles';
 
 import { Content } from './Content';
@@ -12,13 +14,17 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
-  const isDarkScheme = useIsDarkScheme();
+  const isDarkMode = useIsDarkMode();
 
   const blog = getBlog();
+  const symbolMarkURL = useMemo(() => getSymbolMarkURL(isDarkMode), [isDarkMode]);
 
   return (
-    <div {...stylex.props(isDarkScheme ? darkTheme : lightTheme)}>
-      <Header title={blog.title} />
+    <div {...stylex.props(isDarkMode ? darkTheme : lightTheme)}>
+      <Header
+        symbolMarkURL={symbolMarkURL}
+        title={blog.title}
+      />
       <Content>{children}</Content>
     </div>
   );
