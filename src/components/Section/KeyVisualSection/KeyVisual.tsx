@@ -51,7 +51,7 @@ export function KeyVisual({
           {category}
         </a>
         <h2 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h2>
-        <p {...stylex.props(styles.summary)}>{summary.length < 120 ? summary : `${summary.slice(0, 120)}...`}</p>
+        <p {...stylex.props(styles.summary)}>{summary.length < 150 ? summary : `${summary.slice(0, 150)}...`}</p>
         <div></div>
         <div {...stylex.props(metaStyles.container)}>
           <span {...stylex.props(metaStyles.date)}>{date}</span>

@@ -121,6 +121,19 @@ export function getArticles() {
       const articleElement = element.querySelector('[data-article="article"]')!;
       const article = JSON.parse(articleElement.innerHTML) as Article;
       const contentElement = element.querySelector(`[data-article="content"] .contents_style`)!;
+
+      // 테이블 속성 삭제
+      contentElement.querySelectorAll('table').forEach((element) => {
+        element.removeAttribute('border');
+        element.removeAttribute('data-ke-align');
+        element.removeAttribute('style');
+      });
+
+      // 티스토리 data-ke-size 속성 삭제
+      contentElement.querySelectorAll('[data-ke-size]').forEach((element) => {
+        element.removeAttribute('data-ke-size');
+      });
+
       const content = contentElement.innerHTML;
       const summary = contentElement.querySelector('p')?.innerText;
 
