@@ -7,6 +7,7 @@ import { useIsDarkMode } from '@/hooks';
 import { darkTheme, lightTheme } from '@/styles';
 
 import { Content } from './Content';
+import { Footer } from './Footer';
 import { Header } from './Header';
 
 interface LayoutProps {
@@ -26,6 +27,7 @@ export function Layout({ children }: LayoutProps) {
         title={blog.title}
       />
       <Content>{children}</Content>
+      <Footer />
     </div>
   );
 }
