@@ -35,7 +35,7 @@
           "title": "",
           "dataType": "RECENT",
           "data": {
-            "category": "전체",
+            "category": "ALL",
             "size": 2
           }
         },
@@ -44,7 +44,7 @@
           "title": "",
           "dataType": "RECENT",
           "data": {
-            "category": "전체",
+            "category": "ALL",
             "size": 5
           }
         }
