@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
   <information>
-    <name>Around Story</name>
+    <name>Jeongmin</name>
     <version>1.0</version>
     <description>
-      <![CDATA[AROUNDUS(어라운드어스) 블로그 스킨입니다.]]>
+      <![CDATA[세무회계 정민 블로그 스킨입니다.]]>
     </description>
     <license>
       <![CDATA[CCL]]>
     </license>
   </information>
   <author>
-    <name>aroundus</name>
+    <name>백은주</name>
     <homepage>https://aroundus.github.io/</homepage>
     <email>specialguest@kakao.com</email>
   </author>
