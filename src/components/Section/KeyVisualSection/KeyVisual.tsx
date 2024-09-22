@@ -50,7 +50,7 @@ export function KeyVisual({
         >
           {category}
         </a>
-        <h2 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h2>
+        <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
         <p {...stylex.props(styles.summary)}>{summary.length < 150 ? summary : `${summary.slice(0, 150)}...`}</p>
         <div></div>
         <div {...stylex.props(metaStyles.container)}>
