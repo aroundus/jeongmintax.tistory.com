@@ -56,6 +56,11 @@
     }
   }
 
+  // 이미지
+  img {
+    box-shadow: 0 4px 24px -16px var(--secondary-color);
+  }
+
   // 인용문
 
   // 목록
@@ -77,6 +82,11 @@
       p {
         margin-top: 0;
         margin-bottom: 0;
+      }
+
+      img {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
       }
     }
   }
@@ -103,10 +113,6 @@
   figure {
     margin-top: 2em;
     margin-bottom: 2em;
-  }
-
-  img {
-    box-shadow: 0 4px 24px -16px var(--secondary-color);
   }
 
   table {
