@@ -1,3 +1,5 @@
+import { useLayoutEffect } from 'react';
+
 import { Layout } from '@/components/Layout';
 import { Home } from '@/pages/Home';
 import { Article } from '@/pages/page/Article';
@@ -10,6 +12,12 @@ import '@/assets/styles/global.scss';
 import 'virtual:stylex.css';
 
 export function App() {
+  useLayoutEffect(() => {
+    if (document.getElementById('tt-body-page')) {
+      document.querySelector('body')!.id = 'tt-body-page';
+    }
+  }, []);
+
   return (
     <Layout>
       {document.getElementById('tt-body-index') && <Home />}

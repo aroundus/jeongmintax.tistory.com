@@ -62,6 +62,42 @@
   }
 
   // 인용문
+  blockquote {
+    margin: 2em 0;
+    padding-left: 1em;
+
+    font-size: 0.96em;
+    color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 50%);
+
+    border-left: 4px solid color-mix(in srgb, var(--secondary-color) 30%, white 30%);
+
+    &[data-ke-style='style1'] {
+      font-size: 18px;
+      line-height: inherit;
+      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 80%);
+    }
+
+    // 기본 스타일과 동일합니다.
+    &[data-ke-style='style2'] {
+      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 50%);
+    }
+
+    &[data-ke-style='style3'] {
+      padding: 24px;
+
+      font-size: 18px;
+      line-height: inherit;
+      color: CanvasText;
+
+      background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
+      border-color: color-mix(in srgb, var(--secondary-color) 40%, black 10%);
+    }
+
+    p {
+      line-height: 1.5;
+      color: inherit;
+    }
+  }
 
   // 목록
   ol,
