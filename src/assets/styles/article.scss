@@ -149,6 +149,54 @@
   figure {
     margin-top: 2em;
     margin-bottom: 2em;
+
+    // 티스토리 오픈 그래프
+    &[data-ke-type='opengraph'] {
+      a {
+        height: 180px;
+        border-color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 10%);
+        transition: 200ms;
+
+        div.og-text {
+          p.og-title {
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: inherit;
+            color: CanvasText;
+          }
+
+          p.og-desc {
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: var(--secondary-color);
+          }
+
+          p.og-host {
+            font-family: inherit;
+            color: var(--primary-color);
+            border-bottom: 0.2em solid var(--primary-color);
+          }
+        }
+      }
+
+      @media (width <= 600px) {
+        a {
+          height: 80px;
+
+          div.og-text {
+            p.og-title {
+              font-size: 16px;
+            }
+
+            p.og-host {
+              bottom: 12px;
+            }
+          }
+        }
+      }
+    }
   }
 
   table {

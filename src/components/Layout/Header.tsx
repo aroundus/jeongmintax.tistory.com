@@ -63,7 +63,7 @@ const styles = stylex.create({
     boxShadow: shadows.shadow2,
     position: 'sticky',
     top: 0,
-    zIndex: 1,
+    zIndex: 2,
   },
   inner: {
     alignItems: 'center',
