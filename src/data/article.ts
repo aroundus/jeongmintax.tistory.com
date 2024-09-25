@@ -135,11 +135,11 @@ export function getArticles() {
       });
 
       const content = contentElement.innerHTML;
-      const summary = contentElement.querySelector('p')?.innerText;
+      const summary = contentElement.querySelector('p')?.innerText || '';
 
       return {
         ...article,
-        summary: summary || article.summary,
+        summary: summary.trim() || article.summary,
         content,
         category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
       };
