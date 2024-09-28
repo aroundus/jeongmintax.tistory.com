@@ -1,7 +1,10 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { ArticleSection, KeyVisualSection } from '@/components/Section';
+import { KeyVisualSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
+
+import { ArticleSection } from './components/ArticleSection';
+import { ContactSection } from './components/ContactSection';
 
 export function Article() {
   const articles = getArticles();
@@ -13,6 +16,7 @@ export function Article() {
         type="ARTICLE"
       />
       <ArticleSection html={articles[0].content} />
+      <ContactSection />
     </div>
   );
 }

@@ -13,8 +13,9 @@ export function ArticleSection({ html }: ArticleSectionProps) {
     <section
       id="article"
       {...stylex.props(styles.container)}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    >
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </section>
   );
 }
 

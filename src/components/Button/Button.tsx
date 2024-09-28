@@ -137,6 +137,7 @@ const styles = stylex.create({
     color: 'CanvasText',
   }),
   text: (colorProp: Color) => ({
+    borderWidth: 0,
     color: {
       default: 'CanvasText',
       ':hover': color[colorProp],
