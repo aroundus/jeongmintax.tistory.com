@@ -1,6 +1,7 @@
-interface MenuItem {
+export interface MenuItem {
   name: string; // 메뉴 이름
   path: string; // 메뉴 경로
+  target?: React.HTMLAttributeAnchorTarget;
 }
 
 export function getMenu() {
@@ -11,6 +12,7 @@ export function getMenu() {
       ({
         name: element.textContent,
         path: element.href,
+        target: element.target,
       }) as MenuItem,
   );
 }

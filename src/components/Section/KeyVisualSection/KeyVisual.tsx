@@ -72,7 +72,7 @@ export function KeyVisual({
             color="primary"
             variant="outlined"
             size="lg"
-            style={styles.button}
+            stylexStyles={styles.button}
             onClick={() => {
               location.href = path;
             }}

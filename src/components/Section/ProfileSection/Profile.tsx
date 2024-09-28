@@ -2,6 +2,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
 import { Button } from '@/components/Button/Button';
+import type { MenuItem } from '@/data/menu';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -11,10 +12,7 @@ import { viewport } from '@/styles/viewport.stylex';
 interface ProfileProps {
   description: string;
   imageURL: string;
-  menu?: {
-    name: string;
-    path: string;
-  }[];
+  menu?: MenuItem[];
   name: string;
 }
 
@@ -33,16 +31,16 @@ export function Profile({ description, imageURL, menu, name }: ProfileProps) {
         {menu && (
           <nav {...stylex.props(navigationStyles.container)}>
             <ul {...stylex.props(navigationStyles.list, mixinStyles.font(14, 500))}>
-              {menu?.map((link) => (
-                <li key={link.path}>
-                  <a href={link.path}>
-                    <Button
-                      size="sm"
-                      variant="outlined"
-                    >
-                      {link.name}
-                    </Button>
-                  </a>
+              {menu?.map((menuItem) => (
+                <li key={menuItem.path}>
+                  <Button
+                    href={menuItem.path}
+                    size="sm"
+                    target={menuItem.target}
+                    variant="outlined"
+                  >
+                    {menuItem.name}
+                  </Button>
                 </li>
               ))}
             </ul>

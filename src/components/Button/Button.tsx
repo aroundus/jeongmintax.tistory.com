@@ -13,14 +13,22 @@ type Size = 'sm' | 'md' | 'lg';
 
 type Variant = 'contained' | 'outlined' | 'text';
 
-interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
+type HTMLElementProps =
+  | ({
+      href: string;
+    } & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+  | ({
+      href?: never;
+    } & React.ButtonHTMLAttributes<HTMLButtonElement>);
+
+type ButtonProps = HTMLElementProps & {
   color?: Color;
   isFullWidth?: boolean;
   isLoading?: boolean;
   size?: Size;
-  style?: stylex.StyleXStyles;
+  stylexStyles?: stylex.StyleXStyles;
   variant?: Variant;
-}
+};
 
 export function Button({
   children,
@@ -28,34 +36,47 @@ export function Button({
   isFullWidth,
   isLoading,
   size = 'md',
-  style,
+  stylexStyles,
   variant = 'contained',
   ...props
 }: ButtonProps) {
-  return (
-    <button
-      {...stylex.props(
-        styles.button,
-        isFullWidth && styles.isFullWidth,
-        styles[size],
-        styles[variant](colorProp),
-        size === 'sm' && mixinStyles.font(14, 500),
-        size === 'md' && mixinStyles.font(16, 700),
-        size === 'lg' && mixinStyles.font(18, 700),
-        style,
+  const styleXProps = stylex.props(
+    styles.button,
+    isFullWidth && styles.isFullWidth,
+    styles[size],
+    styles[variant](colorProp),
+    size === 'sm' && mixinStyles.font(14, 500),
+    size === 'md' && mixinStyles.font(16, 700),
+    size === 'lg' && mixinStyles.font(18, 700),
+    stylexStyles,
+  );
+
+  const Children = () => (
+    <>
+      {isLoading ? (
+        <em
+          {...stylex.props(loaderStyles.loader, loaderStyles[colorProp], loaderStyles[size])}
+          aria-label="로딩 중"
+        />
+      ) : (
+        children
       )}
-      {...props}
+    </>
+  );
+
+  return props.href ? (
+    <a
+      {...styleXProps}
+      {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
     >
-      <>
-        {isLoading ? (
-          <em
-            {...stylex.props(loaderStyles.loader, loaderStyles[colorProp], loaderStyles[size])}
-            aria-label="로딩 중"
-          />
-        ) : (
-          children
-        )}
-      </>
+      <Children />
+    </a>
+  ) : (
+    <button
+      {...styleXProps}
+      {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+    >
+      <Children />
     </button>
   );
 }
