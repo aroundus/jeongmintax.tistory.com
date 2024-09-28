@@ -36,7 +36,7 @@
           "dataType": "RECENT",
           "data": {
             "category": "ALL",
-            "size": 2
+            "size": 10
           }
         },
         {
@@ -45,7 +45,7 @@
           "dataType": "RECENT",
           "data": {
             "category": "ALL",
-            "size": 5
+            "size": 100
           }
         }
       ]
