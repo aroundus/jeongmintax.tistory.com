@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
-import SymbolMarkIcon from '@/assets/images/icons/symbol-mark.svg?react';
+import SymbolMarkIcon from '@/assets/icons/symbol-mark.svg?react';
 import { SearchTextField } from '@/components/SearchTextField';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';

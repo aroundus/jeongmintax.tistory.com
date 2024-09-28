@@ -84,3 +84,7 @@ mark {
   background-color: transparent;
   background-image: linear-gradient(to top, var(--primary-color-alpha) 40%, transparent 10%, transparent 50%);
 }
+
+hr {
+  border: 0.5px solid var(--primary-color-alpha);
+}
