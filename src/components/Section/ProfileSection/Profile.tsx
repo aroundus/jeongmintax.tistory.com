@@ -26,7 +26,7 @@ export function Profile({ description, imageURL, menu, name }: ProfileProps) {
         style={{ backgroundImage: `url(${imageURL})` }}
       />
       <div {...stylex.props(contentStyles.container)}>
-        <div {...stylex.props(mixinStyles.font(18, 700))}>{name}</div>
+        <div {...stylex.props(contentStyles.name, mixinStyles.font(18, 700))}>{name}</div>
         <p {...stylex.props(contentStyles.description, mixinStyles.font(isMobile ? 14 : 16, 400))}>{description}</p>
         {menu && (
           <nav {...stylex.props(navigationStyles.container)}>
@@ -79,6 +79,9 @@ const contentStyles = stylex.create({
     flexDirection: 'column',
     gap: size[4],
     justifyContent: 'center',
+  },
+  name: {
+    color: 'CanvasText',
   },
   description: {
     color: color.gray,
