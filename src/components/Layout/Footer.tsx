@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 
+import SymbolMarkIcon from '@/assets/icons/symbol-mark.svg?react';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
@@ -10,9 +11,15 @@ export function Footer() {
   return (
     <footer {...stylex.props(styles.container)}>
       <div {...stylex.props(styles.inner)}>
-        <div {...stylex.props(styles.title, mixinStyles.font(16, 900))}>세무회계 정민</div>
+        <div {...stylex.props(styles.title, mixinStyles.font(18, 900))}>
+          <SymbolMarkIcon
+            fill={color.secondary}
+            height={16}
+          />
+          세무회계 정민
+        </div>
         <address {...stylex.props(addressStyles.container)}>
-          <ul {...stylex.props(addressStyles.ul, mixinStyles.font(14, 400))}>
+          <ul {...stylex.props(addressStyles.ul, mixinStyles.font(16, 400))}>
             <li {...stylex.props(addressStyles.li)}>
               <strong>대표세무사</strong> 임현수
             </li>
@@ -41,16 +48,21 @@ const styles = stylex.create({
     boxShadow: shadows.innerShadow0,
   },
   inner: {
-    alignItems: 'center',
     display: 'flex',
-    gap: size[24],
+    flexDirection: 'column',
+    gap: size[8],
     justifyContent: 'space-between',
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
+    maxWidth: viewport.layoutWidth,
     padding: `${size[40]} ${size[24]}`,
   },
   title: {
-    minWidth: 100,
+    alignItems: 'center',
+    color: 'CanvasText',
+    display: 'flex',
+    gap: size[8],
+    letterSpacing: '0.04em',
+    minWidth: 120,
   },
 });
 

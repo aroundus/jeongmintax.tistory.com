@@ -36,9 +36,7 @@ export function ArticleListItem({ category, commentCount, date, isLast, path, su
       >
         {title}
       </div>
-      <p {...stylex.props(styles.summary, mixinStyles.font(16, 400))}>
-        {summary.length < 150 ? summary : `${summary.slice(0, 150)}...`}
-      </p>
+      <p {...stylex.props(styles.summary)}>{summary}</p>
       <div {...stylex.props(metaStyles.container)}>
         <span {...stylex.props(metaStyles.date)}>{date}</span>
         {typeof commentCount === 'number' && commentCount > 0 && (

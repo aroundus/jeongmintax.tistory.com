@@ -26,7 +26,7 @@ export function Header({ title }: HeaderProps) {
       <header {...stylex.props(styles.container)}>
         <div {...stylex.props(styles.inner)}>
           <a
-            {...stylex.props(styles.title, mixinStyles.font(isMobile ? 16 : 18, 900))}
+            {...stylex.props(styles.title, mixinStyles.font(18, 900))}
             href="/"
           >
             <SymbolMarkIcon
@@ -37,7 +37,7 @@ export function Header({ title }: HeaderProps) {
           </a>
           {isMobile ? (
             <RiMenuFoldLineIcon
-              style={{ height: 24, width: 24 }}
+              style={{ height: 28, width: 28 }}
               onClick={() => {
                 setIsDrawerOpen(true);
               }}
@@ -70,16 +70,18 @@ const styles = stylex.create({
     display: 'flex',
     justifyContent: 'space-between',
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
-    padding: size[24],
+    maxWidth: viewport.layoutWidth,
+    padding: `${size[20]} ${size[24]}`,
   },
   title: {
     alignItems: 'center',
+    color: 'CanvasText',
     display: 'flex',
     gap: size[8],
+    letterSpacing: '0.04em',
     whiteSpace: 'nowrap',
   },
-  symbolmark: {
+  symbolMark: {
     height: size[16],
   },
 });

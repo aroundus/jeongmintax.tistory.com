@@ -7,6 +7,7 @@ import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
+import { viewport } from '@/styles/viewport.stylex';
 
 interface KeyVisualProps {
   category: string;
@@ -51,7 +52,7 @@ export function KeyVisual({
           {category}
         </a>
         <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
-        <p {...stylex.props(styles.summary)}>{summary.length < 150 ? summary : `${summary.slice(0, 150)}...`}</p>
+        <p {...stylex.props(styles.summary)}>{summary}</p>
         <div></div>
         <div {...stylex.props(metaStyles.container)}>
           <span {...stylex.props(metaStyles.date)}>{date}</span>
@@ -100,7 +101,7 @@ const styles = stylex.create({
     content: {
       '::before': '', // eslint-disable-line
     },
-    height: 600,
+    height: 640,
     left: {
       '::before': 0,
     },
@@ -144,7 +145,7 @@ const styles = stylex.create({
   inner: {
     color: 'white',
     margin: 'auto',
-    maxWidth: 900,
+    maxWidth: viewport.contentWidth,
     minWidth: 320,
     padding: size[24],
     width: '80%',

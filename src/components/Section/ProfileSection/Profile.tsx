@@ -56,7 +56,7 @@ const styles = stylex.create({
     display: 'flex',
     gap: size[16],
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
+    maxWidth: viewport.layoutWidth,
     padding: size[24],
   },
 });

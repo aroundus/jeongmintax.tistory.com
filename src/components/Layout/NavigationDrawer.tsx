@@ -29,7 +29,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
       <div {...stylex.props(styles.container, mixinStyles.hideScrollbar('y'), isOpen && styles.isOpen)}>
         <div {...stylex.props(headerStyles.container)}>
           <RiMenuFold2LineIcon
-            {...stylex.props(headerStyles.icon)}
+            style={{ height: 28, width: 28 }}
             onClick={handleClose}
           />
         </div>
@@ -97,14 +97,10 @@ const headerStyles = stylex.create({
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: size[24],
+    padding: `${size[20]} ${size[24]}`,
     position: 'sticky',
     top: 0,
     zIndex: 1,
-  },
-  icon: {
-    height: 24,
-    width: 24,
   },
 });
 
@@ -128,7 +124,7 @@ const categoryStyles = stylex.create({
   },
   category: {
     display: 'flex',
-    gap: size[4],
+    gap: size[8],
   },
   articleCount: {
     color: color.gray,

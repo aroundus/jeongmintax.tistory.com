@@ -29,7 +29,7 @@ export function SearchTextField({ isFullWidth, textColor = '' }: SearchTextField
   return (
     <div {...stylex.props(styles.container, isFullWidth && styles.isFullWidth)}>
       <input
-        {...stylex.props(styles.input(textColor), mixinStyles.font(16, 400))}
+        {...stylex.props(styles.input(textColor), mixinStyles.font(18, 400))}
         placeholder="검색어를 입력해 주세요."
         type="text"
         value={value}
@@ -63,7 +63,7 @@ const styles = stylex.create({
     },
     minWidth: 200,
     outline: 'none',
-    padding: size[8],
+    padding: `${size[4]} ${size[8]}`,
     width: '100%',
   }),
   icon: {

@@ -41,7 +41,7 @@ export function PublicImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
 
         if (scriptURL) {
           const baseURL = scriptURL.replace(/\/script\.js(\?.*)?$/, '');
-          setSrc(baseURL + props.src.replace(/^\/images/, '/'));
+          setSrc(baseURL + props.src.replace(/^\/images/, ''));
         }
       }
     }

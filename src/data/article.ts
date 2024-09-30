@@ -1,4 +1,5 @@
 import { getBlog } from '@/data/blog';
+import { truncateWithPeriod } from '@/helpers/string';
 
 interface BaseArticle {
   /**
@@ -105,6 +106,7 @@ export function getCoverArticles(name: string) {
       return {
         ...coverArticle,
         category: coverArticle.category === '카테고리 없음' ? blog.title : `#${coverArticle.category}`,
+        summary: truncateWithPeriod(coverArticle.summary, 150),
       };
     } catch {
       return INITIAL_COVER_ARTICLE;
@@ -139,7 +141,7 @@ export function getArticles() {
 
       return {
         ...article,
-        summary: summary.trim() || article.summary,
+        summary: truncateWithPeriod(summary.trim() || article.summary, 150),
         content,
         category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
       };

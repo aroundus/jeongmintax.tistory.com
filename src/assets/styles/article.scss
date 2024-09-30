@@ -9,6 +9,7 @@
     margin-top: 2em;
     margin-bottom: 0.4em;
     line-height: 1.35;
+    color: CanvasText;
   }
 
   h1 {
@@ -25,23 +26,29 @@
 
   h4 {
     font-size: 24px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   h5 {
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   h6 {
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   // 문단
   p {
-    margin-top: 0.8em;
-    margin-bottom: 0.8em;
+    margin-top: 1.2em;
+    margin-bottom: 2.8em;
+    line-height: 1.8;
+  }
+
+  u {
+    background-image: linear-gradient(to top, var(--primary-color-alpha) 40%, transparent 10%, transparent 50%);
+    border-bottom: none;
   }
 
   a {
@@ -85,7 +92,7 @@
     &[data-ke-style='style3'] {
       padding: 24px;
 
-      font-size: 18px;
+      font-size: 20px;
       line-height: inherit;
       color: CanvasText;
 
@@ -94,7 +101,7 @@
     }
 
     p {
-      line-height: 1.5;
+      line-height: 1.6;
       color: inherit;
     }
   }
@@ -121,8 +128,8 @@
       }
 
       img {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
+        margin-top: 1em;
+        margin-bottom: 1em;
       }
     }
   }
@@ -231,6 +238,7 @@
     th {
       padding: 8px 16px;
       font-weight: 700;
+      color: CanvasText;
       background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
     }
 
