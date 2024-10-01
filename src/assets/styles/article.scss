@@ -1,17 +1,4 @@
 #article {
-  // 헤더
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 2em;
-    margin-bottom: 0.4em;
-    line-height: 1.35;
-    color: CanvasText;
-  }
-
   h1 {
     font-size: 40px;
   }
@@ -37,6 +24,29 @@
   h6 {
     font-size: 18px;
     line-height: 1.6;
+  }
+
+  // 헤더
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 4.8em;
+    margin-bottom: 0.4em;
+    line-height: 1.35;
+    color: CanvasText;
+
+    // 다른 헤더 바로 뒤에 오는 헤더의 경우 간격을 조정합니다.
+    & + h1,
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+      margin-top: 1.2em;
+    }
   }
 
   // 문단
