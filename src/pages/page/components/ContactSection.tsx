@@ -25,6 +25,7 @@ export function ContactSection() {
         <Button
           color="primary"
           href="http://talk.naver.com/w5igl2?frm=pnmb&frm=nmb_detail"
+          isFullWidth={isMobile}
           size={isMobile ? 'md' : 'lg'}
           target="_blank"
           variant="outlined"
@@ -34,6 +35,7 @@ export function ContactSection() {
         <Button
           color="primary"
           href="https://forms.gle/Boiaf1ViKZErxTLY8"
+          isFullWidth={isMobile}
           size={isMobile ? 'md' : 'lg'}
           target="_blank"
           variant="outlined"
