@@ -84,19 +84,21 @@
     padding-left: 1em;
 
     font-size: 0.96em;
-    color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 50%);
+    color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 30%);
 
     border-left: 4px solid color-mix(in srgb, var(--secondary-color) 30%, white 30%);
 
     &[data-ke-style='style1'] {
-      font-size: 18px;
+      font-size: 24px;
+      font-style: italic;
       line-height: inherit;
-      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 80%);
+      color: color-mix(in srgb, var(--secondary-color) 60%, CanvasText 40%);
     }
 
     // 기본 스타일과 동일합니다.
     &[data-ke-style='style2'] {
-      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 50%);
+      font-size: 20px;
+      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 30%);
     }
 
     &[data-ke-style='style3'] {
