@@ -18,8 +18,8 @@ export function ContactSection() {
         src="/images/name-card.jpg"
       />
       <p {...stylex.props(styles.paragraph)}>
-        저희는 최신 세법을 적용한 유연하고 전문적인 세무 전략을 지원합니다. 어려운 세무에 궁금증이 있거나 상담이 필요한
-        경우 아래의 버튼을 클릭해 연락해 주세요. 성공을 위한 최적의 세무 파트너로 최선을 다하겠습니다.
+        저희는 유연하고 상황에 맞는 전문적인 세무 전략을 지원합니다. 어려운 세무에 궁금증이 있거나 상담이 필요한 경우
+        아래의 버튼을 클릭해 연락해 주세요. 성공을 위한 최적의 세무 파트너로 최선을 다하겠습니다.
       </p>
       <div {...stylex.props(buttonStyles.container)}>
         <Button
