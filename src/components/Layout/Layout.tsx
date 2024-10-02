@@ -21,7 +21,7 @@ export function Layout({ children }: LayoutProps) {
     <div {...stylex.props(isDarkMode ? darkTheme : lightTheme)}>
       <Header title={blog.title} />
       <Content>{children}</Content>
-      <Footer />
+      <Footer title={blog.title} />
     </div>
   );
 }

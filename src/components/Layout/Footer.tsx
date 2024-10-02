@@ -7,7 +7,11 @@ import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
-export function Footer() {
+interface FooterProps {
+  title: string;
+}
+
+export function Footer({ title }: FooterProps) {
   return (
     <footer {...stylex.props(styles.container)}>
       <div {...stylex.props(styles.inner)}>
@@ -16,7 +20,7 @@ export function Footer() {
             fill={color.secondary}
             height={16}
           />
-          세무회계 정민
+          {title}
         </div>
         <address {...stylex.props(addressStyles.container)}>
           <ul {...stylex.props(addressStyles.ul, mixinStyles.font(16, 400))}>
