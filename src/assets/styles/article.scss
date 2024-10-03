@@ -78,6 +78,18 @@
     box-shadow: 0 4px 24px -16px var(--secondary-color);
   }
 
+  ol {
+    > li {
+      list-style: decimal;
+    }
+  }
+
+  ul {
+    > li {
+      list-style: disc;
+    }
+  }
+
   // 목록
   ol,
   ul {
@@ -87,6 +99,10 @@
     li {
       margin-bottom: 0.8em;
       margin-left: 1.2em;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
 
       ol,
       ul {
@@ -103,18 +119,6 @@
         margin-top: 1em;
         margin-bottom: 1em;
       }
-    }
-  }
-
-  ol {
-    > li {
-      list-style: decimal;
-    }
-  }
-
-  ul {
-    > li {
-      list-style: disc;
     }
   }
 
@@ -169,8 +173,13 @@
 
     ol,
     ul {
+      /* stylelint-disable-next-line no-descending-specificity */
       li {
         margin-bottom: 0.4em;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -261,6 +270,20 @@
       ul {
         margin-top: 0;
         margin-bottom: 0;
+
+        ol,
+        ul {
+          margin-top: 0.8em;
+
+          /* stylelint-disable-next-line no-descending-specificity */
+          li {
+            margin-bottom: 0.2em;
+
+            &:last-of-type {
+              margin-bottom: 0.2em;
+            }
+          }
+        }
       }
     }
 
