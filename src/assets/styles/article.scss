@@ -1,29 +1,60 @@
 #article {
   h1 {
+    counter-reset: heading-2;
     font-size: 40px;
   }
 
   h2 {
+    counter-increment: heading-2;
+    counter-reset: heading-3;
     font-size: 32px;
+
+    &::before {
+      content: counter(heading-2) '. ';
+    }
   }
 
   h3 {
+    counter-increment: heading-3;
+    counter-reset: heading-4;
     font-size: 28px;
+
+    &::before {
+      content: counter(heading-2) '-' counter(heading-3) '. ';
+    }
   }
 
   h4 {
+    counter-increment: heading-4;
+    counter-reset: heading-5;
     font-size: 24px;
     line-height: 1.6;
+
+    &::before {
+      content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '. ';
+    }
   }
 
   h5 {
+    counter-increment: heading-5;
+    counter-reset: heading-6;
     font-size: 20px;
     line-height: 1.6;
+
+    &::before {
+      content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '-' counter(heading-5) '. ';
+    }
   }
 
   h6 {
+    counter-increment: heading-6;
     font-size: 18px;
     line-height: 1.6;
+
+    &::before {
+      content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '-' counter(heading-5) '-'
+        counter(heading-6) '. ';
+    }
   }
 
   // 헤더
@@ -51,8 +82,8 @@
 
   // 문단
   p {
-    margin-top: 1.2em;
-    margin-bottom: 2.8em;
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
     line-height: 1.8;
   }
 
