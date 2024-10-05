@@ -290,6 +290,7 @@
           .filename {
             margin-top: 24px;
             font-size: 16px;
+            color: CanvasText;
 
             .name {
               max-width: initial;
@@ -299,6 +300,7 @@
           .size {
             margin-top: 4px;
             font-size: 14px;
+            color: var(--secondary-color);
           }
         }
       }
