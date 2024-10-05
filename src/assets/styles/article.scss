@@ -124,6 +124,7 @@
   ul {
     margin-top: 1em;
     margin-bottom: 0.6em;
+    padding-left: 1em;
 
     li {
       margin-bottom: 0.8em;
@@ -200,8 +201,10 @@
       color: inherit;
     }
 
-    ol,
+    ol, // stylelint-disable-line no-descending-specificity
     ul {
+      padding-left: 0;
+
       /* stylelint-disable-next-line no-descending-specificity */
       li {
         margin-bottom: 0.4em;
