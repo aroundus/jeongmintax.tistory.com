@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { KeyVisualSection } from '@/components/Section';
+import { KeyVisualSection } from '@/components/KeyVisualSection';
 import { getArticles } from '@/data/article';
 
 import { ArticleSection } from './components/ArticleSection';

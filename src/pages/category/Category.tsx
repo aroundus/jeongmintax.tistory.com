@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { ArticleListSection } from '@/components/ArticleListSection';
 import { CategoryField } from '@/components/CategoryField';
-import { ArticleListSection } from '@/components/Section';
 import { getArticles } from '@/data/article';
 import { getCategories } from '@/data/category';
 

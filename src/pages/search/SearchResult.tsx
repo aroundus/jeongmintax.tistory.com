@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { ArticleListSection } from '@/components/Section';
+import { ArticleListSection } from '@/components/ArticleListSection';
 import { getArticles } from '@/data/article';
 
 import { SearchResultHeader } from './components/SearchResultHeader';

@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import type { Category } from '@/data/category';
-import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
@@ -13,8 +12,6 @@ interface CategoryFieldProps {
 }
 
 export function CategoryField({ categories }: CategoryFieldProps) {
-  const isMobile = useIsMobile();
-
   return (
     <div {...stylex.props(styles.container)}>
       {categories.map((category) => (
@@ -23,10 +20,10 @@ export function CategoryField({ categories }: CategoryFieldProps) {
             {...stylex.props(categoryStyles.container)}
             href={`/category${category.name === '전체' ? '' : `/${category.name}`}`}
           >
-            <span {...stylex.props(mixinStyles.font(isMobile ? 14 : 16, 500))}>
+            <span {...stylex.props(mixinStyles.font(16, 500))}>
               {category.name === '전체' ? category.name : `#${category.name}`}
             </span>
-            <span {...stylex.props(categoryStyles.articleCount, mixinStyles.font(isMobile ? 14 : 16, 400))}>
+            <span {...stylex.props(categoryStyles.articleCount, mixinStyles.font(16, 400))}>
               {new Intl.NumberFormat().format(category.articleCount)}
             </span>
           </a>
@@ -45,7 +42,7 @@ const styles = stylex.create({
     justifyContent: 'center',
     margin: 'auto',
     maxWidth: '100%',
-    padding: size[24],
+    padding: `${size[24]} ${size[36]}`,
     width: viewport.contentInnerWidth,
   },
 });

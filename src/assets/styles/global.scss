@@ -40,7 +40,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: auto;
   line-height: 1.6;
-  color: color-mix(in srgb, var(--secondary-color) 50%, CanvasText 50%);
+  color: CanvasText;
   -webkit-text-size-adjust: none;
   word-break: keep-all;
   overflow-wrap: break-word;

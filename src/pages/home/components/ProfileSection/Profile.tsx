@@ -3,7 +3,6 @@ import * as stylex from '@stylexjs/stylex';
 
 import { Button } from '@/components/Button/Button';
 import type { MenuItem } from '@/data/menu';
-import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
 import { size } from '@/styles/size.stylex';
@@ -17,8 +16,6 @@ interface ProfileProps {
 }
 
 export function Profile({ description, imageURL, menu, name }: ProfileProps) {
-  const isMobile = useIsMobile();
-
   return (
     <div {...stylex.props(styles.container)}>
       <div
@@ -27,7 +24,7 @@ export function Profile({ description, imageURL, menu, name }: ProfileProps) {
       />
       <div {...stylex.props(contentStyles.container)}>
         <div {...stylex.props(contentStyles.name, mixinStyles.font(18, 700))}>{name}</div>
-        <p {...stylex.props(contentStyles.description, mixinStyles.font(isMobile ? 14 : 16, 400))}>{description}</p>
+        <p {...stylex.props(contentStyles.description, mixinStyles.font(16, 400))}>{description}</p>
         {menu && (
           <nav {...stylex.props(navigationStyles.container)}>
             <ul {...stylex.props(navigationStyles.list, mixinStyles.font(14, 500))}>

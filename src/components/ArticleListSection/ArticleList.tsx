@@ -1,5 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { size } from '@/styles/size.stylex';
+
 import { ArticleListItem } from './ArticleListItem';
 import type { ArticleListItemContent } from './types';
 
@@ -25,5 +27,7 @@ const styles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    paddingLeft: size[12],
+    paddingRight: size[12],
   },
 });

@@ -67,9 +67,8 @@
     margin-top: 4.8em;
     margin-bottom: 0.4em;
     line-height: 1.35;
-    color: CanvasText;
 
-    // 다른 헤더 바로 뒤에 오는 헤더의 경우 간격을 조정합니다.
+    // 헤더 바로 뒤에 오는 헤더의 간격을 조정합니다.
     & + h1,
     & + h2,
     & + h3,
@@ -84,7 +83,6 @@
   p {
     margin-top: 1.8em;
     margin-bottom: 1.8em;
-    line-height: 1.8;
   }
 
   u {
@@ -312,7 +310,7 @@
     display: block;
     border-collapse: collapse;
 
-    margin: 16px auto;
+    margin: 1.8em auto;
 
     font-size: 16px;
 

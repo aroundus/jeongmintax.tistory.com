@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react';
 
 import { Layout } from '@/components/Layout';
-import { Home } from '@/pages/Home';
+import { Home } from '@/pages/home/Home';
 import { Article } from '@/pages/page/Article';
 import { Category } from '@/pages/category/Category';
 import { SearchResult } from '@/pages/search/SearchResult';

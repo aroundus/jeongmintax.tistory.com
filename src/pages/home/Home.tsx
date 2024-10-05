@@ -1,9 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { ArticleListSection } from '@/components/ArticleListSection';
 import { CategoryField } from '@/components/CategoryField';
-import { ArticleListSection, KeyVisualSection, ProfileSection } from '@/components/Section';
+import { KeyVisualSection } from '@/components/KeyVisualSection';
 import { getCategories } from '@/data/category';
 import { getCoverArticles } from '@/data/article';
+
+import { ProfileSection } from './components/ProfileSection';
 
 export function Home() {
   const categories = getCategories();

@@ -97,7 +97,6 @@ const styles = stylex.create({
     color: color.gray,
   },
   title: {
-    color: 'CanvasText',
     marginTop: size[8],
     transition: '200ms ease-out',
   },
