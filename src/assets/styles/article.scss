@@ -1,4 +1,5 @@
 #article {
+  // 헤더
   h1 {
     counter-reset: heading-2;
     font-size: 40px;
@@ -7,7 +8,7 @@
   h2 {
     counter-increment: heading-2;
     counter-reset: heading-3;
-    font-size: 32px;
+    font-size: 36px;
 
     &::before {
       content: counter(heading-2) '. ';
@@ -17,7 +18,7 @@
   h3 {
     counter-increment: heading-3;
     counter-reset: heading-4;
-    font-size: 28px;
+    font-size: 32px;
 
     &::before {
       content: counter(heading-2) '-' counter(heading-3) '. ';
@@ -27,7 +28,7 @@
   h4 {
     counter-increment: heading-4;
     counter-reset: heading-5;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.6;
 
     &::before {
@@ -38,7 +39,7 @@
   h5 {
     counter-increment: heading-5;
     counter-reset: heading-6;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1.6;
 
     &::before {
@@ -48,7 +49,7 @@
 
   h6 {
     counter-increment: heading-6;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
 
     &::before {
@@ -57,7 +58,6 @@
     }
   }
 
-  // 헤더
   h1,
   h2,
   h3,
@@ -215,13 +215,7 @@
     }
   }
 
-  // 수평선
-
-  // 링크
-
-  // 강조
-
-  // 이미지
+  // 독립적인 콘텐츠
   figure {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -269,6 +263,44 @@
             p.og-host {
               bottom: 12px;
             }
+          }
+        }
+      }
+    }
+
+    // 파일
+    &.fileblock {
+      width: 600px;
+      height: 96px;
+      border-color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 10%);
+
+      a {
+        height: initial;
+        border-bottom-width: 0;
+
+        &::after {
+          top: 30px;
+        }
+
+        .image {
+          margin: 32px 24px;
+        }
+
+        .desc {
+          left: 78px;
+
+          .filename {
+            margin-top: 24px;
+            font-size: 16px;
+
+            .name {
+              max-width: initial;
+            }
+          }
+
+          .size {
+            margin-top: 4px;
+            font-size: 14px;
           }
         }
       }
