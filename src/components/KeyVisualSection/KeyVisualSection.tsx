@@ -28,6 +28,7 @@ export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
         loop={true}
         modules={[Autoplay, A11y, Navigation]}
         navigation={true}
+        simulateTouch={false}
       >
         {contents.map((content, index) => (
           <SwiperSlide key={content.path}>
