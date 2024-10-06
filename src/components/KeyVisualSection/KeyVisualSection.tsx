@@ -17,7 +17,7 @@ type KeyVisualSectionProps =
     }
   | {
       contents: CoverArticle[];
-      type: 'HOME';
+      type: 'COVER_ARTICLE';
     };
 
 export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
@@ -31,7 +31,7 @@ export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
       >
         {contents.map((content, index) => (
           <SwiperSlide key={content.path}>
-            {type === 'HOME' && (
+            {type === 'COVER_ARTICLE' && (
               <KeyVisual
                 {...content}
                 isButtonVisible

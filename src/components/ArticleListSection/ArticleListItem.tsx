@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
+import { FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsMobile } from '@/hooks';
@@ -15,7 +16,16 @@ interface ArticleListItemProps extends ArticleListItemContent {
   isLast?: boolean;
 }
 
-export function ArticleListItem({ category, commentCount, date, isLast, path, summary, title }: ArticleListItemProps) {
+export function ArticleListItem({
+  category,
+  commentCount,
+  date,
+  isLast,
+  likeCount,
+  path,
+  summary,
+  title,
+}: ArticleListItemProps) {
   const isMobile = useIsMobile();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
@@ -48,6 +58,17 @@ export function ArticleListItem({ category, commentCount, date, isLast, path, su
               }}
             />
             {new Intl.NumberFormat().format(commentCount)}
+          </div>
+        )}
+        {typeof likeCount === 'number' && likeCount > 0 && (
+          <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
+            <FaRegHeartIcon
+              style={{
+                height: 20,
+                width: 20,
+              }}
+            />
+            {new Intl.NumberFormat().format(likeCount)}
           </div>
         )}
       </div>

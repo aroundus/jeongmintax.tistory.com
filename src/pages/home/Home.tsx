@@ -18,7 +18,7 @@ export function Home() {
       {document.querySelector('[data-cover="KEY_VISUAL"]') && (
         <KeyVisualSection
           contents={keyVisualArticles}
-          type="HOME"
+          type="COVER_ARTICLE"
         />
       )}
       <ProfileSection />

@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
+import { FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { Button } from '@/components/Button';
@@ -16,6 +17,7 @@ interface KeyVisualProps {
   date: string;
   isButtonVisible?: boolean;
   isGradientEnabled?: boolean;
+  likeCount?: number;
   path: string;
   summary: string;
   thumbnailURL: string;
@@ -29,6 +31,7 @@ export function KeyVisual({
   date,
   isButtonVisible,
   isGradientEnabled,
+  likeCount,
   path,
   summary,
   thumbnailURL,
@@ -65,6 +68,17 @@ export function KeyVisual({
                 }}
               />
               {new Intl.NumberFormat().format(commentCount)}
+            </div>
+          )}
+          {typeof likeCount === 'number' && likeCount > 0 && (
+            <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
+              <FaRegHeartIcon
+                style={{
+                  height: 20,
+                  width: 20,
+                }}
+              />
+              {new Intl.NumberFormat().format(likeCount)}
             </div>
           )}
         </div>
