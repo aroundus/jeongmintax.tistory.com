@@ -60,7 +60,7 @@ export function KeyVisual({
         <div {...stylex.props(metaStyles.container)}>
           <span {...stylex.props(metaStyles.date)}>{date}</span>
           {typeof commentCount === 'number' && commentCount > 0 && (
-            <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
+            <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
               <MdOutlineCommentIcon
                 style={{
                   height: 20,
@@ -71,7 +71,7 @@ export function KeyVisual({
             </div>
           )}
           {typeof likeCount === 'number' && likeCount > 0 && (
-            <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
+            <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
               <FaRegHeartIcon
                 style={{
                   height: 20,
@@ -199,7 +199,7 @@ const metaStyles = stylex.create({
   date: {
     color: color.gray,
   },
-  commentCount: {
+  count: {
     alignItems: 'center',
     display: 'flex',
     gap: size[2],
