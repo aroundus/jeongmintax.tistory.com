@@ -60,7 +60,7 @@ export function ArticleListItem({
             {new Intl.NumberFormat().format(commentCount)}
           </div>
         )}
-        {typeof likeCount === 'number' && likeCount > 0 && (
+        {/* {typeof likeCount === 'number' && likeCount > 0 && (
           <div {...stylex.props(metaStyles.commentCount, mixinStyles.font(14, 400))}>
             <FaRegHeartIcon
               style={{
@@ -70,7 +70,7 @@ export function ArticleListItem({
             />
             {new Intl.NumberFormat().format(likeCount)}
           </div>
-        )}
+        )} */}
       </div>
     </a>
   );
