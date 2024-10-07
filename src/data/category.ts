@@ -1,6 +1,18 @@
 export interface Category {
   articleCount: number;
   name: string;
+  children?: Category[];
+}
+
+function extractCategory(element: Element) {
+  const text = element.querySelector('a')!.textContent || '';
+  const name = text.replace(/\(\d+\)/g, '').trim() || ''; // 증여세 (2) -> 증여세
+  const matchedArticleCountText = text.match(/\(\d+\)/g);
+
+  return {
+    articleCount: matchedArticleCountText ? Number(matchedArticleCountText[0].replace(/[\D]/g, '')) : 0, // (2) -> 2
+    name,
+  };
 }
 
 export function getCategories() {
@@ -14,21 +26,30 @@ export function getCategories() {
       },
     ];
 
-    const categoryElements = element.querySelectorAll('.category_list .link_item')!;
+    const categoryListElements = element.querySelectorAll('ul.category_list > li')!;
 
-    Array.from(categoryElements).forEach((categoryElement) => {
-      const text = categoryElement.textContent || '';
-      const name = text.replace(/\(\d+\)/g, '').trim() || ''; // 증여세 (2) -> 증여세
-      const matchedArticleCountText = text.match(/\(\d+\)/g);
+    Array.from(categoryListElements).forEach((categoryListElement) => {
+      const category: Category = extractCategory(categoryListElement);
+      const subcategoryListElements = categoryListElement.querySelectorAll('ul.sub_category_list li');
 
-      categories.push({
-        articleCount: matchedArticleCountText ? Number(matchedArticleCountText[0].replace(/[\D]/g, '')) : 0, // (2) -> 2
-        name,
-      });
+      if (subcategoryListElements.length > 0) {
+        category.children = Array.from(subcategoryListElements).map((subcategoryListElement) =>
+          extractCategory(subcategoryListElement),
+        );
+
+        category.articleCount += category.children.reduce(
+          (previousValue, currentObject) => previousValue + currentObject.articleCount,
+          0,
+        );
+      }
+
+      categories.push(category);
     });
 
     return categories;
-  } catch {
+  } catch (error) {
+    console.error(error);
+
     return [];
   }
 }
