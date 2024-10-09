@@ -91,7 +91,7 @@ const styles = stylex.create({
       default: 'pointer',
       ':disabled': 'no-drop',
     },
-    display: 'flex',
+    display: 'inline-flex',
     filter: {
       default: 'brightness(120%)',
       ':active:not(:disabled)': 'brightness(140%)',

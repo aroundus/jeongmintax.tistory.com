@@ -93,12 +93,10 @@ export function KeyVisual({
           {isButtonVisible && (
             <Button
               color="secondary"
+              href={path}
               variant="contained"
               size="lg"
               stylexStyles={styles.button}
-              onClick={() => {
-                location.href = path;
-              }}
             >
               내용 읽기
             </Button>
