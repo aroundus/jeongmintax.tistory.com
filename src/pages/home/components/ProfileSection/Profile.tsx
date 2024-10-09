@@ -1,7 +1,7 @@
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
-import { Button } from '@/components/Button/Button';
+import { Button } from '@/components/Button';
 import type { MenuItem } from '@/data/menu';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
