@@ -1,6 +1,10 @@
 interface User {
+  id: number;
   name: string;
   email: string;
+  imageURL: string;
+  blogURL: string;
+  isAdmin: boolean;
 }
 
 type Session =
@@ -20,28 +24,23 @@ const INITIAL_SESSION: Session = {
 
 export function getSession() {
   const session: Session = Object.assign({}, INITIAL_SESSION);
+  const user = window.initData?.user;
 
-  try {
-    const toolbarElements = document.querySelectorAll('.menu_toolbar');
+  if (window.T && user) {
+    const { config } = window.T;
 
-    Array.from(toolbarElements).forEach((toolbarElement) => {
-      if (toolbarElement.querySelector('.screen_out')?.textContent === '개인정보') {
-        const profileElement = toolbarElement.querySelector('.info_profile');
-
-        if (profileElement) {
-          session.isLoggedIn = true;
-          session.user = {
-            name: profileElement.querySelector('.txt_id')!.textContent || '',
-            email: profileElement.querySelector('.txt_email')!.textContent || '',
-          };
-        }
-      }
-    });
-
-    return session;
-  } catch (error) {
-    console.error(error);
-
-    return INITIAL_SESSION;
+    if (config.IS_LOGIN) {
+      session.isLoggedIn = true;
+      session.user = {
+        id: config.USER.id,
+        name: config.USER.name,
+        email: user.loginId,
+        imageURL: config.USER.profileImage,
+        blogURL: config.USER.homepage,
+        isAdmin: config.ROLE === 'owner',
+      };
+    }
   }
+
+  return session;
 }

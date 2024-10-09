@@ -74,27 +74,74 @@ declare namespace React {
   }
 }
 
-interface CustomProps {
-  blogId: string;
-  entryId: string;
-  filterTarget: boolean;
-  role: 'user' | 'owner';
-  trackPage: string;
-  userId: string;
+interface AppInfo {
+  domain: string;
+  loginUrl: string;
+  logoutUrl: string;
+  topUrl: string;
 }
 
-interface Tiara {
-  appUserId: string;
-  customProps: CustomProps;
-  entry: unknown;
-  kakaoAppKey: string;
-  key: string;
-  page: string;
-  section: string;
-  svcDomain: string;
-  trackPage: string;
+interface Blog {
+  id: number;
+  name: string;
+  title: string;
+  isDormancy: boolean;
+  nickName: string;
+  status: string;
+  profileStatus: string;
+}
+
+interface InitData {
+  user: {
+    id: number;
+    loginId: string;
+    name: string;
+  };
+}
+
+interface User {
+  name: string;
+  homepage: string;
+  id: number;
+  profileImage: string;
+}
+
+interface Subscription {
+  status: string;
+  isConnected: boolean;
+  isPending: boolean;
+  isWait: boolean;
+  isProcessing: boolean;
+  isNone: boolean;
+}
+
+interface Config {
+  BLOG: Blog;
+  COMMENT_LOGIN_CONFIRM_MESSAGE: string;
+  DEFAULT_URL: string;
+  HAS_BLOG: boolean;
+  IS_LOGIN: boolean;
+  IS_SCRAPABLE: boolean;
+  IS_SUPPORT: boolean;
+  JOIN_URL: string;
+  LOGIN_URL: string;
+  NEED_COMMENT_LOGIN: boolean;
+  NEXT_PAGE: string;
+  PHASE: string;
+  PREV_PAGE: string;
+  PREVIEW: boolean;
+  ROLE_GROUP: 'visitor';
+  ROLE: 'guest' | 'user' | 'owner';
+  SUBSCRIPTION: Subscription;
+  TOP_SSL_URL: string;
+  TOP_URL: string;
+  USER: User;
 }
 
 declare interface Window {
-  tiara: Tiara | undefined;
+  appInfo?: AppInfo;
+  initData?: InitData;
+  T?: {
+    config: Config;
+  };
 }
