@@ -5,6 +5,7 @@ import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import SymbolMarkIcon from '@/assets/icons/symbol-mark.svg?react';
 import { SearchTextField } from '@/components/SearchTextField';
+import { getSession } from '@/data/session';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -20,6 +21,8 @@ interface HeaderProps {
 export function Header({ title }: HeaderProps) {
   const isMobile = useIsMobile();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const session = getSession();
 
   return (
     <>
@@ -43,7 +46,14 @@ export function Header({ title }: HeaderProps) {
               }}
             />
           ) : (
-            <SearchTextField />
+            <div {...stylex.props(styles.content)}>
+              {session.isLoggedIn && (
+                <div>
+                  <strong>{session.user.name}</strong> 님 👋
+                </div>
+              )}
+              <SearchTextField />
+            </div>
           )}
         </div>
       </header>
@@ -81,7 +91,9 @@ const styles = stylex.create({
     letterSpacing: '0.04em',
     whiteSpace: 'nowrap',
   },
-  symbolMark: {
-    height: size[16],
+  content: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: size[16],
   },
 });
