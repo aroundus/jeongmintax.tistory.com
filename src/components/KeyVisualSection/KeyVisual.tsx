@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
@@ -39,6 +40,12 @@ export function KeyVisual({
 }: KeyVisualProps) {
   const isMobile = useIsMobile();
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div
       {...stylex.props(styles.container, isGradientEnabled && styles.isGradientEnabled)}
@@ -47,55 +54,57 @@ export function KeyVisual({
         backgroundImage: `url(${thumbnailURL}), url(https://c.pxhere.com/photos/32/a0/bamboo_plant-108294.jpg!d)`,
       }}
     >
-      <div {...stylex.props(styles.inner, mixinStyles.absoluteCenter())}>
-        <a
-          {...stylex.props(styles.category, mixinStyles.font(16, 500))}
-          href={categoryPath}
-        >
-          {category}
-        </a>
-        <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
-        <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
-        <div></div>
-        <div {...stylex.props(metaStyles.container)}>
-          <span {...stylex.props(metaStyles.date)}>{date}</span>
-          {typeof commentCount === 'number' && commentCount > 0 && (
-            <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
-              <MdOutlineCommentIcon
-                style={{
-                  height: 20,
-                  width: 20,
-                }}
-              />
-              {new Intl.NumberFormat().format(commentCount)}
-            </div>
-          )}
-          {typeof likeCount === 'number' && likeCount > 0 && (
-            <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
-              <FaRegHeartIcon
-                style={{
-                  height: 20,
-                  width: 20,
-                }}
-              />
-              {new Intl.NumberFormat().format(likeCount)}
-            </div>
+      {isMounted && (
+        <div {...stylex.props(styles.inner, mixinStyles.absoluteCenter())}>
+          <a
+            {...stylex.props(styles.category, mixinStyles.font(16, 500))}
+            href={categoryPath}
+          >
+            {category}
+          </a>
+          <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
+          <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
+          <div></div>
+          <div {...stylex.props(metaStyles.container)}>
+            <span {...stylex.props(metaStyles.date)}>{date}</span>
+            {typeof commentCount === 'number' && commentCount > 0 && (
+              <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
+                <MdOutlineCommentIcon
+                  style={{
+                    height: 20,
+                    width: 20,
+                  }}
+                />
+                {new Intl.NumberFormat().format(commentCount)}
+              </div>
+            )}
+            {typeof likeCount === 'number' && likeCount > 0 && (
+              <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
+                <FaRegHeartIcon
+                  style={{
+                    height: 20,
+                    width: 20,
+                  }}
+                />
+                {new Intl.NumberFormat().format(likeCount)}
+              </div>
+            )}
+          </div>
+          {isButtonVisible && (
+            <Button
+              color="secondary"
+              variant="contained"
+              size="lg"
+              stylexStyles={styles.button}
+              onClick={() => {
+                location.href = path;
+              }}
+            >
+              내용 읽기
+            </Button>
           )}
         </div>
-        {isButtonVisible && (
-          <Button
-            color="secondary"
-            variant="contained"
-            size="lg"
-            stylexStyles={styles.button}
-            onClick={() => {
-              location.href = path;
-            }}
-          >
-            내용 읽기
-          </Button>
-        )}
-      </div>
+      )}
     </div>
   );
 }

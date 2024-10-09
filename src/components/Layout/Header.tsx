@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
@@ -21,6 +21,11 @@ interface HeaderProps {
 export function Header({ title }: HeaderProps) {
   const isMobile = useIsMobile();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const session = getSession();
 
@@ -38,22 +43,26 @@ export function Header({ title }: HeaderProps) {
             />
             {title}
           </a>
-          {isMobile ? (
-            <RiMenuFoldLineIcon
-              style={{ height: 28, width: 28 }}
-              onClick={() => {
-                setIsDrawerOpen(true);
-              }}
-            />
-          ) : (
-            <div {...stylex.props(styles.content)}>
-              {session.isLoggedIn && (
-                <div>
-                  <strong>{session.user.name}</strong> 님 👋
+          {isMounted && (
+            <>
+              {isMobile ? (
+                <RiMenuFoldLineIcon
+                  style={{ height: 28, width: 28 }}
+                  onClick={() => {
+                    setIsDrawerOpen(true);
+                  }}
+                />
+              ) : (
+                <div {...stylex.props(styles.content)}>
+                  {session.isLoggedIn && (
+                    <div>
+                      <strong>{session.user.name}</strong> 님 👋
+                    </div>
+                  )}
+                  <SearchTextField />
                 </div>
               )}
-              <SearchTextField />
-            </div>
+            </>
           )}
         </div>
       </header>
