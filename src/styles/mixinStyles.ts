@@ -16,7 +16,7 @@ export const mixinStyles = stylex.create({
   font: (value: NumericKeysOnly<typeof size>, weight?: number) => ({
     fontSize: `${size[value]}`,
     fontWeight: weight || 400, // eslint-disable-line
-    lineHeight: value < 30 ? 1.6 : 1.35,
+    lineHeight: value < 30 ? 1.5 : 1.35,
   }),
   hideScrollbar: (axis: 'x' | 'y') => ({
     overflowX: axis === 'x' ? 'auto' : '', // eslint-disable-line

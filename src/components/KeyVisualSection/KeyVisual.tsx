@@ -55,7 +55,7 @@ export function KeyVisual({
           {category}
         </a>
         <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
-        <p {...stylex.props(styles.summary)}>{summary}</p>
+        <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
         <div></div>
         <div {...stylex.props(metaStyles.container)}>
           <span {...stylex.props(metaStyles.date)}>{date}</span>
@@ -84,8 +84,8 @@ export function KeyVisual({
         </div>
         {isButtonVisible && (
           <Button
-            color="primary"
-            variant="outlined"
+            color="secondary"
+            variant="contained"
             size="lg"
             stylexStyles={styles.button}
             onClick={() => {
@@ -184,7 +184,6 @@ const styles = stylex.create({
     marginTop: size[16],
   },
   button: {
-    color: 'white',
     marginTop: size[24],
   },
 });
