@@ -112,7 +112,7 @@ const styles = stylex.create({
   // Size
   sm: {
     borderRadius: size[8],
-    minWidth: size[60],
+    minWidth: size[100],
     padding: `${size[2]} ${size[12]}`,
   },
   md: {
@@ -128,9 +128,9 @@ const styles = stylex.create({
 
   // Variant
   contained: (colorProp: Color) => ({
-    backgroundColor: color[colorProp],
-    borderColor: color[colorProp],
-    color: color.black,
+    backgroundColor: color[`${colorProp}Alpha`],
+    borderColor: color[`${colorProp}Alpha`],
+    color: 'white',
   }),
   outlined: (colorProp: Color) => ({
     borderColor: color[colorProp],

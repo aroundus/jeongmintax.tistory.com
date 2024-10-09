@@ -1,7 +1,7 @@
 @use './variable' as variable;
 
 $primary-color: variable.$color-green;
-$primary-color-alpha: rgba($primary-color, 0.7);
+$primary-color-alpha: #{$primary-color}AA;
 $secondary-color: variable.$color-gray;
 
 :root {
@@ -13,7 +13,7 @@ $secondary-color: variable.$color-gray;
 
   @media (prefers-color-scheme: dark) {
     $primary-color: variable.$color-yellow;
-    $primary-color-alpha: rgba($primary-color, 0.7);
+    $primary-color-alpha: #{$primary-color}AA;
 
     --primary-color: #{$primary-color};
     --primary-color-alpha: #{$primary-color-alpha};
