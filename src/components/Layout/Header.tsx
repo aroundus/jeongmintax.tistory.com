@@ -55,8 +55,8 @@ export function Header({ title }: HeaderProps) {
               ) : (
                 <div {...stylex.props(styles.content)}>
                   {session.isLoggedIn && (
-                    <div>
-                      <strong>{session.user.name}</strong> 님 👋
+                    <div {...stylex.props(mixinStyles.font(16, 400))}>
+                      <strong>{session.user.name}</strong> 님, 안녕하세요 👋
                     </div>
                   )}
                   <SearchTextField />
