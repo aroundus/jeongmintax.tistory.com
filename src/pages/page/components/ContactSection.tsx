@@ -52,7 +52,7 @@ const styles = stylex.create({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    gap: size[24],
+    gap: size[40],
     margin: 'auto',
     maxWidth: viewport.contentWidth,
     padding: `${size[40]} ${size[24]}`,
