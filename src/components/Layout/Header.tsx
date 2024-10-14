@@ -55,7 +55,7 @@ export function Header({ title }: HeaderProps) {
               ) : (
                 <div {...stylex.props(styles.content)}>
                   {session.isLoggedIn && (
-                    <div {...stylex.props(mixinStyles.font(16, 400))}>
+                    <div {...stylex.props(mixinStyles.ellipsis(1), mixinStyles.font(16, 400))}>
                       <strong>{session.user.name}</strong> 님, 안녕하세요 👋
                     </div>
                   )}
@@ -87,6 +87,7 @@ const styles = stylex.create({
   inner: {
     alignItems: 'center',
     display: 'flex',
+    gap: size[16],
     justifyContent: 'space-between',
     margin: 'auto',
     maxWidth: viewport.layoutWidth,
@@ -103,6 +104,7 @@ const styles = stylex.create({
   content: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[16],
+    gap: size[8],
+    overflow: 'hidden',
   },
 });
