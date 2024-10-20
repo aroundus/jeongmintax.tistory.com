@@ -140,6 +140,13 @@ export function getArticles() {
         element.removeAttribute('data-ke-size');
       });
 
+      // <h*> 요소에 id 설정
+      const headings = contentElement.querySelectorAll('h1, h2, h3, h4, h5, h6') as NodeListOf<HTMLHeadingElement>;
+
+      headings.forEach((heading) => {
+        heading.id = heading.textContent!.trim().toLowerCase().replace(/\s+/g, '-');
+      });
+
       const content = contentElement.innerHTML;
       const summary = contentElement.querySelector('p')?.innerText || '';
       const commentCount = Number(commentCountElement.textContent);

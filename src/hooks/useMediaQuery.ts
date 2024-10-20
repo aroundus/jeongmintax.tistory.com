@@ -39,6 +39,10 @@ export function useIsDarkMode() {
   return useMediaQuery('(prefers-color-scheme: dark)');
 }
 
+export function useIsDesktop(width: number = 560) {
+  return useMediaQuery(`(min-width: ${width}px)`);
+}
+
 export function useIsMobile(width: number = 560) {
   return useMediaQuery(`(max-width: ${width - 1}px)`);
 }
