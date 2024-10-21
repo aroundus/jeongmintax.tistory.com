@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
+import { throttle } from 'lodash-es';
 
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -59,7 +60,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
   }
 
   useEffect(() => {
-    function listener() {
+    function handleScroll() {
       const { scrollY } = window;
 
       tocSteps.forEach((step, stepIndex) => {
@@ -77,11 +78,13 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
       });
     }
 
-    listener();
-    window.addEventListener('scroll', listener);
+    const throttledScroll = throttle(handleScroll, 50);
+
+    handleScroll();
+    window.addEventListener('scroll', throttledScroll);
 
     return () => {
-      window.removeEventListener('scroll', listener);
+      window.removeEventListener('scroll', throttledScroll);
     };
   }, [tocSteps]);
 
@@ -90,7 +93,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
       return;
     }
 
-    const listener = () => {
+    const handleScroll = () => {
       const targetRect = target.getBoundingClientRect();
       const { scrollY } = window;
 
@@ -105,16 +108,18 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
       }
     };
 
-    listener();
+    const throttledScroll = throttle(handleScroll, 50);
+
+    handleScroll();
     ['resize', 'orientationChange', 'scroll'].forEach((type) => {
-      window.addEventListener(type, listener);
+      window.addEventListener(type, throttledScroll);
     });
 
     setTOCStepsOffset();
 
     return () => {
       ['resize', 'orientationChange', 'scroll'].forEach((type) => {
-        window.removeEventListener(type, listener);
+        window.removeEventListener(type, throttledScroll);
       });
     };
   }, [target]);

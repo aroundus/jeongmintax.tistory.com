@@ -1,22 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
+import { throttle } from 'lodash-es';
 
 import { KeyVisualSection } from '@/components/KeyVisualSection';
 import { getArticles } from '@/data/article';
 import type { Article } from '@/data/article';
-import { useIsDesktop } from '@/hooks';
+import { useIsDesktop, useIsMobile } from '@/hooks';
 
 import { ArticleSection } from './components/ArticleSection';
 import { ContactSection } from './components/ContactSection';
 import { FloatingTOC } from './components/FloatingTOC';
+import { ProgressBar } from './components/ProgressBar';
 
 export function Article() {
   const isDesktop = useIsDesktop(1280);
+  const isMobile = useIsMobile();
+  const ref = useRef<HTMLDivElement>(null);
 
   let articles = getArticles();
   const articleElement = document.getElementById('article');
 
   const [updatedArticles, setUpdatedArticles] = useState<Article[]>(articles);
+  const [scrollHeight, setScrollHeight] = useState<number>(0);
+  const [progressBarOffset, setProgressBarOffset] = useState<number>(0);
+  const [scrollY, setScrollY] = useState<number>(0);
+
+  useEffect(() => {
+    const main = document.getElementsByTagName('main')[0]!;
+
+    setScrollHeight(document.documentElement.scrollHeight);
+    setProgressBarOffset(main.offsetTop);
+
+    function handleScroll() {
+      setScrollY(window.scrollY + window.innerHeight);
+    }
+
+    const throttledScroll = throttle(handleScroll, 50);
+
+    handleScroll();
+    window.addEventListener('scroll', throttledScroll);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScroll);
+    };
+  }, [ref.current, isMobile]);
 
   useEffect(() => {
     const timeout = setInterval(() => {
@@ -34,10 +61,17 @@ export function Article() {
   }, []);
 
   return (
-    <div {...stylex.props(styles.container)}>
+    <div
+      {...stylex.props(styles.container)}
+      ref={ref}
+    >
       <KeyVisualSection
         contents={[updatedArticles[0]]}
         type="ARTICLE"
+      />
+      <ProgressBar
+        offset={progressBarOffset}
+        value={Number((scrollY / scrollHeight).toFixed(2))}
       />
       <ArticleSection html={updatedArticles[0].content} />
       <ContactSection />
