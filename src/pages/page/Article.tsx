@@ -9,6 +9,7 @@ import { useIsDesktop, useIsMobile } from '@/hooks';
 
 import { ArticleSection } from './components/ArticleSection';
 import { ContactSection } from './components/ContactSection';
+import { FloatingActiveHeading } from './components/FloatingActiveHeading';
 import { FloatingTOC } from './components/FloatingTOC';
 import { ProgressBar } from './components/ProgressBar';
 
@@ -73,6 +74,12 @@ export function Article() {
         offset={progressBarOffset}
         value={scrollY / scrollHeight > 1 ? 1 : Number((scrollY / scrollHeight).toFixed(2))}
       />
+      {!isDesktop && (
+        <FloatingActiveHeading
+          offset={progressBarOffset + 8}
+          target={articleElement}
+        />
+      )}
       <ArticleSection html={updatedArticles[0].content} />
       <ContactSection />
       {isDesktop && <FloatingTOC target={articleElement} />}

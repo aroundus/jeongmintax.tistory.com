@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import type { Meta } from '@storybook/react';
 
-import { FloatingTOC } from './FloatingTOC';
+import { FloatingActiveHeading } from './FloatingActiveHeading';
 
 import '@/assets/styles/article.scss';
 
 const meta = {
   argTypes: {},
-  component: FloatingTOC,
+  component: FloatingActiveHeading,
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'pages/page/components/FloatingTOC',
-} satisfies Meta<typeof FloatingTOC>;
+  title: 'pages/page/components/FloatingActiveHeading',
+} satisfies Meta<typeof FloatingActiveHeading>;
 
 export default meta;
 
@@ -25,6 +25,10 @@ export function FloatingTOCStory() {
 
   return (
     <>
+      <FloatingActiveHeading
+        offset={16}
+        target={target}
+      />
       <section
         id="article"
         style={{
@@ -66,9 +70,8 @@ export function FloatingTOCStory() {
           게임을 비롯해 당신이 좋아하는 것을 더 오래 마음껏 즐길 수 있다는 얘기죠.
         </p>
       </section>
-      <FloatingTOC target={target} />
     </>
   );
 }
 
-FloatingTOCStory.storyName = 'FloatingTOC';
+FloatingTOCStory.storyName = 'FloatingActiveHeading';

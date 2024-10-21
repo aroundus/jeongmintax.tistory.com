@@ -45,8 +45,8 @@ export function Button({
     isFullWidth && styles.isFullWidth,
     styles[size],
     styles[variant](colorProp),
-    size === 'sm' && mixinStyles.font(14, 500),
-    size === 'md' && mixinStyles.font(16, 700),
+    size === 'sm' && mixinStyles.font(14, 400),
+    size === 'md' && mixinStyles.font(16, 500),
     size === 'lg' && mixinStyles.font(18, 700),
     stylexStyles,
   );
@@ -130,7 +130,7 @@ const styles = stylex.create({
   contained: (colorProp: Color) => ({
     backgroundColor: color[`${colorProp}Alpha`],
     borderColor: color[`${colorProp}Alpha`],
-    color: 'white',
+    color: 'CanvasText',
   }),
   outlined: (colorProp: Color) => ({
     borderColor: color[colorProp],
