@@ -71,7 +71,7 @@ export function Article() {
       />
       <ProgressBar
         offset={progressBarOffset}
-        value={Number((scrollY / scrollHeight).toFixed(2))}
+        value={scrollY / scrollHeight > 1 ? 1 : Number((scrollY / scrollHeight).toFixed(2))}
       />
       <ArticleSection html={updatedArticles[0].content} />
       <ContactSection />
