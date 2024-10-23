@@ -191,6 +191,7 @@ const styles = stylex.create({
     marginTop: size[16],
   },
   button: {
+    color: 'white',
     marginTop: size[24],
   },
 });

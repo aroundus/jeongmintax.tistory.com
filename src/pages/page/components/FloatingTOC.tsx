@@ -180,7 +180,6 @@ const styles = stylex.create({
   content: {
     maxWidth: 320,
   },
-  step: {},
 });
 
 const stepStyles = stylex.create({
