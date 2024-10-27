@@ -5,6 +5,7 @@ import { throttle } from 'lodash-es';
 import { GoMoveToTop as GoMoveToTopIcon } from 'react-icons/go';
 
 import { size } from '@/styles/size.stylex';
+import { viewport } from '@/styles/viewport.stylex';
 
 export function FloatingScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,8 +52,6 @@ export function FloatingScrollToTopButton() {
 const styles = stylex.create({
   container: {
     bottom: size[24],
-    display: 'flex',
-    flexDirection: 'column',
     gap: size[16],
     position: 'fixed',
     right: size[24],
