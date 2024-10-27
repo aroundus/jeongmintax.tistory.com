@@ -51,13 +51,13 @@ export function Article() {
       if (articles.every((article) => article.likeCount === undefined)) {
         articles = getArticles();
       } else {
-        clearTimeout(timeout);
+        clearInterval(timeout);
         setUpdatedArticles(articles);
       }
     }, 100);
 
     return () => {
-      clearTimeout(timeout);
+      clearInterval(timeout);
     };
   }, []);
 
