@@ -50,6 +50,8 @@ const styles = stylex.create({
   container: {
     backgroundColor: 'Canvas',
     boxShadow: shadows.innerShadow0,
+    position: 'relative',
+    zIndex: 2,
   },
   inner: {
     display: 'flex',

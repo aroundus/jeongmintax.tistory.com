@@ -8,6 +8,7 @@ import type { Article } from '@/data/article';
 import { useIsDesktop, useIsMobile } from '@/hooks';
 import * as articleService from '@/services/article';
 
+import { ArticleAside } from './components/ArticleAside';
 import { ArticleSection } from './components/ArticleSection';
 import { ContactSection } from './components/ContactSection';
 import { FloatingActiveHeading } from './components/FloatingActiveHeading';
@@ -110,6 +111,12 @@ export function Article() {
         offset={progressBarOffset}
         value={scrollY / scrollHeight > 1 ? 1 : Number((scrollY / scrollHeight).toFixed(2))}
       />
+      {isDesktop && (
+        <ArticleAside
+          article={articles[0]}
+          target={articleElement}
+        />
+      )}
       {!isDesktop && (
         <FloatingActiveHeading
           offset={progressBarOffset + 8}
