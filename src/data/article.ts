@@ -7,6 +7,11 @@ import { truncateWithPeriod } from '@/helpers/string';
  */
 export interface CoverArticle {
   /**
+   * 글 번호
+   */
+  articleNo: number;
+
+  /**
    * 글 제목
    */
   title: string;
@@ -43,6 +48,17 @@ export interface CoverArticle {
   commentCount: number;
 
   /**
+   * 공감 수
+   */
+  likeCount: number | null;
+
+  /**
+   * 공감 아이콘 활성화 여부
+   * @description 공감 아이콘의 클릭 여부를 확인합니다.
+   */
+  isLikeActive: boolean;
+
+  /**
    * 발행 일자
    * @example '2024.08.25'
    */
@@ -69,15 +85,10 @@ export interface Article extends CoverArticle {
    * 작성자
    */
   author: string;
-
-  /**
-   * 좋아요 수
-   * @warning 좋아요 수는 DOM 렌더링 이후에 티스토리 스크립트가 동적으로 업데이트합니다. 좋아요 수 사용 방법은 `updatedArticles`를 검색해 주세요.
-   */
-  likeCount?: number;
 }
 
 const INITIAL_COVER_ARTICLE: CoverArticle = {
+  articleNo: 0,
   title: '',
   summary: '',
   path: '',
@@ -85,6 +96,8 @@ const INITIAL_COVER_ARTICLE: CoverArticle = {
   category: '',
   categoryPath: '',
   commentCount: 0,
+  likeCount: null,
+  isLikeActive: false,
   date: '',
   dateTime: '',
 };
@@ -105,8 +118,11 @@ export function getCoverArticles(name: string) {
 
       return {
         ...coverArticle,
+        articleNo: Number(coverArticle.path.replace(/[\D]/g, '')),
         category: coverArticle.category === '카테고리 없음' ? blog.title : `#${coverArticle.category}`,
         summary: truncateWithPeriod(coverArticle.summary, 150),
+        likeCount: null,
+        isLikeActive: false,
       };
     } catch (error) {
       console.error(error);
@@ -126,7 +142,6 @@ export function getArticles() {
       const article = JSON.parse(articleElement.innerHTML) as Article;
       const contentElement = element.querySelector('[data-article="content"] .contents_style')!;
       const commentCountElement = element.querySelector('[data-article="commentCount"]')!;
-      const likeCountElement = element.querySelector('.uoc-count');
 
       // 테이블 속성 삭제
       contentElement.querySelectorAll('table').forEach((element) => {
@@ -151,17 +166,15 @@ export function getArticles() {
       const summary = contentElement.querySelector('p')?.innerText || '';
       const commentCount = Number(commentCountElement.textContent);
 
-      // 좋아요 수 업데이트 전: undefined
-      // 좋아요 수 업데이트 후: number (좋아요 수가 없으면 `공감` 문자열을 표시하기 때문에 0으로 치환합니다.)
-      const likeCount = likeCountElement ? Number(likeCountElement.textContent) || 0 : undefined;
-
       return {
         ...article,
+        articleNo: Number(article.path.replace(/[\D]/g, '')),
         summary: truncateWithPeriod(summary.trim() || article.summary, 150),
         content,
         category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
         commentCount,
-        likeCount,
+        likeCount: null,
+        isLikeActive: false,
       };
     } catch (error) {
       console.error(error);

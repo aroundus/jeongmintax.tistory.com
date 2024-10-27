@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
@@ -6,6 +6,7 @@ import { KeyVisualSection } from '@/components/KeyVisualSection';
 import { getArticles } from '@/data/article';
 import type { Article } from '@/data/article';
 import { useIsDesktop, useIsMobile } from '@/hooks';
+import * as articleService from '@/services/article';
 
 import { ArticleSection } from './components/ArticleSection';
 import { ContactSection } from './components/ContactSection';
@@ -19,13 +20,57 @@ export function Article() {
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
 
-  let articles = getArticles();
+  const preloadedArticles = getArticles();
   const articleElement = document.getElementById('article');
 
-  const [updatedArticles, setUpdatedArticles] = useState<Article[]>(articles);
+  const [articles, setArticles] = useState<Article[]>(preloadedArticles);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [progressBarOffset, setProgressBarOffset] = useState<number>(0);
   const [scrollY, setScrollY] = useState<number>(0);
+
+  const fetchArticlesLikeCount = useCallback(async () => {
+    const articlesWithLikeCount: Article[] = [];
+
+    for (let index = 0; index < articles.length; index += 1) {
+      const article = articles[index];
+      const fetchedReaction = await articleService.getReaction(article.articleNo);
+
+      articlesWithLikeCount.push({
+        ...article,
+        likeCount: fetchedReaction.data.reactionCounter.like,
+        isLikeActive: fetchedReaction.data.isActive,
+      });
+    }
+
+    setArticles(articlesWithLikeCount);
+  }, [articles]);
+
+  const handleLikeClick = useCallback(
+    async (articleIndex: number) => {
+      const article = articles[articleIndex];
+
+      if (article.isLikeActive) {
+        await articleService.deleteLikeReaction(article.articleNo);
+      } else {
+        await articleService.postLikeReaction(article.articleNo);
+      }
+
+      setArticles((prevArticles) =>
+        prevArticles.map((prevArticle, prevArticleIndex) => {
+          if (prevArticleIndex === articleIndex && typeof article.likeCount === 'number') {
+            return {
+              ...prevArticle,
+              likeCount: article.likeCount + (article.isLikeActive ? -1 : 1),
+              isLikeActive: article.isLikeActive ? false : true,
+            };
+          }
+
+          return prevArticle;
+        }),
+      );
+    },
+    [articles],
+  );
 
   useEffect(() => {
     const main = document.getElementsByTagName('main')[0]!;
@@ -48,18 +93,7 @@ export function Article() {
   }, [ref.current, isMobile]);
 
   useEffect(() => {
-    const timeout = setInterval(() => {
-      if (articles.every((article) => article.likeCount === undefined)) {
-        articles = getArticles();
-      } else {
-        clearInterval(timeout);
-        setUpdatedArticles(articles);
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(timeout);
-    };
+    fetchArticlesLikeCount();
   }, []);
 
   return (
@@ -68,8 +102,9 @@ export function Article() {
       ref={ref}
     >
       <KeyVisualSection
-        contents={[updatedArticles[0]]}
+        contents={[articles[0]]}
         type="ARTICLE"
+        onLikeClick={handleLikeClick}
       />
       <ProgressBar
         offset={progressBarOffset}
@@ -81,7 +116,7 @@ export function Article() {
           target={articleElement}
         />
       )}
-      <ArticleSection html={updatedArticles[0].content} />
+      <ArticleSection html={articles[0].content} />
       <ContactSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
       <FloatingScrollToTopButton />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
+import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsMobile } from '@/hooks';
@@ -21,6 +21,7 @@ export function ArticleListItem({
   commentCount,
   date,
   isLast,
+  isLikeActive,
   likeCount,
   path,
   summary,
@@ -60,17 +61,26 @@ export function ArticleListItem({
             {new Intl.NumberFormat().format(commentCount)}
           </div>
         )}
-        {/* {typeof likeCount === 'number' && likeCount > 0 && (
+        {typeof likeCount === 'number' && (
           <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
-            <FaRegHeartIcon
-              style={{
-                height: 20,
-                width: 20,
-              }}
-            />
+            {isLikeActive ? (
+              <FaHeartIcon
+                style={{
+                  height: 20,
+                  width: 20,
+                }}
+              />
+            ) : (
+              <FaRegHeartIcon
+                style={{
+                  height: 20,
+                  width: 20,
+                }}
+              />
+            )}
             {new Intl.NumberFormat().format(likeCount)}
           </div>
-        )} */}
+        )}
       </div>
     </a>
   );

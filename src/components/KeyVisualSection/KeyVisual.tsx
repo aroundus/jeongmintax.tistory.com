@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
-import { FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
+import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { Button } from '@/components/Button';
@@ -18,11 +18,13 @@ interface KeyVisualProps {
   date: string;
   isButtonVisible?: boolean;
   isGradientEnabled?: boolean;
-  likeCount?: number;
+  isLikeActive: boolean;
+  likeCount: number | null;
   path: string;
   summary: string;
   thumbnailURL: string;
   title: string;
+  onLikeClick: () => void;
 }
 
 export function KeyVisual({
@@ -32,11 +34,13 @@ export function KeyVisual({
   date,
   isButtonVisible,
   isGradientEnabled,
+  isLikeActive,
   likeCount,
   path,
   summary,
   thumbnailURL,
   title,
+  onLikeClick: handleLikeClick,
 }: KeyVisualProps) {
   const isMobile = useIsMobile();
 
@@ -78,14 +82,26 @@ export function KeyVisual({
                 {new Intl.NumberFormat().format(commentCount)}
               </div>
             )}
-            {typeof likeCount === 'number' && likeCount > 0 && (
-              <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
-                <FaRegHeartIcon
-                  style={{
-                    height: 20,
-                    width: 20,
-                  }}
-                />
+            {typeof likeCount === 'number' && (
+              <div
+                {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}
+                onClick={handleLikeClick}
+              >
+                {isLikeActive ? (
+                  <FaHeartIcon
+                    style={{
+                      height: 20,
+                      width: 20,
+                    }}
+                  />
+                ) : (
+                  <FaRegHeartIcon
+                    style={{
+                      height: 20,
+                      width: 20,
+                    }}
+                  />
+                )}
                 {new Intl.NumberFormat().format(likeCount)}
               </div>
             )}
@@ -208,6 +224,7 @@ const metaStyles = stylex.create({
   },
   count: {
     alignItems: 'center',
+    cursor: 'pointer',
     display: 'flex',
     gap: size[2],
   },

@@ -2,7 +2,8 @@ export interface ArticleListItemContent {
   category: string;
   commentCount?: number;
   date: string;
-  likeCount?: number;
+  isLikeActive: boolean;
+  likeCount: number | null;
   path: string;
   summary: string;
   title: string;

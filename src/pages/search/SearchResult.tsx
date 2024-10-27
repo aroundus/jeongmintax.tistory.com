@@ -1,31 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import { ArticleListSection } from '@/components/ArticleListSection';
 import { getArticles } from '@/data/article';
 import type { Article } from '@/data/article';
+import * as articleService from '@/services/article';
 
 import { SearchResultHeader } from './components/SearchResultHeader';
 
 export function SearchResult() {
-  let articles = getArticles();
+  const preloadedArticles = getArticles();
   const keyword = decodeURIComponent(location.pathname.split('/')[2]);
 
-  const [updatedArticles, setUpdatedArticles] = useState<Article[]>(articles);
+  const [articles, setArticles] = useState<Article[]>(preloadedArticles);
+
+  const fetchArticlesLikeCount = useCallback(async () => {
+    const articlesWithLikeCount: Article[] = [];
+
+    for (let index = 0; index < articles.length; index += 1) {
+      const article = articles[index];
+      const fetchedReaction = await articleService.getReaction(article.articleNo);
+
+      articlesWithLikeCount.push({
+        ...article,
+        likeCount: fetchedReaction.data.reactionCounter.like,
+        isLikeActive: fetchedReaction.data.isActive,
+      });
+    }
+
+    setArticles(articlesWithLikeCount);
+  }, [articles]);
 
   useEffect(() => {
-    const timeout = setInterval(() => {
-      if (articles.every((article) => article.likeCount === undefined)) {
-        articles = getArticles();
-      } else {
-        clearTimeout(timeout);
-        setUpdatedArticles(articles);
-      }
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-    };
+    fetchArticlesLikeCount();
   }, []);
 
   return (
@@ -34,7 +41,7 @@ export function SearchResult() {
         keyword={keyword}
         articleCount={articles.length}
       />
-      <ArticleListSection contents={updatedArticles} />
+      <ArticleListSection contents={articles} />
     </div>
   );
 }

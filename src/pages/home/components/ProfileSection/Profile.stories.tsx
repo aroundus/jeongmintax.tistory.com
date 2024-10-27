@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'components/Section/ProfileSection/Profile',
+  title: 'components/ProfileSection/Profile',
 } satisfies Meta<typeof Profile>;
 
 export default meta;

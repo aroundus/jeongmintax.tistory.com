@@ -10,7 +10,7 @@ import { KeyVisual } from './KeyVisual';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-type KeyVisualSectionProps =
+type KeyVisualContentsProps =
   | {
       contents: Article[];
       type: 'ARTICLE';
@@ -20,7 +20,11 @@ type KeyVisualSectionProps =
       type: 'COVER_ARTICLE';
     };
 
-export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
+type KeyVisualSectionProps = KeyVisualContentsProps & {
+  onLikeClick: (articleIndex: number) => void;
+};
+
+export function KeyVisualSection({ contents, type, onLikeClick }: KeyVisualSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
       <Swiper
@@ -37,12 +41,18 @@ export function KeyVisualSection({ contents, type }: KeyVisualSectionProps) {
                 {...content}
                 isButtonVisible
                 isGradientEnabled={contents.length > 1 && index === 0}
+                onLikeClick={() => {
+                  onLikeClick(index);
+                }}
               />
             )}
             {type === 'ARTICLE' && (
               <KeyVisual
                 {...content}
                 date={content.dateTime}
+                onLikeClick={() => {
+                  onLikeClick(index);
+                }}
               />
             )}
           </SwiperSlide>
