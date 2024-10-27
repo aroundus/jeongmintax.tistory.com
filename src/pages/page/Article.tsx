@@ -10,6 +10,7 @@ import { useIsDesktop, useIsMobile } from '@/hooks';
 import { ArticleSection } from './components/ArticleSection';
 import { ContactSection } from './components/ContactSection';
 import { FloatingActiveHeading } from './components/FloatingActiveHeading';
+import { FloatingScrollToTopButton } from './components/FloatingScrollToTopButton';
 import { FloatingTOC } from './components/FloatingTOC';
 import { ProgressBar } from './components/ProgressBar';
 
@@ -83,6 +84,7 @@ export function Article() {
       <ArticleSection html={updatedArticles[0].content} />
       <ContactSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
+      <FloatingScrollToTopButton />
     </div>
   );
 }

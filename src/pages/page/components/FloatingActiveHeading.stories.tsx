@@ -16,7 +16,7 @@ const meta = {
 
 export default meta;
 
-export function FloatingTOCStory() {
+export function FloatingActiveHeadingStory() {
   const [target, setTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -62,4 +62,4 @@ export function FloatingTOCStory() {
   );
 }
 
-FloatingTOCStory.storyName = 'FloatingActiveHeading';
+FloatingActiveHeadingStory.storyName = 'FloatingActiveHeading';
