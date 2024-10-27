@@ -1,0 +1,1 @@
+export { FloatingScrollToTopButton } from './FloatingScrollToTopButton';
