@@ -143,7 +143,7 @@ const styles = stylex.create({
     top: 0,
     transition: 'right 0.3s ease-out, opacity 0.2s',
     width: '90%',
-    zIndex: 3,
+    zIndex: 4,
   },
   isOpen: {
     opacity: 1,
@@ -157,7 +157,7 @@ const styles = stylex.create({
     position: 'fixed',
     right: 0,
     top: 0,
-    zIndex: 3,
+    zIndex: 4,
   },
 });
 
