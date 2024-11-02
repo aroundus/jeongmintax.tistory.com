@@ -1,14 +1,15 @@
+import { describe, expect, test } from 'vitest';
 import fc from 'fast-check';
 
 import { getRandomNumber } from '../math';
 
 describe('getRandomNumber', () => {
-  it('무작위 숫자를 반환하는지 확인합니다.', () => {
+  test('무작위 숫자를 반환하는지 확인합니다.', () => {
     const result = getRandomNumber();
     expect(typeof result).toBe('number');
   });
 
-  it('1~9 사이의 digit 값을 제공한 경우 반환하는 숫자가 0 이상이며 10^${digit} 미만인지 확인합니다.', () => {
+  test('1~9 사이의 digit 값을 제공한 경우 반환하는 숫자가 0 이상이며 10^${digit} 미만인지 확인합니다.', () => {
     fc.assert(
       fc.property(fc.integer({ min: 1, max: 9 }), (digit) => {
         const result = getRandomNumber(digit);
@@ -19,7 +20,7 @@ describe('getRandomNumber', () => {
     );
   });
 
-  it('digit 값을 제공하지 않은 경우 반환하는 숫자가 0 이상이며 10^10 미만인지 확인합니다.', () => {
+  test('digit 값을 제공하지 않은 경우 반환하는 숫자가 0 이상이며 10^10 미만인지 확인합니다.', () => {
     const result = getRandomNumber();
 
     expect(result).toBeGreaterThanOrEqual(0);
