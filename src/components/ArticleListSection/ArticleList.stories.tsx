@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import type { CoverArticle } from '@/data/article';
+
 import { ArticleList } from './ArticleList';
 
 const meta = {
@@ -14,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const ArticleListStory: Story = {
   args: {
-    contents: [
+    articles: [
       {
         category: '양도소득세',
         commentCount: 100,
@@ -48,7 +50,7 @@ export const ArticleListStory: Story = {
           '양도소득세는 특정 자산이 양도됨으로 인해 발생하는 소득에 부과되는 세금입니다. 농지를 교환하는 경우, 매도자가 내야 하는 세금 중에서 가장 비중이 큰 것이 양도소득세입니다. 이 세금을 정확히 이해하면 절세에 도움이 됩니다.',
         title: '농지를 교환하는 경우 발생하는 양도소득세',
       },
-    ],
+    ] as CoverArticle[],
   },
 };
 

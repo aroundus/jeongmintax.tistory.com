@@ -1,16 +1,17 @@
 import * as stylex from '@stylexjs/stylex';
 
+import type { CoverArticle } from '@/data/article';
+
 import { ArticleList } from './ArticleList';
-import type { ArticleListItemContent } from './types';
 
 interface ArticleListSectionProps {
-  contents: ArticleListItemContent[];
+  articles: CoverArticle[];
 }
 
-export function ArticleListSection({ contents }: ArticleListSectionProps) {
+export function ArticleListSection({ articles }: ArticleListSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
-      <ArticleList contents={contents} />
+      <ArticleList articles={articles} />
     </section>
   );
 }

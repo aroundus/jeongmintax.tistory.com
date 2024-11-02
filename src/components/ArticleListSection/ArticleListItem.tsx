@@ -3,6 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
+import type { CoverArticle } from '@/data/article';
 import { useIsMobile } from '@/hooks';
 import { mixinStyles } from '@/styles';
 import { color } from '@/styles/color.stylex';
@@ -10,9 +11,7 @@ import { keyframes } from '@/styles/keyframes.stylex';
 import { size } from '@/styles/size.stylex';
 import { viewport } from '@/styles/viewport.stylex';
 
-import type { ArticleListItemContent } from './types';
-
-interface ArticleListItemProps extends ArticleListItemContent {
+export interface ArticleListItemProps extends CoverArticle {
   isLast?: boolean;
 }
 

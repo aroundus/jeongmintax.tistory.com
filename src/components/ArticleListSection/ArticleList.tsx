@@ -1,22 +1,22 @@
 import * as stylex from '@stylexjs/stylex';
 
+import type { CoverArticle } from '@/data/article';
 import { size } from '@/styles/size.stylex';
 
 import { ArticleListItem } from './ArticleListItem';
-import type { ArticleListItemContent } from './types';
 
 interface ListProps {
-  contents: ArticleListItemContent[];
+  articles: CoverArticle[];
 }
 
-export function ArticleList({ contents }: ListProps) {
+export function ArticleList({ articles }: ListProps) {
   return (
     <div {...stylex.props(styles.container)}>
-      {contents.map((content, index) => (
+      {articles.map((article, index) => (
         <ArticleListItem
-          {...content}
-          isLast={contents.length === index + 1}
-          key={content.path}
+          {...article}
+          isLast={articles.length === index + 1}
+          key={article.path}
         />
       ))}
     </div>

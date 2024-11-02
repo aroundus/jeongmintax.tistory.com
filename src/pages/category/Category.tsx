@@ -45,7 +45,7 @@ export function Category() {
         keyword={keyword ? `#${decodeURIComponent(keyword)}` : '전체'}
       />
       <CategoryField categories={categories} />
-      <ArticleListSection contents={articles} />
+      <ArticleListSection articles={articles} />
     </div>
   );
 }

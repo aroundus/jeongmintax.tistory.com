@@ -89,14 +89,14 @@ export function Home() {
     <div {...stylex.props(styles.container)}>
       {document.querySelector('[data-cover="KEY_VISUAL"]') && (
         <KeyVisualSection
-          contents={keyVisualArticles}
+          articles={keyVisualArticles}
           type="COVER_ARTICLE"
           onLikeClick={handleKeyVisualLikeClick}
         />
       )}
       <ProfileSection />
       <CategoryField categories={categories} />
-      {document.querySelector('[data-cover="LIST"]') && <ArticleListSection contents={listArticles} />}
+      {document.querySelector('[data-cover="LIST"]') && <ArticleListSection articles={listArticles} />}
     </div>
   );
 }

@@ -41,7 +41,7 @@ export function SearchResult() {
         keyword={keyword}
         articleCount={articles.length}
       />
-      <ArticleListSection contents={articles} />
+      <ArticleListSection articles={articles} />
     </div>
   );
 }
