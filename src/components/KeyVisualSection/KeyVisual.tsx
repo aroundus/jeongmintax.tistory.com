@@ -75,7 +75,11 @@ export function KeyVisual({
             <span {...stylex.props(metaStyles.date)}>{date}</span>
             {typeof commentCount === 'number' && commentCount > 0 && (
               <div
-                {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}
+                {...stylex.props(
+                  metaStyles.count,
+                  handleCommentClick === undefined && metaStyles.isPointerInactive,
+                  mixinStyles.font(14, 400),
+                )}
                 onClick={handleCommentClick}
               >
                 <MdOutlineCommentIcon
@@ -232,5 +236,8 @@ const metaStyles = stylex.create({
     cursor: 'pointer',
     display: 'flex',
     gap: size[2],
+  },
+  isPointerInactive: {
+    cursor: 'default',
   },
 });
