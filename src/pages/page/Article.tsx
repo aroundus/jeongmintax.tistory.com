@@ -10,6 +10,7 @@ import * as articleService from '@/services/article';
 
 import { ArticleAside } from './components/ArticleAside';
 import { ArticleSection } from './components/ArticleSection';
+import { CommentSection } from './components/CommentSection';
 import { ContactSection } from './components/ContactSection';
 import { FloatingActiveHeading } from './components/FloatingActiveHeading';
 import { FloatingScrollToTopButton } from './components/FloatingScrollToTopButton';
@@ -44,6 +45,15 @@ export function Article() {
     }
 
     setArticles(articlesWithLikeCount);
+  }, [articles]);
+
+  const handleCommentClick = useCallback(() => {
+    const commentElement = document.getElementById('comment')!;
+
+    window.scroll({
+      top: commentElement.offsetTop - progressBarOffset,
+      behavior: 'smooth',
+    });
   }, [articles]);
 
   const handleLikeClick = useCallback(
@@ -103,8 +113,9 @@ export function Article() {
       ref={ref}
     >
       <KeyVisualSection
-        contents={[articles[0]]}
+        article={articles[0]}
         type="ARTICLE"
+        onCommentClick={handleCommentClick}
         onLikeClick={handleLikeClick}
       />
       <ProgressBar
@@ -125,6 +136,7 @@ export function Article() {
       )}
       <ArticleSection html={articles[0].content} />
       <ContactSection />
+      <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
       <FloatingScrollToTopButton />
     </div>

@@ -1,0 +1,81 @@
+#comment {
+  * {
+    font-family: inherit;
+  }
+
+  .tt-box-total .tt_txt_g,
+  .tt-box-total .tt_num_g {
+    font-size: 16px;
+  }
+
+  .tt-wrap-cmt .tt-link-user {
+    font-size: 16px;
+    font-weight: 700;
+    color: CanvasText;
+  }
+
+  .tt-wrap-cmt .tt_desc {
+    font-size: 16px;
+    color: CanvasText;
+  }
+
+  .tt-wrap-info {
+    margin-top: 16px;
+  }
+
+  .tt-wrap-cmt .tt_date {
+    padding-top: 0;
+    font-size: 14px;
+  }
+
+  .tt-wrap-cmt .tt-button-modify {
+    background-color: color-mix(in srgb, var(--secondary-color) 40%, Canvas 60%);
+  }
+
+  .tt-link-comment .tt_txt_g {
+    padding-top: 0;
+    font-size: 14px;
+  }
+
+  .tt-item-reply .tt_cmt_info .tt_txt_g {
+    font-size: 14px;
+  }
+
+  .tt-wrap-info .tt_date + .tt-wrap-link-comment::before {
+    top: 8px;
+  }
+
+  .tt-box-textarea textarea,
+  .tt-box-textarea div {
+    font-size: 16px;
+    color: CanvasText;
+  }
+
+  .tt-box-textarea .tt-inner-g {
+    padding: 20px;
+  }
+
+  .tt-box-textarea .tt_txt_user {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: CanvasText;
+  }
+
+  .tt-area-write .tt-box-account input {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+
+  .tt-btn_register {
+    color: Canvas;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .tt-btn_register:disabled {
+    color: var(--secondary-color);
+    background-color: color-mix(in srgb, var(--secondary-color) 40%, Canvas 60%);
+    border-color: color-mix(in srgb, var(--secondary-color) 40%, Canvas 60%);
+  }
+}

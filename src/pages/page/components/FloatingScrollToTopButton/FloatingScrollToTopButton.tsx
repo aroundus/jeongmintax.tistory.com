@@ -5,13 +5,12 @@ import { throttle } from 'lodash-es';
 import { GoMoveToTop as GoMoveToTopIcon } from 'react-icons/go';
 
 import { size } from '@/styles/size.stylex';
-import { viewport } from '@/styles/viewport.stylex';
 
 export function FloatingScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
-    window.scrollTo({
+    window.scroll({
       top: 0,
       behavior: 'smooth',
     });

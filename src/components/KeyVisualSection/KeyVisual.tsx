@@ -24,6 +24,7 @@ interface KeyVisualProps {
   summary: string;
   thumbnailURL: string;
   title: string;
+  onCommentClick?: () => void;
   onLikeClick: () => void;
 }
 
@@ -40,6 +41,7 @@ export function KeyVisual({
   summary,
   thumbnailURL,
   title,
+  onCommentClick: handleCommentClick,
   onLikeClick: handleLikeClick,
 }: KeyVisualProps) {
   const isMobile = useIsMobile();
@@ -72,7 +74,10 @@ export function KeyVisual({
           <div {...stylex.props(metaStyles.container)}>
             <span {...stylex.props(metaStyles.date)}>{date}</span>
             {typeof commentCount === 'number' && commentCount > 0 && (
-              <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
+              <div
+                {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}
+                onClick={handleCommentClick}
+              >
                 <MdOutlineCommentIcon
                   style={{
                     height: 20,

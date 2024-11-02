@@ -12,19 +12,23 @@ import 'swiper/css/navigation';
 
 type KeyVisualContentsProps =
   | {
-      contents: Article[];
+      article: Article;
+      articles?: never;
       type: 'ARTICLE';
+      onCommentClick: () => void;
     }
   | {
-      contents: CoverArticle[];
+      article?: never;
+      articles: CoverArticle[];
       type: 'COVER_ARTICLE';
+      onCommentClick?: never;
     };
 
 type KeyVisualSectionProps = KeyVisualContentsProps & {
   onLikeClick: (articleIndex: number) => void;
 };
 
-export function KeyVisualSection({ contents, type, onLikeClick }: KeyVisualSectionProps) {
+export function KeyVisualSection({ type, onLikeClick, ...props }: KeyVisualSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
       <Swiper
@@ -34,29 +38,32 @@ export function KeyVisualSection({ contents, type, onLikeClick }: KeyVisualSecti
         navigation={true}
         simulateTouch={false}
       >
-        {contents.map((content, index) => (
-          <SwiperSlide key={content.path}>
-            {type === 'COVER_ARTICLE' && (
+        {type === 'ARTICLE' && props.article && (
+          <KeyVisual
+            {...props.article}
+            date={props.article.dateTime}
+            onCommentClick={() => {
+              props.onCommentClick();
+            }}
+            onLikeClick={() => {
+              onLikeClick(0);
+            }}
+          />
+        )}
+        {type === 'COVER_ARTICLE' &&
+          props.articles &&
+          props.articles.map((content, index) => (
+            <SwiperSlide key={content.path}>
               <KeyVisual
                 {...content}
                 isButtonVisible
-                isGradientEnabled={contents.length > 1 && index === 0}
+                isGradientEnabled={props.articles.length > 1 && index === 0}
                 onLikeClick={() => {
                   onLikeClick(index);
                 }}
               />
-            )}
-            {type === 'ARTICLE' && (
-              <KeyVisual
-                {...content}
-                date={content.dateTime}
-                onLikeClick={() => {
-                  onLikeClick(index);
-                }}
-              />
-            )}
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </section>
   );
