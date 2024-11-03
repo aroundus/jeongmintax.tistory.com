@@ -4,10 +4,10 @@
     <name>Jeongmin</name>
     <version>1.0</version>
     <description>
-      <![CDATA[세무회계 정민 블로그 스킨입니다.]]>
+      <![CDATA[ 세무회계 정민 블로그 스킨입니다. ]]>
     </description>
     <license>
-      <![CDATA[CCL]]>
+      <![CDATA[ CCL ]]>
     </license>
   </information>
   <author>
@@ -15,23 +15,11 @@
     <homepage>https://aroundus.github.io/</homepage>
     <email>specialguest@kakao.com</email>
   </author>
-  <cover>
-    <item>
-      <name>KEY_VISUAL</name>
-      <label><![CDATA[키 비주얼]]></label>
-      <description><![CDATA[키 비주얼을 노출합니다.]]></description>
-    </item>
-    <item>
-      <name>LIST</name>
-      <label><![CDATA[게시물 목록]]></label>
-      <description><![CDATA[게시물 목록을 노출합니다.]]></description>
-    </item>
-  </cover>
   <default>
     <cover>
       [
         {
-          "name": "KEY_VISUAL",
+          "name": "key-visual",
           "title": "",
           "dataType": "RECENT",
           "data": {
@@ -40,33 +28,29 @@
           }
         },
         {
-          "name": "LIST",
+          "name": "list",
           "title": "",
           "dataType": "RECENT",
           "data": {
             "category": "ALL",
-            "size": 100
+            "size": 20
           }
         }
       ]
     </cover>
+    <entriesOnList>20</entriesOnList>
+    <entriesOnPage>10</entriesOnPage>
   </default>
-  <!-- variables 예시 -->
-  <!--
-  <variables>
-    <variablegroup name="심벌마크">
-      <variable>
-        <name>LIGHT_MODE_SYMBOL_MARK_URL</name>
-        <label><![CDATA[ 라이트 모드 URL ]]></label>
-        <type>STRING</type>
-        <default>/favicon.ico</default>
-      </variable>
-      <variable>
-        <name>DARK_MODE_SYMBOL_MARK_URL</name>
-        <label><![CDATA[ 다크 모드 URL ]]></label>
-        <type>STRING</type>
-      </variable>
-    </variablegroup>
-  </variables>
-  -->
+  <cover>
+    <item>
+      <name>key-visual</name>
+      <label><![CDATA[ 키 비주얼 ]]></label>
+      <description><![CDATA[ 키 비주얼을 노출합니다. ]]></description>
+    </item>
+    <item>
+      <name>list</name>
+      <label><![CDATA[ 글 목록 ]]></label>
+      <description><![CDATA[ 글 목록을 노출합니다. ]]></description>
+    </item>
+  </cover>
 </skin>

@@ -13,8 +13,8 @@ import { ProfileSection } from './components/ProfileSection';
 
 export function Home() {
   const categories = getCategories();
-  const preloadedKeyVisualArticles = getCoverArticles('KEY_VISUAL');
-  const preloadedListArticles = getCoverArticles('LIST');
+  const preloadedKeyVisualArticles = getCoverArticles('key-visual');
+  const preloadedListArticles = getCoverArticles('list');
 
   const [keyVisualArticles, setKeyVisualArticles] = useState<CoverArticle[]>(preloadedKeyVisualArticles);
   const [listArticles, setListArticles] = useState<CoverArticle[]>(preloadedListArticles);
@@ -87,7 +87,7 @@ export function Home() {
 
   return (
     <div {...stylex.props(styles.container)}>
-      {document.querySelector('[data-cover="KEY_VISUAL"]') && (
+      {document.querySelector('[data-cover="key-visual"]') && (
         <KeyVisualSection
           articles={keyVisualArticles}
           type="COVER_ARTICLE"
@@ -96,7 +96,7 @@ export function Home() {
       )}
       <ProfileSection />
       <CategoryField categories={categories} />
-      {document.querySelector('[data-cover="LIST"]') && <ArticleListSection articles={listArticles} />}
+      {document.querySelector('[data-cover="list"]') && <ArticleListSection articles={listArticles} />}
     </div>
   );
 }
