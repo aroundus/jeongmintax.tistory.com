@@ -32,6 +32,13 @@
     background-color: color-mix(in srgb, var(--secondary-color) 40%, Canvas 60%);
   }
 
+  .tt-wrap-cmt .tt-list-modify a {
+    padding: 4px 20px;
+    font-size: 14px;
+    line-height: inherit;
+    letter-spacing: 0;
+  }
+
   .tt-link-comment .tt_txt_g {
     padding-top: 0;
     font-size: 14px;
