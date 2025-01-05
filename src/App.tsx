@@ -11,19 +11,23 @@ import '@/assets/styles/global.scss';
 
 import 'virtual:stylex.css';
 
+const bodyType = import.meta.env.VITE_TISTORY_BODY_TYPE;
+
 export function App() {
   useLayoutEffect(() => {
-    if (document.getElementById('tt-body-page')) {
-      document.querySelector('body')!.id = 'tt-body-page';
+    if (bodyType) {
+      document.querySelector('body')!.id = `tt-body-${bodyType}`;
+    } else {
+      document.querySelector('body')!.id = 'tt-body-index';
     }
   }, []);
 
   return (
     <Layout>
-      {document.getElementById('tt-body-index') && <Home />}
-      {document.getElementById('tt-body-page') && <Article />}
-      {document.getElementById('tt-body-category') && <Category />}
-      {document.getElementById('tt-body-search') && <SearchResult />}
+      {bodyType === undefined && <Home />}
+      {bodyType === 'category' && <Category />}
+      {bodyType === 'page' && <Article />}
+      {bodyType === 'search' && <SearchResult />}
     </Layout>
   );
 }
