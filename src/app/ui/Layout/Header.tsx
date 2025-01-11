@@ -5,13 +5,13 @@ import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import { getSession } from '@/entities/user/api';
 import { SearchTextField } from '@/features/search/ui';
+import SymbolMarkIcon from '@/shared/assets/icons/symbol-mark.svg?react';
 import { useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { colors } from '@/shared/stylex/colors.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
 
-import SymbolMarkIcon from './assets/icons/symbol-mark.svg?react';
 import { NavigationDrawer } from './NavigationDrawer';
 
 interface HeaderProps {
