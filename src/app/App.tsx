@@ -7,8 +7,8 @@ import { SearchResult } from '@/pages/search/SearchResult';
 
 import { Layout } from './ui';
 
-import './styles/global.scss';
 import './styles/reset.scss';
+import './styles/global.scss';
 
 import 'virtual:stylex.css';
 
