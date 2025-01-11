@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'components/Button',
+  title: 'shared/Button',
 } satisfies Meta<typeof Button>;
 
 export default meta;

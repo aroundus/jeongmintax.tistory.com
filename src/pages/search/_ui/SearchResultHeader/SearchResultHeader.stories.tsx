@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'pages/search-result/components/SearchResultHeader',
+  title: 'pages/search/_ui/SearchResultHeader',
 } satisfies Meta<typeof SearchResultHeader>;
 
 export default meta;

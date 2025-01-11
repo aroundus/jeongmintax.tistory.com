@@ -11,7 +11,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'pages/page/components/FloatingActiveHeading',
+  title: 'features/article/FloatingActiveHeading',
 } satisfies Meta<typeof FloatingActiveHeading>;
 
 export default meta;

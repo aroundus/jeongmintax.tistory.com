@@ -11,7 +11,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'pages/page/components/FloatingScrollToTopButton',
+  title: 'shared/FloatingScrollToTopButton',
 } satisfies Meta<typeof FloatingScrollToTopButton>;
 
 export default meta;

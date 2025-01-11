@@ -11,7 +11,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'pages/page/components/FloatingTOC',
+  title: 'features/article/FloatingTOC',
 } satisfies Meta<typeof FloatingTOC>;
 
 export default meta;

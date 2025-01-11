@@ -7,7 +7,7 @@ const meta = {
   argTypes: {},
   component: ArticleListItem,
   parameters: {},
-  title: 'components/ArticleListSection/ArticleListItem',
+  title: 'features/article/ArticleListSection/ArticleListItem',
 } satisfies Meta<typeof ArticleListItem>;
 
 export default meta;

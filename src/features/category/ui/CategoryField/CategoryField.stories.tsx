@@ -10,7 +10,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'components/CategoryField',
+  title: 'features/category/CategoryField',
 } satisfies Meta<typeof CategoryField>;
 
 export default meta;

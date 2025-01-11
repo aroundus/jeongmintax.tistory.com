@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'pages/search-result/components/CategoryHeader',
+  title: 'pages/category/_ui/CategoryHeader',
 } satisfies Meta<typeof CategoryHeader>;
 
 export default meta;
