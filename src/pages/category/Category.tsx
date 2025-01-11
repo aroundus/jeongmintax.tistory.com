@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
-import { ArticleListSection } from '@/components/ArticleListSection';
-import { CategoryField } from '@/components/CategoryField';
-import { getArticles } from '@/data/article';
-import type { Article } from '@/data/article';
-import { getCategories } from '@/data/category';
-import * as articleService from '@/services/article';
+import * as articleService from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
+import * as categoryService from '@/entities/category/api';
+import { ArticleListSection } from '@/features/article/ui';
+import { CategoryField } from '@/features/category/ui';
 
-import { CategoryHeader } from './components/CategoryHeader';
+import { CategoryHeader } from './_ui';
 
 export function Category() {
-  const preloadedArticles = getArticles();
-  const categories = getCategories();
+  const preloadedArticles = articleService.getArticles();
+  const categories = categoryService.getCategories();
   const keyword = location.pathname.split('/')[2];
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);

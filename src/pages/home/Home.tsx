@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
-import { ArticleListSection } from '@/components/ArticleListSection';
-import { CategoryField } from '@/components/CategoryField';
-import { KeyVisualSection } from '@/components/KeyVisualSection';
-import { getCategories } from '@/data/category';
-import { getCoverArticles } from '@/data/article';
-import type { CoverArticle } from '@/data/article';
-import * as articleService from '@/services/article';
+import * as articleService from '@/entities/article/api';
+import type { CoverArticle } from '@/entities/article/api';
+import * as categoryService from '@/entities/category/api';
+import { ArticleListSection } from '@/features/article/ui';
+import { CategoryField } from '@/features/category/ui';
+import { KeyVisualSection } from '@/shared/ui';
 
-import { ProfileSection } from './components/ProfileSection';
+import { ProfileSection } from '@/features/profile/ui';
 
 export function Home() {
-  const categories = getCategories();
-  const preloadedKeyVisualArticles = getCoverArticles('key-visual');
-  const preloadedListArticles = getCoverArticles('list');
+  const categories = categoryService.getCategories();
+  const preloadedKeyVisualArticles = articleService.getCoverArticles('key-visual');
+  const preloadedListArticles = articleService.getCoverArticles('list');
 
   const [keyVisualArticles, setKeyVisualArticles] = useState<CoverArticle[]>(preloadedKeyVisualArticles);
   const [listArticles, setListArticles] = useState<CoverArticle[]>(preloadedListArticles);

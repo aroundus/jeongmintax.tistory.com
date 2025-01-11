@@ -2,27 +2,27 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
-import { KeyVisualSection } from '@/components/KeyVisualSection';
-import { getArticles } from '@/data/article';
-import type { Article } from '@/data/article';
-import { useIsDesktop, useIsMobile } from '@/hooks';
-import * as articleService from '@/services/article';
+import * as articleService from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
+import { useIsDesktop, useIsMobile } from '@/shared/lib';
+import { KeyVisualSection } from '@/shared/ui';
 
-import { ArticleAside } from './components/ArticleAside';
-import { ArticleSection } from './components/ArticleSection';
-import { CommentSection } from './components/CommentSection';
-import { ContactSection } from './components/ContactSection';
-import { FloatingActiveHeading } from './components/FloatingActiveHeading';
-import { FloatingScrollToTopButton } from './components/FloatingScrollToTopButton';
-import { FloatingTOC } from './components/FloatingTOC';
-import { ProgressBar } from './components/ProgressBar';
+import {
+  ArticleAside,
+  ArticleSection,
+  CommentSection,
+  ContactSection,
+  FloatingActiveHeading,
+  FloatingTOC,
+} from '@/features/article/ui';
+import { FloatingScrollToTopButton, ProgressBar } from '@/shared/ui';
 
 export function Article() {
   const isDesktop = useIsDesktop(1280);
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
 
-  const preloadedArticles = getArticles();
+  const preloadedArticles = articleService.getArticles();
   const articleElement = document.getElementById('article');
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);

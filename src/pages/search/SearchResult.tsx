@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
-import { ArticleListSection } from '@/components/ArticleListSection';
-import { getArticles } from '@/data/article';
-import type { Article } from '@/data/article';
-import * as articleService from '@/services/article';
+import * as articleService from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
+import { ArticleListSection } from '@/features/article/ui';
 
-import { SearchResultHeader } from './components/SearchResultHeader';
+import { SearchResultHeader } from './_ui';
 
 export function SearchResult() {
-  const preloadedArticles = getArticles();
+  const preloadedArticles = articleService.getArticles();
   const keyword = decodeURIComponent(location.pathname.split('/')[2]);
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
