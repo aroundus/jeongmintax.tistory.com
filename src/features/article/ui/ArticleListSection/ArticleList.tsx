@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 import type { CoverArticle } from '@/entities/article/api';
-import { size } from '@/shared/stylex/size.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 import { ArticleListItem } from './ArticleListItem';
 
@@ -27,7 +27,7 @@ const styles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    paddingLeft: size[12],
-    paddingRight: size[12],
+    paddingLeft: sizes[12],
+    paddingRight: sizes[12],
   },
 });

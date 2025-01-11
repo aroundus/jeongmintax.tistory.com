@@ -3,8 +3,8 @@ import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 interface FloatingTOCProps {
   target: HTMLElement | null;
@@ -175,7 +175,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
 
 const styles = stylex.create({
   container: {
-    padding: size[16],
+    padding: sizes[16],
   },
   content: {
     maxWidth: 320,
@@ -186,9 +186,9 @@ const stepStyles = stylex.create({
   container: {},
   step: {
     color: {
-      default: color.gray,
+      default: colors.gray,
       ':hover': {
-        '@media (hover: hover)': color.primary,
+        '@media (hover: hover)': colors.primary,
       },
     },
     cursor: 'pointer',

@@ -3,8 +3,8 @@ import * as stylex from '@stylexjs/stylex';
 import { BiSearch as BiSearchIcon } from 'react-icons/bi';
 
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 interface SearchTextFieldProps {
   isFullWidth?: boolean;
@@ -49,7 +49,7 @@ const styles = stylex.create({
     alignItems: 'center',
     borderBottomStyle: 'solid',
     borderBottomWidth: 1,
-    borderColor: color.gray,
+    borderColor: colors.gray,
     display: 'flex',
     justifyContent: 'space-between',
   },
@@ -59,22 +59,22 @@ const styles = stylex.create({
   input: (textColor: string) => ({
     color: {
       default: textColor || 'CanvasText',
-      '::placeholder': color.gray,
+      '::placeholder': colors.gray,
     },
     minWidth: 200,
     outline: 'none',
-    padding: `${size[4]} ${size[8]}`,
+    padding: `${sizes[4]} ${sizes[8]}`,
     width: '100%',
   }),
   icon: {
     color: {
       ':hover': {
-        '@media (hover: hover)': color.primary,
+        '@media (hover: hover)': colors.primary,
       },
     },
     cursor: 'pointer',
-    height: size[24],
+    height: sizes[24],
     transition: 'color 300ms ease',
-    width: size[24],
+    width: sizes[24],
   },
 });

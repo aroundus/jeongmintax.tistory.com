@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import '@/features/article/ui/article.scss';
 
@@ -23,7 +23,7 @@ export function ArticleSection({ html }: ArticleSectionProps) {
 const styles = stylex.create({
   container: {
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
-    padding: `${size[40]} ${size[24]}`,
+    maxWidth: viewports.contentWidth,
+    padding: `${sizes[40]} ${sizes[24]}`,
   },
 });

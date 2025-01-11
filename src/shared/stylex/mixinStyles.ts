@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { size } from './size.stylex';
+import { sizes } from './sizes.stylex';
 
 type NumericKeysOnly<T> = {
   [K in keyof T]: K extends number ? K : never;
@@ -21,8 +21,8 @@ export const mixinStyles = stylex.create({
     textOverflow: 'ellipsis',
     whiteSpace: line > 1 ? 'normal' : 'nowrap', // eslint-disable-line
   }),
-  font: (value: NumericKeysOnly<typeof size>, weight?: number) => ({
-    fontSize: `${size[value]}`,
+  font: (value: NumericKeysOnly<typeof sizes>, weight?: number) => ({
+    fontSize: `${sizes[value]}`,
     fontWeight: weight || 400, // eslint-disable-line
     lineHeight: value < 30 ? 1.5 : 1.35,
   }),

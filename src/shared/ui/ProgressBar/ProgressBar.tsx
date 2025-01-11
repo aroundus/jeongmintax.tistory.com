@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 interface ProgressBarProps {
   offset?: number;
@@ -32,13 +32,13 @@ export function ProgressBar({ offset, value }: ProgressBarProps) {
 
 const styles = stylex.create({
   container: {
-    height: size[4],
+    height: sizes[4],
     position: 'sticky',
     transition: 'top 200ms ease-in-out',
     zIndex: 2,
   },
   bar: {
-    backgroundColor: color.primary,
+    backgroundColor: colors.primary,
     height: '100%',
     transition: 'width 200ms ease-out',
   },

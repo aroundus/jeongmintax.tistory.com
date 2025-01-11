@@ -5,8 +5,8 @@ import { shuffle } from 'lodash'; // BUG: production 모드에서 lodash-es 패�
 
 import type { MenuItem } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 import { Button } from '@/shared/ui';
 
 interface ProfileProps {
@@ -69,7 +69,7 @@ const styles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: size[16],
+    gap: sizes[16],
     margin: 'auto',
   },
 });
@@ -90,24 +90,24 @@ const contentStyles = stylex.create({
     display: 'flex',
     flex: '1 1 0',
     flexDirection: 'column',
-    gap: size[4],
+    gap: sizes[4],
     justifyContent: 'center',
   },
   name: {
     color: 'CanvasText',
   },
   description: {
-    color: color.gray,
+    color: colors.gray,
   },
 });
 
 const navigationStyles = stylex.create({
   container: {
-    marginTop: size[12],
+    marginTop: sizes[12],
   },
   list: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: size[8],
+    gap: sizes[8],
   },
 });

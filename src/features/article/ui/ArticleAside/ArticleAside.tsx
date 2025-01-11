@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
 import type { Article } from '@/entities/article/api';
-import { size } from '@/shared/stylex/size.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 import { ProfileSection } from './ProfileSection';
 
@@ -67,7 +67,7 @@ export function ArticleAside({ article, target }: ArticleAsideProps) {
 
 const styles = stylex.create({
   container: {
-    padding: size[16],
+    padding: sizes[16],
     position: 'sticky',
     top: 0,
     width: 240,

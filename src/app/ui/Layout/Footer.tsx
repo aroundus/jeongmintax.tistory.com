@@ -3,9 +3,9 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 
 import SymbolMarkIcon from './assets/icons/symbol-mark.svg?react';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 interface FooterProps {
   title: string;
@@ -17,7 +17,7 @@ export function Footer({ title }: FooterProps) {
       <div {...stylex.props(styles.inner)}>
         <div {...stylex.props(styles.title, mixinStyles.font(18, 900))}>
           <SymbolMarkIcon
-            fill={color.secondary}
+            fill={colors.secondary}
             height={16}
           />
           {title}
@@ -56,17 +56,17 @@ const styles = stylex.create({
   inner: {
     display: 'flex',
     flexDirection: 'column',
-    gap: size[8],
+    gap: sizes[8],
     justifyContent: 'space-between',
     margin: 'auto',
-    maxWidth: viewport.layoutWidth,
-    padding: `${size[40]} ${size[24]}`,
+    maxWidth: viewports.layoutWidth,
+    padding: `${sizes[40]} ${sizes[24]}`,
   },
   title: {
     alignItems: 'center',
     color: 'CanvasText',
     display: 'flex',
-    gap: size[8],
+    gap: sizes[8],
     letterSpacing: '0.04em',
     minWidth: 120,
   },
@@ -76,10 +76,10 @@ const addressStyles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: size[16],
+    gap: sizes[16],
   },
   ul: {
-    color: color.gray,
+    color: colors.gray,
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -88,10 +88,10 @@ const addressStyles = stylex.create({
       '::after': '|',
     },
     marginLeft: {
-      '::after': size[8],
+      '::after': sizes[8],
     },
     marginRight: {
-      '::after': size[8],
+      '::after': sizes[8],
     },
   },
 });

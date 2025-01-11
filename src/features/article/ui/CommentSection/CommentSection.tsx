@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import { cloneEventListeners } from '@/shared/lib';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import '../comment.scss';
 
@@ -37,7 +37,7 @@ export function CommentSection() {
 const styles = stylex.create({
   container: {
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
-    padding: `${size[40]} ${size[24]}`,
+    maxWidth: viewports.contentWidth,
+    padding: `${sizes[40]} ${sizes[24]}`,
   },
 });

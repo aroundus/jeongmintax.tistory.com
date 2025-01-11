@@ -4,8 +4,8 @@ import { animations } from '@stylexjs/open-props/lib/animations.stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 type Color = 'primary' | 'secondary';
 
@@ -100,7 +100,7 @@ const styles = stylex.create({
         '@media (hover: hover)': 'brightness(100%)',
       },
     },
-    gap: size[8],
+    gap: sizes[8],
     justifyContent: 'center',
     position: 'relative',
     transitionDuration: '300ms',
@@ -111,42 +111,42 @@ const styles = stylex.create({
 
   // Size
   sm: {
-    borderRadius: size[8],
-    minWidth: size[100],
-    padding: `${size[2]} ${size[12]}`,
+    borderRadius: sizes[8],
+    minWidth: sizes[100],
+    padding: `${sizes[2]} ${sizes[12]}`,
   },
   md: {
-    borderRadius: size[8],
-    minWidth: size[120],
-    padding: `${size[8]} ${size[16]}`,
+    borderRadius: sizes[8],
+    minWidth: sizes[120],
+    padding: `${sizes[8]} ${sizes[16]}`,
   },
   lg: {
-    borderRadius: size[12],
-    minWidth: size[140],
-    padding: `${size[12]} ${size[24]}`,
+    borderRadius: sizes[12],
+    minWidth: sizes[140],
+    padding: `${sizes[12]} ${sizes[24]}`,
   },
 
   // Variant
   contained: (colorProp: Color) => ({
-    backgroundColor: color[`${colorProp}Alpha`],
-    borderColor: color[`${colorProp}Alpha`],
+    backgroundColor: colors[`${colorProp}Alpha`],
+    borderColor: colors[`${colorProp}Alpha`],
     color: 'CanvasText',
   }),
   outlined: (colorProp: Color) => ({
-    borderColor: color[colorProp],
+    borderColor: colors[colorProp],
     color: 'CanvasText',
   }),
   text: (colorProp: Color) => ({
     borderWidth: 0,
     color: {
       default: 'CanvasText',
-      ':hover': color[colorProp],
+      ':hover': colors[colorProp],
     },
   }),
 
   icon: {
-    height: size[32],
-    width: size[32],
+    height: sizes[32],
+    width: sizes[32],
   },
 });
 
@@ -158,32 +158,32 @@ const loaderStyles = stylex.create({
     animationTimingFunction: 'linear',
     borderRadius: '50%',
     borderStyle: 'solid',
-    borderWidth: size[4],
+    borderWidth: sizes[4],
     display: 'block',
     margin: 'auto',
   },
 
   // Color
   primary: {
-    borderColor: color.gray,
+    borderColor: colors.gray,
     borderTopColor: 'white',
   },
   secondary: {
     borderColor: 'white',
-    borderTopColor: color.gray,
+    borderTopColor: colors.gray,
   },
 
   // Size
   sm: {
-    height: size[16],
-    width: size[16],
+    height: sizes[16],
+    width: sizes[16],
   },
   md: {
-    height: size[20],
-    width: size[20],
+    height: sizes[20],
+    width: sizes[20],
   },
   lg: {
-    height: size[20],
-    width: size[20],
+    height: sizes[20],
+    width: sizes[20],
   },
 });

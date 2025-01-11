@@ -2,9 +2,9 @@ import * as stylex from '@stylexjs/stylex';
 
 import { SearchTextField } from '@/features/search/ui';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 interface SearchResultHeaderProps {
   articleCount: number; // 검색 결과 글 목록 수
@@ -28,16 +28,16 @@ const styles = stylex.create({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    gap: size[12],
+    gap: sizes[12],
     margin: 'auto',
     maxWidth: '100%',
-    padding: `${size[60]} ${size[24]} ${size[24]}`,
-    width: viewport.contentInnerWidth,
+    padding: `${sizes[60]} ${sizes[24]} ${sizes[24]}`,
+    width: viewports.contentInnerWidth,
   },
   keyword: {
-    color: color.primary,
+    color: colors.primary,
   },
   description: {
-    marginBottom: size[20],
+    marginBottom: sizes[20],
   },
 });

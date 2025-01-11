@@ -2,8 +2,8 @@ import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 
 import { useIsMobile } from '@/shared/lib';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 import { Button, PublicImage } from '@/shared/ui';
 
 export function ContactSection() {
@@ -51,13 +51,13 @@ const styles = stylex.create({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    gap: size[40],
+    gap: sizes[40],
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
-    padding: `${size[40]} ${size[24]}`,
+    maxWidth: viewports.contentWidth,
+    padding: `${sizes[40]} ${sizes[24]}`,
   },
   paragraph: {
-    marginTop: size[32],
+    marginTop: sizes[32],
   },
   image: {
     boxShadow: shadows.shadow4,
@@ -70,7 +70,7 @@ const buttonStyles = stylex.create({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: size[8],
+    gap: sizes[8],
     justifyContent: 'center',
     maxWidth: '100%',
   },

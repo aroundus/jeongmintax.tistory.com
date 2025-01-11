@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 import { GoMoveToTop as GoMoveToTopIcon } from 'react-icons/go';
 
-import { size } from '@/shared/stylex/size.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 
 export function FloatingScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,10 +50,10 @@ export function FloatingScrollToTopButton() {
 
 const styles = stylex.create({
   container: {
-    bottom: size[24],
-    gap: size[16],
+    bottom: sizes[24],
+    gap: sizes[16],
     position: 'fixed',
-    right: size[24],
+    right: sizes[24],
     zIndex: 3,
   },
 });
@@ -67,7 +67,7 @@ const buttonStyles = stylex.create({
     borderWidth: 1,
     color: 'CanvasText',
     cursor: 'pointer',
-    height: size[56],
+    height: sizes[56],
     opacity: {
       default: 0.5,
       ':hover': {
@@ -75,10 +75,10 @@ const buttonStyles = stylex.create({
       },
     },
     transition: 'opacity 200ms ease',
-    width: size[56],
+    width: sizes[56],
   },
   icon: {
-    height: size[24],
-    width: size[24],
+    height: sizes[24],
+    width: sizes[24],
   },
 });

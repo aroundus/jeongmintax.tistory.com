@@ -5,10 +5,10 @@ import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 import { Button } from '@/shared/ui';
 
 interface KeyVisualProps {
@@ -136,7 +136,7 @@ const styles = stylex.create({
   container: {
     background: 'no-repeat center / cover',
     backgroundColor: {
-      '::before': color.black,
+      '::before': colors.black,
     },
     backgroundSize: {
       '::before': '400% 400%',
@@ -181,7 +181,7 @@ const styles = stylex.create({
     backgroundImage: {
       '::before': `linear-gradient(
         -45deg,
-        ${color.black},
+        ${colors.black},
         pink,
         blue,
         white
@@ -191,9 +191,9 @@ const styles = stylex.create({
   inner: {
     color: 'white',
     margin: 'auto',
-    maxWidth: viewport.contentWidth,
+    maxWidth: viewports.contentWidth,
     minWidth: 320,
-    padding: size[24],
+    padding: sizes[24],
     width: '80%',
   },
   category: {
@@ -210,14 +210,14 @@ const styles = stylex.create({
     },
   },
   title: {
-    marginTop: size[8],
+    marginTop: sizes[8],
   },
   summary: {
-    marginTop: size[16],
+    marginTop: sizes[16],
   },
   button: {
     color: 'white',
-    marginTop: size[24],
+    marginTop: sizes[24],
   },
 });
 
@@ -225,17 +225,17 @@ const metaStyles = stylex.create({
   container: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[12],
-    marginTop: size[16],
+    gap: sizes[12],
+    marginTop: sizes[16],
   },
   date: {
-    color: color.gray,
+    color: colors.gray,
   },
   count: {
     alignItems: 'center',
     cursor: 'pointer',
     display: 'flex',
-    gap: size[2],
+    gap: sizes[2],
   },
   isPointerInactive: {
     cursor: 'default',

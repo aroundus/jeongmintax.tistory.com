@@ -3,9 +3,9 @@ import * as stylex from '@stylexjs/stylex';
 
 import type { MenuItem } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 import { Button } from '@/shared/ui';
 
 interface ProfileProps {
@@ -51,10 +51,10 @@ export function Profile({ description, imageURL, menu, name }: ProfileProps) {
 const styles = stylex.create({
   container: {
     display: 'flex',
-    gap: size[16],
+    gap: sizes[16],
     margin: 'auto',
-    maxWidth: viewport.layoutWidth,
-    padding: size[24],
+    maxWidth: viewports.layoutWidth,
+    padding: sizes[24],
   },
 });
 
@@ -74,24 +74,24 @@ const contentStyles = stylex.create({
     display: 'flex',
     flex: '1 1 0',
     flexDirection: 'column',
-    gap: size[4],
+    gap: sizes[4],
     justifyContent: 'center',
   },
   name: {
     color: 'CanvasText',
   },
   description: {
-    color: color.gray,
+    color: colors.gray,
   },
 });
 
 const navigationStyles = stylex.create({
   container: {
-    marginTop: size[12],
+    marginTop: sizes[12],
   },
   list: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: size[8],
+    gap: sizes[8],
   },
 });

@@ -6,10 +6,10 @@ import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 import type { CoverArticle } from '@/entities/article/api';
 import { useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 export interface ArticleListItemProps extends CoverArticle {
   isLast?: boolean;
@@ -87,7 +87,7 @@ export function ArticleListItem({
 
 const styles = stylex.create({
   container: {
-    borderBottomColor: color.gray,
+    borderBottomColor: colors.gray,
     borderBottomStyle: 'solid',
     borderBottomWidth: 1,
     color: {
@@ -99,8 +99,8 @@ const styles = stylex.create({
     display: 'block',
     margin: 'auto',
     maxWidth: '100%',
-    padding: `${size[48]} ${size[24]}`,
-    width: viewport.contentInnerWidth,
+    padding: `${sizes[48]} ${sizes[24]}`,
+    width: viewports.contentInnerWidth,
   },
   isLast: {
     borderBottomColor: 'rgba(0, 0, 0, 0)',
@@ -117,21 +117,21 @@ const styles = stylex.create({
     backgroundImage: `linear-gradient(
       to left,
       CanvasText 10%,
-      ${color.gray} 20%,
-      ${color.primary} 70%
+      ${colors.gray} 20%,
+      ${colors.primary} 70%
     )`,
     backgroundSize: '500% auto',
     textFillColor: 'rgba(0, 0, 0, 0)',
   },
   category: {
-    color: color.gray,
+    color: colors.gray,
   },
   title: {
-    marginTop: size[8],
+    marginTop: sizes[8],
     transition: '200ms ease-out',
   },
   summary: {
-    marginTop: size[16],
+    marginTop: sizes[16],
     transition: '200ms ease-out',
   },
 });
@@ -140,15 +140,15 @@ const metaStyles = stylex.create({
   container: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[12],
-    marginTop: size[16],
+    gap: sizes[12],
+    marginTop: sizes[16],
   },
   date: {
-    color: color.gray,
+    color: colors.gray,
   },
   count: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[2],
+    gap: sizes[2],
   },
 });

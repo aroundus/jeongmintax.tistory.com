@@ -1,13 +1,13 @@
 import * as stylex from '@stylexjs/stylex';
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
+import { colors as stylexColors } from '@stylexjs/open-props/lib/colors.stylex';
 
-export const color = stylex.defineVars({
+export const colors = stylex.defineVars({
   primary: '#94b080',
   primaryAlpha: '#94b080aa',
   secondary: '#aaa59b',
   secondaryAlpha: '#aaa59baa',
 
-  black: colors.gray9,
+  black: stylexColors.gray9,
   gray: '#aaa59b',
   grayAlpha: '#aaa59baa',
   green: '#94b080', // [PANTONE] Asparagus

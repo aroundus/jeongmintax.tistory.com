@@ -7,8 +7,8 @@ import * as userService from '@/entities/user/api';
 import { SearchTextField } from '@/features/search/ui';
 import { useBrowser, useMediaQuery } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 import { Button } from '@/shared/ui';
 
 import { getConfig } from '../../config';
@@ -104,7 +104,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
               </>
             )}
           </div>
-          <SearchTextField textColor={color.black} />
+          <SearchTextField textColor={colors.black} />
           <ul {...stylex.props(categoryStyles.container)}>
             {categories.map((category) => (
               <li
@@ -129,10 +129,10 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
 const styles = stylex.create({
   container: {
     backgroundColor: 'white',
-    borderBottomLeftRadius: size[24],
-    borderTopLeftRadius: size[24],
+    borderBottomLeftRadius: sizes[24],
+    borderTopLeftRadius: sizes[24],
     bottom: 0,
-    color: color.black,
+    color: colors.black,
     display: 'flex',
     flexDirection: 'column',
     maxWidth: 360,
@@ -167,7 +167,7 @@ const headerStyles = stylex.create({
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: `${size[20]} ${size[24]}`,
+    padding: `${sizes[20]} ${sizes[24]}`,
     position: 'sticky',
     top: 0,
     zIndex: 1,
@@ -178,8 +178,8 @@ const contentStyles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: size[24],
-    padding: `${size[24]} ${size[36]}`,
+    gap: sizes[24],
+    padding: `${sizes[24]} ${sizes[36]}`,
   },
   height100: {
     height: '100%',
@@ -190,13 +190,13 @@ const profileStyles = stylex.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: size[8],
+    gap: sizes[8],
   },
   name: {
     display: 'inline',
   },
   email: {
-    color: color.gray,
+    color: colors.gray,
   },
 });
 
@@ -205,18 +205,18 @@ const imageStyles = stylex.create({
     alignItems: 'center',
     borderRadius: '50%',
     display: 'flex',
-    height: size[80],
+    height: sizes[80],
     justifyContent: 'center',
     overflow: 'hidden',
-    width: size[80],
+    width: sizes[80],
   },
 });
 
 const buttonStyles = stylex.create({
   container: {
     display: 'flex',
-    gap: size[8],
-    marginTop: size[16],
+    gap: sizes[8],
+    marginTop: sizes[16],
   },
   button: {
     color: 'black',
@@ -227,16 +227,16 @@ const categoryStyles = stylex.create({
   container: {},
   category: {
     borderBottomColor: {
-      default: `color-mix(in srgb, ${color.gray} 30%, white 50%)`,
+      default: `color-mix(in srgb, ${colors.gray} 30%, white 50%)`,
       ':last-child': 'transparent',
     },
     borderBottomStyle: 'solid',
     borderBottomWidth: 1,
     display: 'flex',
-    gap: size[8],
-    padding: `${size[12]} ${size[8]}`,
+    gap: sizes[8],
+    padding: `${sizes[12]} ${sizes[8]}`,
   },
   articleCount: {
-    color: color.gray,
+    color: colors.gray,
   },
 });

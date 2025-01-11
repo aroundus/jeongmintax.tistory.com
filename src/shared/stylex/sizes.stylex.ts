@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-export const size = stylex.defineVars({
+export const sizes = stylex.defineVars({
   1: '1px',
   2: '2px',
   4: '4px',

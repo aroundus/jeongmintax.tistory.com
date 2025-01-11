@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
-import { size } from '@/shared/stylex/size.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
 import { Button } from '@/shared/ui';
 
 interface FloatingActiveHeadingProps {
@@ -109,7 +109,7 @@ const styles = stylex.create({
     display: 'flex',
     justifyContent: 'flex-end',
     opacity: 0,
-    padding: `0 ${size[24]}`,
+    padding: `0 ${sizes[24]}`,
     position: 'sticky',
     transform: 'translateY(-100px)',
     transition: 'opacity 200ms ease-out, transform 400ms ease',

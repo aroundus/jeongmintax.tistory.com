@@ -3,9 +3,9 @@ import * as stylex from '@stylexjs/stylex';
 
 import type { Category } from '@/entities/category/api';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 interface CategoryFieldProps {
   categories: Category[];
@@ -38,12 +38,12 @@ const styles = stylex.create({
     alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    gap: `${size[8]} ${size[12]}`,
+    gap: `${sizes[8]} ${sizes[12]}`,
     justifyContent: 'center',
     margin: 'auto',
     maxWidth: '100%',
-    padding: `${size[24]} ${size[36]}`,
-    width: viewport.contentInnerWidth,
+    padding: `${sizes[24]} ${sizes[36]}`,
+    width: viewports.contentInnerWidth,
   },
 });
 
@@ -51,9 +51,9 @@ const categoryStyles = stylex.create({
   container: {
     cursor: 'pointer',
     display: 'flex',
-    gap: size[4],
+    gap: sizes[4],
   },
   articleCount: {
-    color: color.gray,
+    color: colors.gray,
   },
 });

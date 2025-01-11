@@ -7,9 +7,9 @@ import { getSession } from '@/entities/user/api';
 import { SearchTextField } from '@/features/search/ui';
 import { useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { color } from '@/shared/stylex/color.stylex';
-import { size } from '@/shared/stylex/size.stylex';
-import { viewport } from '@/shared/stylex/viewport.stylex';
+import { colors } from '@/shared/stylex/colors.stylex';
+import { sizes } from '@/shared/stylex/sizes.stylex';
+import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import SymbolMarkIcon from './assets/icons/symbol-mark.svg?react';
 import { NavigationDrawer } from './NavigationDrawer';
@@ -38,7 +38,7 @@ export function Header({ title }: HeaderProps) {
             href="/"
           >
             <SymbolMarkIcon
-              fill={color.primary}
+              fill={colors.primary}
               height={16}
             />
             {title}
@@ -87,24 +87,24 @@ const styles = stylex.create({
   inner: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[16],
+    gap: sizes[16],
     justifyContent: 'space-between',
     margin: 'auto',
-    maxWidth: viewport.layoutWidth,
-    padding: `${size[20]} ${size[24]}`,
+    maxWidth: viewports.layoutWidth,
+    padding: `${sizes[20]} ${sizes[24]}`,
   },
   title: {
     alignItems: 'center',
     color: 'CanvasText',
     display: 'flex',
-    gap: size[8],
+    gap: sizes[8],
     letterSpacing: '0.04em',
     whiteSpace: 'nowrap',
   },
   content: {
     alignItems: 'center',
     display: 'flex',
-    gap: size[8],
+    gap: sizes[8],
     overflow: 'hidden',
   },
 });
