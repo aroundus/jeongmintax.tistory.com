@@ -1,8 +1,23 @@
 export interface Blog {
-  title: string; // 블로그 제목
-  description: string; // 블로그 설명
-  blogger: string; // 블로그 소유자 이름
-  imageURL: string; // 블로그 대표 이미지 주소
+  /**
+   * 블로그 제목
+   */
+  title: string;
+
+  /**
+   * 블로그 설명
+   */
+  description: string;
+
+  /**
+   * 블로그 소유자 이름
+   */
+  blogger: string;
+
+  /**
+   * 블로그 대표 이미지 주소
+   */
+  imageURL: string;
 }
 
 const INITIAL_BLOG: Blog = {

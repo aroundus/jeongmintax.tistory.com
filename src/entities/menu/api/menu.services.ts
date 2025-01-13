@@ -1,6 +1,14 @@
 export interface MenuItem {
-  name: string; // 메뉴 이름
-  path: string; // 메뉴 경로
+  /**
+   * 메뉴 이름
+   */
+  name: string;
+
+  /**
+   * 메뉴 경로
+   */
+  path: string;
+
   target?: React.HTMLAttributeAnchorTarget;
 }
 
