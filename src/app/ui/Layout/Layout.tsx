@@ -3,10 +3,10 @@ import * as stylex from '@stylexjs/stylex';
 import { getBlog } from '@/entities/blog/api';
 import { useIsDarkMode } from '@/shared/lib';
 import { darkTheme, lightTheme } from '@/shared/stylex';
+import { Footer } from '@/widgets/footer/ui';
+import { Header } from '@/widgets/header/ui';
 
 import { Content } from './Content';
-import { Footer } from './Footer';
-import { Header } from './Header';
 
 interface LayoutProps {
   children: React.ReactNode;
