@@ -1,7 +1,7 @@
 {
   "name": "jeongmintax.tistory.com",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "build": "tsc --build && vite build && sh scripts/postbuild.sh",
     "build-storybook": "storybook build",
@@ -9,9 +9,6 @@
     "deploy:dev": "env-cmd --file .env.production.dev npm run deploy",
     "deploy:live": "env-cmd --file .env.production.live npm run deploy",
     "dev": "vite",
-    "dev:category": "VITE_TISTORY_BODY_TYPE=category npm run dev",
-    "dev:page": "VITE_TISTORY_BODY_TYPE=page npm run dev",
-    "dev:search": "VITE_TISTORY_BODY_TYPE=search npm run dev",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,css,scss}'",
     "lint": "eslint src --cache --fix --report-unused-disable-directives",
     "lint:style": "stylelint --fix --ignore-path .gitignore '**/*.(css|scss)'",
@@ -33,6 +30,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.1",
     "swiper": "^11.1.9"
   },
   "devDependencies": {

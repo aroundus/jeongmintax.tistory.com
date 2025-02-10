@@ -1,44 +1,20 @@
-import { useLayoutEffect, useState } from 'react';
+import { Suspense } from 'react';
 
-import { Home } from '@/pages/home/Home';
-import { Article } from '@/pages/page/Article';
-import { Category } from '@/pages/category/Category';
-import { SearchResult } from '@/pages/search/SearchResult';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Layout } from './ui';
+import { rootRoute } from './routes';
 
 import './styles/reset.scss';
-import './styles/global.scss';
+import './styles/global.scss'; // eslint-disable-line
 
 import 'virtual:stylex.css';
 
 export function App() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useLayoutEffect(() => {
-    if (import.meta.env.DEV) {
-      const bodyType = import.meta.env.VITE_TISTORY_BODY_TYPE;
-
-      if (bodyType) {
-        document.querySelector('body')!.id = `tt-body-${bodyType}`;
-      } else {
-        document.querySelector('body')!.id = 'tt-body-index';
-      }
-    }
-
-    setIsMounted(true);
-  }, []);
+  const router = createBrowserRouter([rootRoute]);
 
   return (
-    <>
-      {isMounted && (
-        <Layout>
-          {document.getElementById('tt-body-index') && <Home />}
-          {document.getElementById('tt-body-category') && <Category />}
-          {document.getElementById('tt-body-page') && <Article />}
-          {document.getElementById('tt-body-search') && <SearchResult />}
-        </Layout>
-      )}
-    </>
+    <Suspense fallback={<></>}>
+      <RouterProvider router={router} />
+    </Suspense>
   );
 }

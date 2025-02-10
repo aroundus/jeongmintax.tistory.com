@@ -1,6 +1,12 @@
-const globals = require('globals');
-const js = require('@eslint/js');
-const ts = require('typescript-eslint');
+import js from '@eslint/js';
+import stylisticPlugin from '@stylistic/eslint-plugin-ts';
+import importPlugin from 'eslint-plugin-import';
+import reactPlugin from 'eslint-plugin-react';
+import styleXPlugin from '@stylexjs/eslint-plugin';
+import nPlugin from 'eslint-plugin-n';
+import promisePlugin from 'eslint-plugin-promise';
+import globals from 'globals';
+import ts from 'typescript-eslint';
 
 // BUG: https://github.com/sindresorhus/globals/issues/239
 globals.browser.AudioWorkletGlobalScope = globals.browser['AudioWorkletGlobalScope '];
@@ -26,12 +32,12 @@ module.exports = [
       },
     },
     plugins: {
-      '@stylexjs': require('@stylexjs/eslint-plugin'),
-      '@stylistic/ts': require('@stylistic/eslint-plugin-ts'),
-      import: require('eslint-plugin-import'),
-      n: require('eslint-plugin-n'),
-      promise: require('eslint-plugin-promise'),
-      react: require('eslint-plugin-react'),
+      '@stylexjs': styleXPlugin,
+      '@stylistic/ts': stylisticPlugin,
+      import: importPlugin,
+      n: nPlugin,
+      promise: promisePlugin,
+      react: reactPlugin,
     },
     rules: {
       '@stylexjs/sort-keys': [
@@ -57,6 +63,25 @@ module.exports = [
           allowObject: true,
         },
       ],
+      'import/order': [
+        'error',
+        {
+          alphabetize: {
+            order: 'asc',
+          },
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'unknown'],
+          'newlines-between': 'always',
+          pathGroups: [
+            { pattern: 'react', group: 'builtin', position: 'after' },
+            { pattern: '@/**', group: 'external', position: 'after' },
+            { pattern: './**/*.*', group: 'unknown', position: 'after' },
+            { pattern: 'virtual:*', group: 'unknown', position: 'after' },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
+          warnOnUnassignedImports: true,
+        },
+      ],
+      'react/jsx-sort-props': ['error', { callbacksLast: true }],
     },
   },
 ];

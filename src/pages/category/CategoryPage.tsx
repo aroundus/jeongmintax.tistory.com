@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
@@ -9,7 +10,7 @@ import { CategoryField } from '@/features/category/ui';
 
 import { CategoryHeader } from './_ui';
 
-export function Category() {
+export default function CategoryPage() {
   const preloadedArticles = articleService.getArticles();
   const categories = categoryService.getCategories();
   const keyword = location.pathname.split('/')[2];
@@ -35,6 +36,12 @@ export function Category() {
 
   useEffect(() => {
     fetchArticlesLikeCount();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (import.meta.env.DEV) {
+      document.querySelector('body')!.id = 'tt-body-category';
+    }
   }, []);
 
   return (

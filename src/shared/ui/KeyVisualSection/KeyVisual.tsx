@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';

@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
@@ -6,11 +7,10 @@ import type { CoverArticle } from '@/entities/article/api';
 import * as categoryService from '@/entities/category/api';
 import { ArticleListSection } from '@/features/article/ui';
 import { CategoryField } from '@/features/category/ui';
+import { ProfileSection } from '@/features/profile/ui';
 import { KeyVisualSection } from '@/shared/ui';
 
-import { ProfileSection } from '@/features/profile/ui';
-
-export function Home() {
+export default function HomePage() {
   const categories = categoryService.getCategories();
   const preloadedKeyVisualArticles = articleService.getCoverArticles('key-visual');
   const preloadedListArticles = articleService.getCoverArticles('list');
@@ -82,6 +82,12 @@ export function Home() {
   useEffect(() => {
     fetchKeyVisualArticlesLikeCount();
     fetchListArticlesLikeCount();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (import.meta.env.DEV) {
+      document.querySelector('body')!.id = 'tt-body-index';
+    }
   }, []);
 
   return (

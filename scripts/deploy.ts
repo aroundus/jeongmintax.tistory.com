@@ -1,9 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
+
 import { Skin } from 'tistory-skin';
 
 (async function (directoryPath: string) {
-  const skin = new Skin(process.env.BLOG_URL, process.env.TSSESSION);
+  const skin = new Skin(String(process.env.BLOG_URL), String(process.env.TSSESSION));
   const filePaths = getAllFilePaths(directoryPath);
 
   for (const filePath of filePaths) {

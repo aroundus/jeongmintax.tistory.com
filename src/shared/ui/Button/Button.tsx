@@ -1,7 +1,8 @@
 import React from 'react';
-import * as stylex from '@stylexjs/stylex';
+
 import { animations } from '@stylexjs/open-props/lib/animations.stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import * as stylex from '@stylexjs/stylex';
 
 import { mixinStyles } from '@/shared/stylex';
 import { colors } from '@/shared/stylex/colors.stylex';

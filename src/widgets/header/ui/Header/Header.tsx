@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import * as stylex from '@stylexjs/stylex';
+
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import * as stylex from '@stylexjs/stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import { getSession } from '@/entities/user/api';
