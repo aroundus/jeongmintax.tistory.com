@@ -1,14 +1,17 @@
+import { memo } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import '@/features/article/ui/article.scss';
+
+import '../article.scss';
 
 interface ArticleSectionProps {
   html: string;
 }
 
-export function ArticleSection({ html }: ArticleSectionProps) {
+export const ArticleSection = memo(({ html }: ArticleSectionProps) => {
   return (
     <section
       id="article"
@@ -17,7 +20,7 @@ export function ArticleSection({ html }: ArticleSectionProps) {
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </section>
   );
-}
+});
 
 const styles = stylex.create({
   container: {

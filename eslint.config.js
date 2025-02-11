@@ -61,6 +61,8 @@ export default [
             { pattern: 'react', group: 'builtin', position: 'after' },
             { pattern: '@/**', group: 'external', position: 'after' },
             { pattern: './**/*.*', group: 'unknown', position: 'after' },
+            { pattern: '**/*.css', group: 'unknown', position: 'after' },
+            { pattern: '**/*.scss', group: 'unknown', position: 'after' },
             { pattern: 'virtual:*', group: 'unknown', position: 'after' },
           ],
           pathGroupsExcludedImportTypes: ['react'],

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
+import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import type { CoverArticle } from '@/entities/article/api';
-import { useIsMobile } from '@/shared/lib';
+import { useIsDarkMode, useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
@@ -27,6 +27,7 @@ export function ArticleListItem({
   summary,
   title,
 }: ArticleListItemProps) {
+  const isDarkMode = useIsDarkMode();
   const isMobile = useIsMobile();
   const [isMouseEnter, setIsMouseEnter] = useState(false);
 
@@ -43,7 +44,11 @@ export function ArticleListItem({
     >
       <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>{category}</div>
       <div
-        {...stylex.props(styles.title, mixinStyles.font(isMobile ? 32 : 36, 700), isMouseEnter && styles.isMouseEnter)}
+        {...stylex.props(
+          styles.title,
+          mixinStyles.font(isMobile ? 32 : 36, 700),
+          isMouseEnter && styles.isMouseEnter(isDarkMode),
+        )}
       >
         {title}
       </div>
@@ -88,7 +93,7 @@ export function ArticleListItem({
 
 const styles = stylex.create({
   container: {
-    borderBottomColor: colors.gray,
+    borderBottomColor: colors.gray2,
     borderBottomStyle: 'solid',
     borderBottomWidth: 1,
     color: {
@@ -106,7 +111,7 @@ const styles = stylex.create({
   isLast: {
     borderBottomColor: 'rgba(0, 0, 0, 0)',
   },
-  isMouseEnter: {
+  isMouseEnter: (isDarkMode: boolean) => ({
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'rgba(0, 0, 0, 0)',
     animationDuration: '1s',
@@ -118,14 +123,14 @@ const styles = stylex.create({
     backgroundImage: `linear-gradient(
       to left,
       CanvasText 10%,
-      ${colors.gray} 20%,
-      ${colors.primary} 70%
+      ${colors.stone6} 20%,
+      ${isDarkMode ? colors.yellow5 : colors.jungle7} 70%
     )`,
     backgroundSize: '500% auto',
     textFillColor: 'rgba(0, 0, 0, 0)',
-  },
+  }),
   category: {
-    color: colors.gray,
+    color: colors.stone6,
   },
   title: {
     marginTop: sizes[8],
@@ -145,7 +150,7 @@ const metaStyles = stylex.create({
     marginTop: sizes[16],
   },
   date: {
-    color: colors.gray,
+    color: colors.stone6,
   },
   count: {
     alignItems: 'center',

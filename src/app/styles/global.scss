@@ -1,8 +1,8 @@
-@use './variable' as variable;
+@use '~@/styles' as *;
 
-$primary-color: variable.$color-green;
+$primary-color: $color-jungle-7;
 $primary-color-alpha: #{$primary-color}AA;
-$secondary-color: variable.$color-gray;
+$secondary-color: $color-stone-6;
 
 :root {
   --primary-color: #{$primary-color};
@@ -12,7 +12,7 @@ $secondary-color: variable.$color-gray;
   --swiper-navigation-size: 24px;
 
   @media (prefers-color-scheme: dark) {
-    $primary-color: variable.$color-yellow;
+    $primary-color: $color-yellow-5;
     $primary-color-alpha: #{$primary-color}AA;
 
     --primary-color: #{$primary-color};
@@ -40,7 +40,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: auto;
   line-height: 1.6;
-  color: CanvasText;
+  color: $color-gray-10;
   -webkit-text-size-adjust: none;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -87,4 +87,10 @@ mark {
 
 hr {
   border: 0.5px solid var(--primary-color-alpha);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: $color-gray-2;
+  }
 }

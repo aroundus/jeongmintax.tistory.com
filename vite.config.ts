@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import * as path from 'path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        main: path.join(__dirname, 'index.html'),
       },
       output: {
         entryFileNames: 'script.js',
@@ -38,7 +38,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      '@': path.join(__dirname, './src'),
+      '~@/styles': path.join(__dirname, './src/shared/styles/_index.scss'),
     },
   },
   server: {

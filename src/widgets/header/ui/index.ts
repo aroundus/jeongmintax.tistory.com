@@ -1,1 +1,1 @@
-export { Header } from './Header';
+export { HeaderDesktop, HeaderMobile } from './Header';
