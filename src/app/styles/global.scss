@@ -1,8 +1,8 @@
-@use './variable' as variable;
+@use '~@/styles' as *;
 
-$primary-color: variable.$color-jungle-7;
+$primary-color: $color-jungle-7;
 $primary-color-alpha: #{$primary-color}AA;
-$secondary-color: variable.$color-stone-6;
+$secondary-color: $color-stone-6;
 
 :root {
   --primary-color: #{$primary-color};
@@ -12,7 +12,7 @@ $secondary-color: variable.$color-stone-6;
   --swiper-navigation-size: 24px;
 
   @media (prefers-color-scheme: dark) {
-    $primary-color: variable.$color-yellow-5;
+    $primary-color: $color-yellow-5;
     $primary-color-alpha: #{$primary-color}AA;
 
     --primary-color: #{$primary-color};
@@ -40,7 +40,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: auto;
   line-height: 1.6;
-  color: variable.$color-gray-10;
+  color: $color-gray-10;
   -webkit-text-size-adjust: none;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -91,6 +91,6 @@ hr {
 
 @media (prefers-color-scheme: dark) {
   body {
-    color: variable.$color-gray-2;
+    color: $color-gray-2;
   }
 }
