@@ -87,7 +87,7 @@ export default function ArticlePage() {
     const main = document.getElementsByTagName('main')[0]!;
 
     setScrollHeight(document.documentElement.scrollHeight);
-    setProgressBarOffset(main.offsetTop);
+    setProgressBarOffset(isMobile ? 0 : main.offsetTop);
 
     function handleScroll() {
       setScrollY(window.scrollY + window.innerHeight);
