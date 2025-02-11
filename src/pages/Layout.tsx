@@ -1,30 +1,26 @@
 import * as stylex from '@stylexjs/stylex';
 import { Outlet } from 'react-router-dom';
 
-import { getBlog } from '@/entities/blog/api';
-import { useIsDarkMode } from '@/shared/lib';
-import { darkTheme, lightTheme } from '@/shared/stylex';
+import { useIsMobile } from '@/shared/lib';
 import { Footer } from '@/widgets/footer/ui';
-import { Header } from '@/widgets/header/ui';
+import { HeaderDesktop, HeaderMobile } from '@/widgets/header/ui';
 
 export default function Layout() {
-  const isDarkMode = useIsDarkMode();
-
-  const blog = getBlog();
+  const isMobile = useIsMobile();
 
   return (
-    <div {...stylex.props(isDarkMode ? darkTheme : lightTheme)}>
-      <Header title={blog.title} />
-      <main {...stylex.props(styles.container)}>
+    <>
+      {isMobile ? <HeaderMobile /> : <HeaderDesktop />}
+      <main {...stylex.props(styles.main)}>
         <Outlet />
       </main>
-      <Footer title={blog.title} />
-    </div>
+      <Footer />
+    </>
   );
 }
 
 const styles = stylex.create({
-  container: {
+  main: {
     margin: 'auto',
   },
 });

@@ -1,23 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Header } from './Header';
+import { HeaderDesktop } from './HeaderDesktop';
 
 const meta = {
   argTypes: {},
-  component: Header,
+  component: HeaderDesktop,
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'app/Layout/Header',
-} satisfies Meta<typeof Header>;
+  title: 'app/Layout/HeaderDesktop',
+} satisfies Meta<typeof HeaderDesktop>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const HeaderStory: Story = {
-  args: {
-    title: '세무회계 정민',
-  },
+  args: {},
 };
 
-HeaderStory.storyName = 'Header';
+HeaderStory.storyName = 'HeaderDesktop';

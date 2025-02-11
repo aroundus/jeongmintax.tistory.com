@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { RiMenuFold2Line as RiMenuFold2LineIcon } from 'react-icons/ri';
 
@@ -8,7 +9,6 @@ import * as userService from '@/entities/user/api';
 import { SearchTextField } from '@/features/search/ui';
 import { useBrowser, useMediaQuery } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
-import { colors } from '@/shared/stylex/colors.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { Button } from '@/shared/ui';
 
@@ -105,7 +105,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
               </>
             )}
           </div>
-          <SearchTextField textColor={colors.black} />
+          <SearchTextField textColor={colors.gray10} />
           <ul {...stylex.props(categoryStyles.container)}>
             {categories.map((category) => (
               <li
@@ -133,7 +133,7 @@ const styles = stylex.create({
     borderBottomLeftRadius: sizes[24],
     borderTopLeftRadius: sizes[24],
     bottom: 0,
-    color: colors.black,
+    color: colors.gray10,
     display: 'flex',
     flexDirection: 'column',
     maxWidth: 360,
@@ -168,6 +168,7 @@ const headerStyles = stylex.create({
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'flex-end',
+    margin: `${sizes[2]} 0`,
     padding: `${sizes[20]} ${sizes[24]}`,
     position: 'sticky',
     top: 0,
@@ -197,7 +198,7 @@ const profileStyles = stylex.create({
     display: 'inline',
   },
   email: {
-    color: colors.gray,
+    color: colors.stone5,
   },
 });
 
@@ -228,7 +229,7 @@ const categoryStyles = stylex.create({
   container: {},
   category: {
     borderBottomColor: {
-      default: `color-mix(in srgb, ${colors.gray} 30%, white 50%)`,
+      default: `color-mix(in srgb, ${colors.stone5} 30%, white 50%)`,
       ':last-child': 'transparent',
     },
     borderBottomStyle: 'solid',
@@ -238,6 +239,6 @@ const categoryStyles = stylex.create({
     padding: `${sizes[12]} ${sizes[8]}`,
   },
   articleCount: {
-    color: colors.gray,
+    color: colors.stone5,
   },
 });

@@ -1,6 +1,7 @@
+import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import * as stylex from '@stylexjs/stylex';
 
-import { colors } from '@/shared/stylex/colors.stylex';
+import { useIsDarkMode } from '@/shared/lib';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 
 interface ProgressBarProps {
@@ -9,6 +10,8 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ offset, value }: ProgressBarProps) {
+  const isDarkMode = useIsDarkMode();
+
   const innerBarStyle: React.CSSProperties = { width: `${value}%` };
 
   if (value === 0 || value === 100) {
@@ -21,7 +24,7 @@ export function ProgressBar({ offset, value }: ProgressBarProps) {
       style={{ top: offset || 0 }}
     >
       <div
-        {...stylex.props(styles.bar)}
+        {...stylex.props(styles.bar, isDarkMode && styles.isDarkMode)}
         style={{
           width: `${value <= 1 ? value * 100 : value}%`,
         }}
@@ -38,8 +41,11 @@ const styles = stylex.create({
     zIndex: 2,
   },
   bar: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.jungle7,
     height: '100%',
     transition: 'width 200ms ease-out',
+  },
+  isDarkMode: {
+    backgroundColor: colors.yellow5,
   },
 });
