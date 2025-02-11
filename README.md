@@ -1,4 +1,6 @@
-# 세무회계 정민
+<h1>
+  <img src="public/logo.svg" alt="로고" height="60" />
+</h1>
 
 ## 목차
 
