@@ -44,8 +44,8 @@ export default function SearchResultPage() {
   return (
     <div {...stylex.props(styles.container)}>
       <SearchResultHeader
-        keyword={keyword}
         articleCount={articles.length}
+        keyword={keyword}
       />
       <ArticleListSection articles={articles} />
     </div>

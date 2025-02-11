@@ -120,9 +120,9 @@ export function KeyVisual({
             <Button
               color="secondary"
               href={path}
-              variant="contained"
               size="lg"
               stylexStyles={styles.button}
+              variant="contained"
             >
               내용 읽기
             </Button>

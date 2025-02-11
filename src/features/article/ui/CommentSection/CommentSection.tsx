@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import { cloneEventListeners } from '@/shared/lib';

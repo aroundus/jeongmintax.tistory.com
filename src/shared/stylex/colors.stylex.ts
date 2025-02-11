@@ -1,5 +1,5 @@
-import * as stylex from '@stylexjs/stylex';
 import { colors as stylexColors } from '@stylexjs/open-props/lib/colors.stylex';
+import * as stylex from '@stylexjs/stylex';
 
 export const colors = stylex.defineVars({
   primary: '#94b080',

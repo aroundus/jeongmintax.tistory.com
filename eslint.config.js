@@ -1,10 +1,8 @@
 import js from '@eslint/js';
+import styleXPlugin from '@stylexjs/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin-ts';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
-import styleXPlugin from '@stylexjs/eslint-plugin';
-import nPlugin from 'eslint-plugin-n';
-import promisePlugin from 'eslint-plugin-promise';
 import globals from 'globals';
 import ts from 'typescript-eslint';
 
@@ -12,40 +10,28 @@ import ts from 'typescript-eslint';
 globals.browser.AudioWorkletGlobalScope = globals.browser['AudioWorkletGlobalScope '];
 delete globals.browser['AudioWorkletGlobalScope '];
 
-module.exports = [
+/** @type {import('eslint').Linter.Config[]} */
+export default [
   js.configs.recommended,
   ...ts.configs.recommended,
   {
-    ignores: ['@types', 'dist', 'node_modules'],
+    files: ['**/*.{cjs,js,jsx,mjs,ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.es2021,
+        ...globals.es2025,
         ...globals.jest,
         ...globals.node,
-      },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-          modules: true,
-        },
       },
     },
     plugins: {
       '@stylexjs': styleXPlugin,
       '@stylistic/ts': stylisticPlugin,
       import: importPlugin,
-      n: nPlugin,
-      promise: promisePlugin,
       react: reactPlugin,
     },
     rules: {
-      '@stylexjs/sort-keys': [
-        'warn',
-        {
-          allowLineSeparatedGroups: true,
-        },
-      ],
+      '@stylexjs/sort-keys': ['warn', { allowLineSeparatedGroups: true }],
       '@stylexjs/valid-styles': 'error',
       '@stylistic/ts/padding-line-between-statements': ['error', { blankLine: 'always', prev: '*', next: 'return' }],
       '@typescript-eslint/no-require-imports': 'off',
@@ -82,6 +68,17 @@ module.exports = [
         },
       ],
       'react/jsx-sort-props': ['error', { callbacksLast: true }],
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+      react: {
+        version: 'detect',
+      },
     },
   },
 ];

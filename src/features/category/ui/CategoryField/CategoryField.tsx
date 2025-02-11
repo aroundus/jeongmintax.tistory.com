@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import type { Category } from '@/entities/category/api';

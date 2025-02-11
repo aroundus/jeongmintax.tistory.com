@@ -1,7 +1,8 @@
+import type { TistoryResponse } from '@/shared/model';
+
 import { default as likeReactionDeleteMockData } from './__mocks__/fixtures/likeReaction.delete.json';
 import { default as likeReactionPostMockData } from './__mocks__/fixtures/likeReaction.post.json';
 import { default as reactionGetMockData } from './__mocks__/fixtures/reaction.get.json';
-import type { TistoryResponse } from '@/shared/model';
 
 interface ReactionGetResponse {
   success: boolean;

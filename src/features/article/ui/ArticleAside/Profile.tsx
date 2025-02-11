@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { shuffle } from 'lodash'; // BUG: production 모드에서 lodash-es 패키지로 shuffle 함수 사용시 오류 발생
