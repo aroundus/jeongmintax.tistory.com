@@ -42,7 +42,7 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-  test: {
-    environment: 'happy-dom',
+  server: {
+    preTransformRequests: false,
   },
 });
