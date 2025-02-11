@@ -1,18 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
-import * as categoryService from '@/entities/category/api';
 import { ArticleListSection } from '@/features/article/ui';
-import { CategoryField } from '@/features/category/ui';
 
-import { CategoryHeader } from './_ui';
+import { SearchResultHeader } from './_ui';
 
-export function Category() {
+export default function SearchResultPage() {
   const preloadedArticles = articleService.getArticles();
-  const categories = categoryService.getCategories();
-  const keyword = location.pathname.split('/')[2];
+  const keyword = decodeURIComponent(location.pathname.split('/')[2]);
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 
@@ -37,13 +35,18 @@ export function Category() {
     fetchArticlesLikeCount();
   }, []);
 
+  useLayoutEffect(() => {
+    if (import.meta.env.DEV) {
+      document.querySelector('body')!.id = 'tt-body-search';
+    }
+  }, []);
+
   return (
     <div {...stylex.props(styles.container)}>
-      <CategoryHeader
+      <SearchResultHeader
         articleCount={articles.length}
-        keyword={keyword ? `#${decodeURIComponent(keyword)}` : '전체'}
+        keyword={keyword}
       />
-      <CategoryField categories={categories} />
       <ArticleListSection articles={articles} />
     </div>
   );

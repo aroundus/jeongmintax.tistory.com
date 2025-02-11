@@ -2,7 +2,6 @@ import * as stylex from '@stylexjs/stylex';
 
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-
 import '@/features/article/ui/article.scss';
 
 interface ArticleSectionProps {

@@ -1,45 +1,37 @@
-const globals = require('globals');
-const js = require('@eslint/js');
-const ts = require('typescript-eslint');
+import js from '@eslint/js';
+import styleXPlugin from '@stylexjs/eslint-plugin';
+import stylisticPlugin from '@stylistic/eslint-plugin-ts';
+import importPlugin from 'eslint-plugin-import';
+import reactPlugin from 'eslint-plugin-react';
+import globals from 'globals';
+import ts from 'typescript-eslint';
 
 // BUG: https://github.com/sindresorhus/globals/issues/239
 globals.browser.AudioWorkletGlobalScope = globals.browser['AudioWorkletGlobalScope '];
 delete globals.browser['AudioWorkletGlobalScope '];
 
-module.exports = [
+/** @type {import('eslint').Linter.Config[]} */
+export default [
   js.configs.recommended,
   ...ts.configs.recommended,
   {
-    ignores: ['@types', 'dist', 'node_modules'],
+    files: ['**/*.{cjs,js,jsx,mjs,ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.es2021,
+        ...globals.es2025,
         ...globals.jest,
         ...globals.node,
       },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-          modules: true,
-        },
-      },
     },
     plugins: {
-      '@stylexjs': require('@stylexjs/eslint-plugin'),
-      '@stylistic/ts': require('@stylistic/eslint-plugin-ts'),
-      import: require('eslint-plugin-import'),
-      n: require('eslint-plugin-n'),
-      promise: require('eslint-plugin-promise'),
-      react: require('eslint-plugin-react'),
+      '@stylexjs': styleXPlugin,
+      '@stylistic/ts': stylisticPlugin,
+      import: importPlugin,
+      react: reactPlugin,
     },
     rules: {
-      '@stylexjs/sort-keys': [
-        'warn',
-        {
-          allowLineSeparatedGroups: true,
-        },
-      ],
+      '@stylexjs/sort-keys': ['warn', { allowLineSeparatedGroups: true }],
       '@stylexjs/valid-styles': 'error',
       '@stylistic/ts/padding-line-between-statements': ['error', { blankLine: 'always', prev: '*', next: 'return' }],
       '@typescript-eslint/no-require-imports': 'off',
@@ -57,6 +49,36 @@ module.exports = [
           allowObject: true,
         },
       ],
+      'import/order': [
+        'error',
+        {
+          alphabetize: {
+            order: 'asc',
+          },
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'unknown'],
+          'newlines-between': 'always',
+          pathGroups: [
+            { pattern: 'react', group: 'builtin', position: 'after' },
+            { pattern: '@/**', group: 'external', position: 'after' },
+            { pattern: './**/*.*', group: 'unknown', position: 'after' },
+            { pattern: 'virtual:*', group: 'unknown', position: 'after' },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
+          warnOnUnassignedImports: true,
+        },
+      ],
+      'react/jsx-sort-props': ['error', { callbacksLast: true }],
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+      react: {
+        version: 'detect',
+      },
     },
   },
 ];

@@ -1,14 +1,13 @@
-import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import * as stylex from '@stylexjs/stylex';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import type { Article, CoverArticle } from '@/entities/article/api';
 
 import { KeyVisual } from './KeyVisual';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 type KeyVisualContentsProps =
   | {

@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 
-import type { Category } from '@/entities/category/api';
 import { mixinStyles } from '@/shared/stylex';
 import { colors } from '@/shared/stylex/colors.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
+
+import type { Category } from '../../api';
 
 interface CategoryFieldProps {
   categories: Category[];

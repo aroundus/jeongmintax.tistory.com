@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Meta } from '@storybook/react';
 
+import type { Meta } from '@storybook/react';
 import { throttle } from 'lodash-es';
 
 import { FloatingScrollToTopButton } from './FloatingScrollToTopButton';

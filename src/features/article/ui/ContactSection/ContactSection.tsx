@@ -1,5 +1,5 @@
-import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import * as stylex from '@stylexjs/stylex';
 
 import { useIsMobile } from '@/shared/lib';
 import { sizes } from '@/shared/stylex/sizes.stylex';

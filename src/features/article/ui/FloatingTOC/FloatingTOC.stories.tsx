@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import type { Meta } from '@storybook/react';
 
 import { FloatingTOC } from './FloatingTOC';

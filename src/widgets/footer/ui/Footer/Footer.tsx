@@ -1,5 +1,5 @@
-import * as stylex from '@stylexjs/stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
+import * as stylex from '@stylexjs/stylex';
 
 import SymbolMarkIcon from '@/shared/assets/icons/symbol-mark.svg?react';
 import { mixinStyles } from '@/shared/stylex';

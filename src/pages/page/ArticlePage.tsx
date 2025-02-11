@@ -1,12 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
-import { useIsDesktop, useIsMobile } from '@/shared/lib';
-import { KeyVisualSection } from '@/shared/ui';
-
 import {
   ArticleAside,
   ArticleSection,
@@ -15,9 +13,11 @@ import {
   FloatingActiveHeading,
   FloatingTOC,
 } from '@/features/article/ui';
+import { useIsDesktop, useIsMobile } from '@/shared/lib';
+import { KeyVisualSection } from '@/shared/ui';
 import { FloatingScrollToTopButton, ProgressBar } from '@/shared/ui';
 
-export function Article() {
+export default function ArticlePage() {
   const isDesktop = useIsDesktop(1280);
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
@@ -105,6 +105,12 @@ export function Article() {
 
   useEffect(() => {
     fetchArticlesLikeCount();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (import.meta.env.DEV) {
+      document.querySelector('body')!.id = 'tt-body-page';
+    }
   }, []);
 
   return (

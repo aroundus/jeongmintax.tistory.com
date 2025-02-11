@@ -1,9 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
 import { Skin } from 'tistory-skin';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 (async function (directoryPath: string) {
-  const skin = new Skin(process.env.BLOG_URL, process.env.TSSESSION);
+  const skin = new Skin(String(process.env.BLOG_URL), String(process.env.TSSESSION));
   const filePaths = getAllFilePaths(directoryPath);
 
   for (const filePath of filePaths) {
