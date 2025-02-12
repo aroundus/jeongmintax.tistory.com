@@ -1,10 +1,10 @@
 import { redirect } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 
+import HomePage from '@/pages/(home)/HomePage';
 import Layout from '@/pages/Layout';
+import ArticlePage from '@/pages/[entryID]/ArticlePage';
 import CategoryPage from '@/pages/category/CategoryPage';
-import HomePage from '@/pages/home/HomePage';
-import ArticlePage from '@/pages/page/ArticlePage';
 import SearchResultPage from '@/pages/search/SearchResultPage';
 
 export const rootRoute: RouteObject = {
