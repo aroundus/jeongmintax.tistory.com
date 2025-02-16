@@ -5,14 +5,14 @@ import * as stylex from '@stylexjs/stylex';
 import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import type { CoverArticle } from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
 import { useIsDarkMode, useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
 
-export interface ArticleListItemProps extends CoverArticle {
+export interface ArticleListItemProps extends Article {
   isLast?: boolean;
 }
 

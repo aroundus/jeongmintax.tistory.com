@@ -1,3 +1,3 @@
-export { getArticles, getCoverArticles } from './article.services';
-export type { Article, CoverArticle } from './article.services';
+export { getArticles } from './article.services';
+export type { Article } from './article.services';
 export { deleteLikeReaction, getReaction, postLikeReaction } from './reaction.services';

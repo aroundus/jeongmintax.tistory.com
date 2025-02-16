@@ -31,6 +31,7 @@
           <div id="category">[##_category_list_##]</div>
         </s_sidebar_element>
 
+        <!-- 사용 안 함
         <s_cover_group>
           <s_cover_rep>
             <s_cover name="key-visual">
@@ -54,32 +55,33 @@
                 </s_cover_item>
               </div>
             </s_cover>
-
-            <s_cover name="list">
-              <div data-cover="list">
-                <s_cover_item>
-                  <s_cover_item_article_info>
-                    <pre class="cover-item">
-                      {
-                        "title": "[##_cover_item_title_##]",
-                        "summary": "[##_cover_item_summary_##]",
-                        "path": "[##_cover_item_url_##]",
-                        <s_cover_item_thumbnail>"thumbnailURL": "[##_cover_item_thumbnail_##]",</s_cover_item_thumbnail>
-                        "category": "[##_cover_item_category_##]",
-                        "categoryPath": "[##_cover_item_category_url_##]",
-                        "commentCount": [##_cover_item_comment_count_##],
-                        "date": "[##_cover_item_simple_date_##]",
-                        "dateTime": "[##_cover_item_date_##]"
-                      }
-                    </pre>
-                  </s_cover_item_article_info>
-                </s_cover_item>
-              </div>
-            </s_cover>
           </s_cover_rep>
         </s_cover_group>
+        -->
 
         <div id="article">
+          <s_index_article_rep>
+            <div class="article">
+              <pre data-article="article">
+                {
+                  "title": "[##_article_rep_title_##]",
+                  "summary": "[##_article_rep_summary_##]",
+                  "path": "[##_article_rep_link_##]",
+                  "author": "[##_article_rep_author_##]",
+                  <s_article_rep_thumbnail>"thumbnailURL": "[##_article_rep_thumbnail_raw_url_##]",</s_article_rep_thumbnail>
+                  "category": "[##_article_rep_category_##]",
+                  "categoryPath": "[##_article_rep_category_link_##]",
+                  "date": "[##_article_rep_simple_date_##]",
+                  "dateTime": "[##_article_rep_date_##]"
+                }
+              </pre>
+
+              <div data-article="content">[##_article_rep_desc_##]</div>
+              <div data-article="commentCount">
+                <s_rp_count>[##_article_rep_rp_cnt_##]</s_rp_count>
+              </div>
+            </div>
+          </s_index_article_rep>
           <s_article_rep>
             <div class="article">
               <pre data-article="article">
