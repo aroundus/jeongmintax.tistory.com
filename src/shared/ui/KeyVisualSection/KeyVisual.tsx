@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import { useIsMobile } from '@/shared/lib';
+import { dayjs, useIsMobile } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
@@ -73,7 +73,7 @@ export function KeyVisual({
           <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
           <div></div>
           <div {...stylex.props(metaStyles.container)}>
-            <span {...stylex.props(metaStyles.date)}>{date}</span>
+            <span {...stylex.props(metaStyles.date)}>{dayjs.formatDate(date)}</span>
             {typeof commentCount === 'number' && commentCount > 0 && (
               <div
                 {...stylex.props(

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import { FloatingActiveHeading } from './FloatingActiveHeading';
-
 import '@/features/article/ui/article.scss';
+
+import { FloatingActiveHeading } from './FloatingActiveHeading';
 
 const meta = {
   argTypes: {},

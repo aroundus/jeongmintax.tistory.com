@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import { FloatingTOC } from './FloatingTOC';
-
 import '@/features/article/ui/article.scss';
+
+import { FloatingTOC } from './FloatingTOC';
 
 const meta = {
   argTypes: {},

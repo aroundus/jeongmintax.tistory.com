@@ -7,6 +7,7 @@ import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import type { Article } from '@/entities/article/api';
 import { useIsDarkMode, useIsMobile } from '@/shared/lib';
+import { dayjs } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
@@ -25,6 +26,7 @@ export function ArticleListItem({
   likeCount,
   path,
   summary,
+  thumbnailURL,
   title,
 }: ArticleListItemProps) {
   const isDarkMode = useIsDarkMode();
@@ -42,6 +44,13 @@ export function ArticleListItem({
         setIsMouseEnter(false);
       }}
     >
+      <div {...stylex.props(styles.imageWrapper)}>
+        <img
+          {...stylex.props(styles.image, isMouseEnter && styles.isMouseEnterImage)}
+          aria-hidden="true"
+          src={thumbnailURL}
+        />
+      </div>
       <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>{category}</div>
       <div
         {...stylex.props(
@@ -54,7 +63,7 @@ export function ArticleListItem({
       </div>
       <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
       <div {...stylex.props(metaStyles.container)}>
-        <span {...stylex.props(metaStyles.date)}>{date}</span>
+        <span {...stylex.props(metaStyles.date, mixinStyles.font(16, 400))}>{dayjs.formatDate(date)}</span>
         {typeof commentCount === 'number' && commentCount > 0 && (
           <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
             <MdOutlineCommentIcon
@@ -129,8 +138,20 @@ const styles = stylex.create({
     backgroundSize: '500% auto',
     textFillColor: 'rgba(0, 0, 0, 0)',
   }),
+  imageWrapper: {
+    height: 160,
+    overflow: 'hidden',
+    width: '100%',
+  },
+  image: {
+    transition: '400ms ease',
+  },
+  isMouseEnterImage: {
+    transform: `scale(1.05)`,
+  },
   category: {
     color: colors.stone6,
+    marginTop: sizes[32],
   },
   title: {
     marginTop: sizes[8],
@@ -146,6 +167,7 @@ const metaStyles = stylex.create({
   container: {
     alignItems: 'center',
     display: 'flex',
+    flexWrap: 'wrap',
     gap: sizes[12],
     marginTop: sizes[16],
   },
