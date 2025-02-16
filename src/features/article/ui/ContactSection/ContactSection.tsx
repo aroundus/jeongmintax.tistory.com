@@ -17,8 +17,8 @@ export function ContactSection() {
         src="/images/name-card.jpg"
       />
       <p {...stylex.props(styles.paragraph)}>
-        저희는 유연하고 상황에 맞는 전문적인 세무 전략을 지원합니다. 어려운 세무에 궁금증이 있거나 상담이 필요한 경우
-        아래의 버튼을 클릭해 연락해 주세요. 성공을 위한 최적의 세무 파트너로 최선을 다하겠습니다.
+        저희는 고객님의 상황에 맞춘 전문적인 세무 전략을 제공합니다. 세무 관련 상담이 필요하시면 언제든지 편하게 문의해
+        주세요. 성공을 위한 최적의 세무 파트너가 되기 위해 최선을 다하겠습니다.
       </p>
       <div {...stylex.props(buttonStyles.container)}>
         <Button
