@@ -16,6 +16,7 @@
     <email>specialguest@kakao.com</email>
   </author>
   <default>
+    <!-- 사용 안 함
     <cover>
       [
         {
@@ -26,31 +27,20 @@
             "category": "ALL",
             "size": 10
           }
-        },
-        {
-          "name": "list",
-          "title": "",
-          "dataType": "RECENT",
-          "data": {
-            "category": "ALL",
-            "size": 20
-          }
         }
       ]
     </cover>
+    -->
     <entriesOnList>20</entriesOnList>
     <entriesOnPage>10</entriesOnPage>
   </default>
+  <!-- 사용 안 함
   <cover>
     <item>
       <name>key-visual</name>
       <label><![CDATA[ 키 비주얼 ]]></label>
       <description><![CDATA[ 키 비주얼을 노출합니다. ]]></description>
     </item>
-    <item>
-      <name>list</name>
-      <label><![CDATA[ 글 목록 ]]></label>
-      <description><![CDATA[ 글 목록을 노출합니다. ]]></description>
-    </item>
   </cover>
+  -->
 </skin>

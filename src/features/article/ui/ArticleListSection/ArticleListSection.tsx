@@ -1,11 +1,11 @@
 import * as stylex from '@stylexjs/stylex';
 
-import type { CoverArticle } from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
 
 import { ArticleList } from './ArticleList';
 
 interface ArticleListSectionProps {
-  articles: CoverArticle[];
+  articles: Article[];
 }
 
 export function ArticleListSection({ articles }: ArticleListSectionProps) {
