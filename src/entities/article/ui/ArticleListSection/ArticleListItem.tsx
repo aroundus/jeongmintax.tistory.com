@@ -62,7 +62,9 @@ export function ArticleListItem({
       >
         {title}
       </div>
-      <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
+      <p {...stylex.props(styles.summary, isMouseEnter && styles.isMouseEnterSummary, mixinStyles.font(18, 400))}>
+        {summary}
+      </p>
       <div {...stylex.props(metaStyles.container)}>
         <span {...stylex.props(metaStyles.date, mixinStyles.font(16, 400))}>{dayjs.formatDate(date)}</span>
         {typeof commentCount === 'number' && commentCount > 0 && (
@@ -161,6 +163,9 @@ const styles = stylex.create({
   summary: {
     marginTop: sizes[16],
     transition: '200ms ease-out',
+  },
+  isMouseEnterSummary: {
+    color: colors.stone6,
   },
 });
 
