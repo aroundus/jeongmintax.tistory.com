@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { HeaderDesktop } from './HeaderDesktop';
+import { DesktopHeader } from './DesktopHeader';
 
 const meta = {
   argTypes: {},
-  component: HeaderDesktop,
+  component: DesktopHeader,
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'app/Layout/HeaderDesktop',
-} satisfies Meta<typeof HeaderDesktop>;
+  title: 'widgets/Header/DesktopHeader',
+} satisfies Meta<typeof DesktopHeader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -18,4 +18,4 @@ export const HeaderStory: Story = {
   args: {},
 };
 
-HeaderStory.storyName = 'HeaderDesktop';
+HeaderStory.storyName = 'DesktopHeader';

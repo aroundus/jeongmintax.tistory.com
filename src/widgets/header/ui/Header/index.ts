@@ -1,2 +1,2 @@
-export { HeaderDesktop } from './HeaderDesktop';
-export { HeaderMobile } from './HeaderMobile';
+export { DesktopHeader } from './DesktopHeader';
+export { MobileHeader } from './MobileHeader';

@@ -6,7 +6,7 @@ import CategoryPage from '@/pages/category/CategoryPage';
 import SearchResultPage from '@/pages/search/SearchResultPage';
 import { useIsMobile } from '@/shared/lib';
 import { Footer } from '@/widgets/footer/ui';
-import { HeaderDesktop, HeaderMobile } from '@/widgets/header/ui';
+import { DesktopHeader, MobileHeader } from '@/widgets/header/ui';
 
 import 'virtual:stylex.css';
 
@@ -21,7 +21,7 @@ export default function Preview() {
 
   return (
     <>
-      {isMobile ? <HeaderMobile /> : <HeaderDesktop />}
+      {isMobile ? <MobileHeader /> : <DesktopHeader />}
       <main>
         {document.getElementById('tt-body-index') && <HomePage />}
         {document.getElementById('tt-body-page') && <ArticlePage />}
