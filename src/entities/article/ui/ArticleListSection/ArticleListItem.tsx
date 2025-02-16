@@ -150,7 +150,7 @@ const styles = stylex.create({
     transition: '400ms ease',
   },
   isMouseEnterImage: {
-    transform: `scale(1.05)`,
+    transform: `scale(1.01)`,
   },
   category: {
     color: colors.stone6,
