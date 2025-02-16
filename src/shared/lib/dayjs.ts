@@ -7,8 +7,16 @@ export const initializeLocale = () => {
   dayjs.locale('ko');
 };
 
-export const format = (date?: DateType, template?: string): string => (date ? dayjs(date).format(template) : '');
+export function format(date?: DateType, template?: string) {
+  const formattedDate = typeof date === 'string' ? date.replace(/\.$/, '').replace(/\.\s*/g, '/') : date;
 
-export const formatDate = (date?: DateType): string => format(date, 'YYYY-MM-DD');
+  return date ? dayjs(formattedDate).format(template) : '';
+}
 
-export const formatDateTime = (date?: DateType): string => format(date, 'YYYY-MM-DD HH:mm');
+export function formatDate(date?: DateType) {
+  return format(date, 'YYYY-MM-DD');
+}
+
+export function formatDateTime(date?: DateType) {
+  return format(date, 'YYYY-MM-DD HH:mm');
+}
