@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
-import { ArticleListSection } from '@/features/article/ui';
+import { ArticleListSection } from '@/entities/article/ui';
 
 import { SearchResultHeader } from './_ui';
 

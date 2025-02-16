@@ -10,9 +10,9 @@ import {
   CommentSection,
   ContactSection,
   FloatingActiveHeading,
-  FloatingArticleAside,
   FloatingTOC,
-} from '@/features/article/ui';
+} from '@/entities/article/ui';
+import { FloatingArticleAside } from '@/features/article/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
 import { KeyVisualSection } from '@/shared/ui';
 import { FloatingScrollToTopButton, ProgressBar } from '@/shared/ui';

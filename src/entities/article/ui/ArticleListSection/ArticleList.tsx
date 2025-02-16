@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
 
-import type { Article } from '@/entities/article/api';
 import { sizes } from '@/shared/stylex/sizes.stylex';
+
+import type { Article } from '../../api';
 
 import { ArticleListItem } from './ArticleListItem';
 

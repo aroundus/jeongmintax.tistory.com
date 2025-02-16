@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import '@/features/article/ui/article.scss';
+import '../article.scss';
 
 import { FloatingActiveHeading } from './FloatingActiveHeading';
 
@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'features/article/FloatingActiveHeading',
+  title: 'entities/article/FloatingActiveHeading',
 } satisfies Meta<typeof FloatingActiveHeading>;
 
 export default meta;

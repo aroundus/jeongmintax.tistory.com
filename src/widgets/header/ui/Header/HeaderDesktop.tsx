@@ -4,8 +4,8 @@ import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
+import { SearchTextField } from '@/entities/search/ui';
 import { getSession } from '@/entities/user/api';
-import { SearchTextField } from '@/features/search/ui';
 import Logo from '@/shared/assets/logo.svg?react';
 import { useIsDarkMode } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';

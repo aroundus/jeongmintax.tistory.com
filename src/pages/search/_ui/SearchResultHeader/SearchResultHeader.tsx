@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { SearchTextField } from '@/features/search/ui';
+import { SearchTextField } from '@/entities/search/ui';
 import { mixinStyles } from '@/shared/stylex';
 import { colors } from '@/shared/stylex/colors.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';

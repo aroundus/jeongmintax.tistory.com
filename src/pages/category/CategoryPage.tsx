@@ -4,9 +4,9 @@ import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
+import { ArticleListSection } from '@/entities/article/ui';
 import * as categoryService from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
-import { ArticleListSection } from '@/features/article/ui';
 
 import { CategoryHeader } from './_ui';
 

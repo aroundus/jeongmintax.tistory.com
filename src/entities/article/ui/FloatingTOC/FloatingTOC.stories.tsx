@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import '@/features/article/ui/article.scss';
+import '../article.scss';
 
 import { FloatingTOC } from './FloatingTOC';
 
@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'features/article/FloatingTOC',
+  title: 'entities/article/FloatingTOC',
 } satisfies Meta<typeof FloatingTOC>;
 
 export default meta;

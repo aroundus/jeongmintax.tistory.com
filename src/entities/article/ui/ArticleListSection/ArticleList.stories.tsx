@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { Article } from '@/entities/article/api';
+import type { Article } from '../../api';
 
 import { ArticleList } from './ArticleList';
 
@@ -8,7 +8,7 @@ const meta = {
   argTypes: {},
   component: ArticleList,
   parameters: {},
-  title: 'features/article/ArticleListSection/ArticleList',
+  title: 'entities/article/ArticleListSection/ArticleList',
 } satisfies Meta<typeof ArticleList>;
 
 export default meta;
