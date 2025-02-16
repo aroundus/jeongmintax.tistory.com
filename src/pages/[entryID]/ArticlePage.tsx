@@ -120,7 +120,6 @@ export default function ArticlePage() {
     >
       <KeyVisualSection
         article={articles[0]}
-        type="ARTICLE"
         onCommentClick={handleCommentClick}
         onLikeClick={handleLikeClick}
       />

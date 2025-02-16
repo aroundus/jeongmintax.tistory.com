@@ -3,7 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 import * as articleService from '@/entities/article/api';
-import type { CoverArticle } from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
 import * as categoryService from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
 import { ArticleListSection } from '@/features/article/ui';
@@ -12,17 +12,15 @@ import { KeyVisualSection } from '@/shared/ui';
 
 export default function HomePage() {
   const categories = categoryService.getCategories();
-  const preloadedKeyVisualArticles = articleService.getCoverArticles('key-visual');
-  const preloadedListArticles = articleService.getCoverArticles('list');
+  const preloadedArticles = articleService.getArticles();
 
-  const [keyVisualArticles, setKeyVisualArticles] = useState<CoverArticle[]>(preloadedKeyVisualArticles);
-  const [listArticles, setListArticles] = useState<CoverArticle[]>(preloadedListArticles);
+  const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 
-  async function fetchKeyVisualArticlesLikeCount() {
-    const articlesWithLikeCount: CoverArticle[] = [];
+  async function fetchArticlesLikeCount() {
+    const articlesWithLikeCount: Article[] = [];
 
-    for (let index = 0; index < keyVisualArticles.length; index += 1) {
-      const article = keyVisualArticles[index];
+    for (let index = 0; index < articles.length; index += 1) {
+      const article = articles[index];
       const fetchedReaction = await articleService.getReaction(article.articleNo);
 
       articlesWithLikeCount.push({
@@ -32,29 +30,12 @@ export default function HomePage() {
       });
     }
 
-    setKeyVisualArticles(articlesWithLikeCount);
-  }
-
-  async function fetchListArticlesLikeCount() {
-    const articlesWithLikeCount: CoverArticle[] = [];
-
-    for (let index = 0; index < listArticles.length; index += 1) {
-      const article = listArticles[index];
-      const fetchedReaction = await articleService.getReaction(article.articleNo);
-
-      articlesWithLikeCount.push({
-        ...article,
-        likeCount: fetchedReaction.data.reactionCounter.like,
-        isLikeActive: fetchedReaction.data.isActive,
-      });
-    }
-
-    setListArticles(articlesWithLikeCount);
+    setArticles(articlesWithLikeCount);
   }
 
   const handleKeyVisualLikeClick = useCallback(
     async (articleIndex: number) => {
-      const article = keyVisualArticles[articleIndex];
+      const article = articles[articleIndex];
 
       if (article.isLikeActive) {
         await articleService.deleteLikeReaction(article.articleNo);
@@ -62,7 +43,7 @@ export default function HomePage() {
         await articleService.postLikeReaction(article.articleNo);
       }
 
-      setKeyVisualArticles((prevArticles) =>
+      setArticles((prevArticles) =>
         prevArticles.map((prevArticle, prevArticleIndex) => {
           if (prevArticleIndex === articleIndex && typeof article.likeCount === 'number') {
             return {
@@ -76,12 +57,11 @@ export default function HomePage() {
         }),
       );
     },
-    [keyVisualArticles],
+    [articles],
   );
 
   useEffect(() => {
-    fetchKeyVisualArticlesLikeCount();
-    fetchListArticlesLikeCount();
+    fetchArticlesLikeCount();
   }, []);
 
   useLayoutEffect(() => {
@@ -92,16 +72,13 @@ export default function HomePage() {
 
   return (
     <div {...stylex.props(styles.container)}>
-      {document.querySelector('[data-cover="key-visual"]') && (
-        <KeyVisualSection
-          articles={keyVisualArticles}
-          type="COVER_ARTICLE"
-          onLikeClick={handleKeyVisualLikeClick}
-        />
-      )}
+      <KeyVisualSection
+        articles={articles}
+        onLikeClick={handleKeyVisualLikeClick}
+      />
       <ProfileSection />
       <CategoryField categories={categories} />
-      {document.querySelector('[data-cover="list"]') && <ArticleListSection articles={listArticles} />}
+      <ArticleListSection articles={articles} />
     </div>
   );
 }

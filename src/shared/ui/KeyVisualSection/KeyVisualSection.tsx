@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import type { Article, CoverArticle } from '@/entities/article/api';
+import type { Article } from '@/entities/article/api';
 
 import { KeyVisual } from './KeyVisual';
 
@@ -13,13 +13,11 @@ type KeyVisualContentsProps =
   | {
       article: Article;
       articles?: never;
-      type: 'ARTICLE';
       onCommentClick: () => void;
     }
   | {
       article?: never;
-      articles: CoverArticle[];
-      type: 'COVER_ARTICLE';
+      articles: Article[];
       onCommentClick?: never;
     };
 
@@ -27,7 +25,7 @@ type KeyVisualSectionProps = KeyVisualContentsProps & {
   onLikeClick: (articleIndex: number) => void;
 };
 
-export function KeyVisualSection({ type, onLikeClick, ...props }: KeyVisualSectionProps) {
+export function KeyVisualSection({ onLikeClick, ...props }: KeyVisualSectionProps) {
   return (
     <section {...stylex.props(styles.container)}>
       <Swiper
@@ -37,7 +35,7 @@ export function KeyVisualSection({ type, onLikeClick, ...props }: KeyVisualSecti
         navigation={true}
         simulateTouch={false}
       >
-        {type === 'ARTICLE' && props.article && (
+        {props.article && (
           <KeyVisual
             {...props.article}
             date={props.article.dateTime}
@@ -49,8 +47,7 @@ export function KeyVisualSection({ type, onLikeClick, ...props }: KeyVisualSecti
             }}
           />
         )}
-        {type === 'COVER_ARTICLE' &&
-          props.articles &&
+        {props.articles &&
           props.articles.map((content, index) => (
             <SwiperSlide key={content.path}>
               <KeyVisual
