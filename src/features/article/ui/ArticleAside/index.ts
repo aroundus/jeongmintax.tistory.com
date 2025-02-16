@@ -1,1 +1,0 @@
-export { ArticleAside } from './ArticleAside';

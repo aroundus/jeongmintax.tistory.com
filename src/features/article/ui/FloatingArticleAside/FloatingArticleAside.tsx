@@ -8,12 +8,12 @@ import { sizes } from '@/shared/stylex/sizes.stylex';
 
 import { ProfileSection } from './ProfileSection';
 
-interface ArticleAsideProps {
+interface FloatingArticleAsideProps {
   article: Article;
   target: HTMLElement | null;
 }
 
-export function ArticleAside({ article, target }: ArticleAsideProps) {
+export function FloatingArticleAside({ article, target }: FloatingArticleAsideProps) {
   const [position, setPosition] = useState<React.CSSProperties['position']>('absolute');
   const [xOffset, setXOffset] = useState(0);
   const [yOffset, setYOffset] = useState(0);

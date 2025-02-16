@@ -6,11 +6,11 @@ import { throttle } from 'lodash-es';
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
 import {
-  ArticleAside,
   ArticleSection,
   CommentSection,
   ContactSection,
   FloatingActiveHeading,
+  FloatingArticleAside,
   FloatingTOC,
 } from '@/features/article/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
@@ -128,7 +128,7 @@ export default function ArticlePage() {
         value={scrollY / scrollHeight > 1 ? 1 : Number((scrollY / scrollHeight).toFixed(2))}
       />
       {isDesktop && (
-        <ArticleAside
+        <FloatingArticleAside
           article={articles[0]}
           target={articleElement}
         />
