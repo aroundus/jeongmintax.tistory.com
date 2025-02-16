@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react';
 
 import HomePage from '@/pages/(home)/HomePage';
-import ArticlePage from '@/pages/[entryID]/ArticlePage';
+import ArticlePage from '@/pages/[pageNo]/ArticlePage';
 import CategoryPage from '@/pages/category/CategoryPage';
 import SearchResultPage from '@/pages/search/SearchResultPage';
 import { useIsMobile } from '@/shared/lib';

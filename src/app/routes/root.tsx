@@ -3,7 +3,7 @@ import type { RouteObject } from 'react-router-dom';
 
 import HomePage from '@/pages/(home)/HomePage';
 import Layout from '@/pages/Layout';
-import ArticlePage from '@/pages/[entryID]/ArticlePage';
+import ArticlePage from '@/pages/[pageNo]/ArticlePage';
 import CategoryPage from '@/pages/category/CategoryPage';
 import SearchResultPage from '@/pages/search/SearchResultPage';
 
