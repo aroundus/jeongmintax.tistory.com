@@ -143,7 +143,7 @@ export default function ArticlePage() {
       <ContactSection />
       <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
-      <FloatingScrollToTopButton />
+      <FloatingScrollToTopButton target={articleElement} />
     </div>
   );
 }

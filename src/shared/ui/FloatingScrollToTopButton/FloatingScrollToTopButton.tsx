@@ -6,8 +6,13 @@ import { GoMoveToTop as GoMoveToTopIcon } from 'react-icons/go';
 
 import { sizes } from '@/shared/stylex/sizes.stylex';
 
-export function FloatingScrollToTopButton() {
+interface FloatingScrollToTopButtonProps {
+  target: HTMLElement | null;
+}
+
+export function FloatingScrollToTopButton({ target }: FloatingScrollToTopButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [xOffset, setXOffset] = useState<number | null>(0);
 
   const handleClick = () => {
     window.scroll({
@@ -17,24 +22,43 @@ export function FloatingScrollToTopButton() {
   };
 
   useEffect(() => {
-    function handleScroll() {
-      const { clientHeight, scrollTop } = document.documentElement;
-
-      setIsVisible(scrollTop > clientHeight);
+    if (target === null) {
+      return;
     }
+
+    const handleScroll = () => {
+      const { clientHeight, clientWidth, scrollTop } = document.documentElement;
+      setIsVisible(scrollTop > clientHeight);
+
+      const targetRect = target.getBoundingClientRect();
+      const contentWidth = targetRect.left + targetRect.width;
+
+      if (contentWidth < clientWidth - 56 - 24) {
+        setXOffset(contentWidth);
+      } else {
+        setXOffset(null);
+      }
+    };
 
     const throttledScroll = throttle(handleScroll, 50);
 
     handleScroll();
-    window.addEventListener('scroll', throttledScroll);
+    ['resize', 'orientationChange', 'scroll'].forEach((type) => {
+      window.addEventListener(type, throttledScroll);
+    });
 
     return () => {
-      window.removeEventListener('scroll', throttledScroll);
+      ['resize', 'orientationChange', 'scroll'].forEach((type) => {
+        window.removeEventListener(type, throttledScroll);
+      });
     };
-  }, []);
+  }, [target]);
 
   return (
-    <div {...stylex.props(styles.container)}>
+    <div
+      {...stylex.props(styles.container)}
+      style={{ left: xOffset || undefined, right: xOffset === null ? sizes[24] : undefined }}
+    >
       {isVisible && (
         <button
           {...stylex.props(buttonStyles.container)}
@@ -53,7 +77,6 @@ const styles = stylex.create({
     bottom: sizes[24],
     gap: sizes[16],
     position: 'fixed',
-    right: sizes[24],
     zIndex: 3,
   },
 });
