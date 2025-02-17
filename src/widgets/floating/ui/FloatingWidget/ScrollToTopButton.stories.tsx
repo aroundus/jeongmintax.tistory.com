@@ -11,7 +11,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'shared/FloatingWidget/ScrollToTopButton',
+  title: 'widgets/floating/FloatingWidget/ScrollToTopButton',
 } satisfies Meta<typeof ScrollToTopButton>;
 
 export default meta;

@@ -15,7 +15,8 @@ import {
 import { FloatingArticleAside } from '@/features/article/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
 import { KeyVisualSection } from '@/shared/ui';
-import { FloatingWidget, ProgressBar } from '@/shared/ui';
+import { ProgressBar } from '@/shared/ui';
+import { FloatingWidget } from '@/widgets/floating/ui';
 
 export default function ArticlePage() {
   const isDesktop = useIsDesktop(1280);
