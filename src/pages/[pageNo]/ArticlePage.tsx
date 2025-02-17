@@ -24,7 +24,7 @@ export default function ArticlePage() {
   const ref = useRef<HTMLDivElement>(null);
 
   const preloadedArticles = articleService.getArticles();
-  const articleElement = document.getElementById('article');
+  const articleElement = document.getElementById('root')!.querySelector('#article') as HTMLElement;
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
