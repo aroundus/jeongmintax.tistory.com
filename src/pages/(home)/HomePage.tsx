@@ -9,10 +9,12 @@ import * as categoryService from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
 import { ProfileSection } from '@/features/profile/ui';
 import { KeyVisualSection } from '@/shared/ui';
+import { FloatingWidget } from '@/widgets/floating/ui';
 
 export default function HomePage() {
   const categories = categoryService.getCategories();
   const preloadedArticles = articleService.getArticles();
+  const articleListElement = document.getElementById('article-list');
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 
@@ -79,6 +81,9 @@ export default function HomePage() {
       <ProfileSection />
       <CategoryField categories={categories} />
       <ArticleListSection articles={articles} />
+      <FloatingWidget.Container target={articleListElement}>
+        <FloatingWidget.ScrollToTopButton />
+      </FloatingWidget.Container>
     </div>
   );
 }
