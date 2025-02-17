@@ -3,20 +3,20 @@ import { useEffect, useState } from 'react';
 import type { Meta } from '@storybook/react';
 import { throttle } from 'lodash-es';
 
-import { FloatingScrollToTopButton } from './FloatingScrollToTopButton';
+import { ScrollToTopButton } from './ScrollToTopButton';
 
 const meta = {
   argTypes: {},
-  component: FloatingScrollToTopButton,
+  component: ScrollToTopButton,
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'shared/FloatingScrollToTopButton',
-} satisfies Meta<typeof FloatingScrollToTopButton>;
+  title: 'shared/FloatingWidget/ScrollToTopButton',
+} satisfies Meta<typeof ScrollToTopButton>;
 
 export default meta;
 
-export function FloatingScrollToTopButtonStory() {
+export function ScrollToTopButtonStory() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -42,9 +42,9 @@ export function FloatingScrollToTopButtonStory() {
       >
         {scrollY}
       </span>
-      <FloatingScrollToTopButton />
+      <ScrollToTopButton />
     </>
   );
 }
 
-FloatingScrollToTopButtonStory.storyName = 'FloatingScrollToTopButton';
+ScrollToTopButtonStory.storyName = 'ScrollToTopButton';

@@ -15,7 +15,7 @@ import {
 import { FloatingArticleAside } from '@/features/article/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
 import { KeyVisualSection } from '@/shared/ui';
-import { FloatingScrollToTopButton, ProgressBar } from '@/shared/ui';
+import { FloatingWidget, ProgressBar } from '@/shared/ui';
 
 export default function ArticlePage() {
   const isDesktop = useIsDesktop(1280);
@@ -143,7 +143,9 @@ export default function ArticlePage() {
       <ContactSection />
       <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
-      <FloatingScrollToTopButton target={articleElement} />
+      <FloatingWidget.Container target={articleElement}>
+        <FloatingWidget.ScrollToTopButton />
+      </FloatingWidget.Container>
     </div>
   );
 }
