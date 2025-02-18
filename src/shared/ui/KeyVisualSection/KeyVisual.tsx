@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import * as stylex from '@stylexjs/stylex';
-import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
+import { GoHeart as GoHeartIcon, GoHeartFill as GoHeartFillIcon } from 'react-icons/go';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsMobile } from '@/shared/lib';
@@ -98,14 +98,14 @@ export function KeyVisual({
                 onClick={handleLikeClick}
               >
                 {isLikeActive ? (
-                  <FaHeartIcon
+                  <GoHeartFillIcon
                     style={{
                       height: 20,
                       width: 20,
                     }}
                   />
                 ) : (
-                  <FaRegHeartIcon
+                  <GoHeartIcon
                     style={{
                       height: 20,
                       width: 20,

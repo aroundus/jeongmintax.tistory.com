@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import * as stylex from '@stylexjs/stylex';
-import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icons/fa';
+import { GoHeart as GoHeartIcon, GoHeartFill as GoHeartFillIcon } from 'react-icons/go';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsDarkMode, useIsMobile } from '@/shared/lib';
@@ -80,14 +80,14 @@ export function ArticleListItem({
         {typeof likeCount === 'number' && (
           <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
             {isLikeActive ? (
-              <FaHeartIcon
+              <GoHeartFillIcon
                 style={{
                   height: 20,
                   width: 20,
                 }}
               />
             ) : (
-              <FaRegHeartIcon
+              <GoHeartIcon
                 style={{
                   height: 20,
                   width: 20,
