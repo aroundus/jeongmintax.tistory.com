@@ -12,27 +12,6 @@ export interface CoverArticle {
   articleNo: number;
 
   /**
-   * 글 제목
-   */
-  title: string;
-
-  /**
-   * 글 요약 내용
-   */
-  summary: string;
-
-  /**
-   * 주소 경로
-   * @example '/1'
-   */
-  path: string;
-
-  /**
-   * 썸네일 주소
-   */
-  thumbnailURL: string;
-
-  /**
    * 카테고리 이름
    */
   category: string;
@@ -48,17 +27,6 @@ export interface CoverArticle {
   commentCount: number;
 
   /**
-   * 공감 수
-   */
-  likeCount: number | null;
-
-  /**
-   * 공감 아이콘 활성화 여부
-   * @description 공감 아이콘의 클릭 여부를 확인합니다.
-   */
-  isLikeActive: boolean;
-
-  /**
    * 발행 일자
    * @example '2024.08.25'
    */
@@ -69,43 +37,53 @@ export interface CoverArticle {
    * @example '2024.08.25 00:00'
    */
   dateTime: string;
-}
-
-/**
- * 글
- * @description 홈 화면을 제외한 화면에서 사용합니다.
- */
-export interface Article extends CoverArticle {
-  /**
-   * 글 본문
-   */
-  content: string;
 
   /**
-   * 작성자
+   * 공감 아이콘 활성화 여부
+   * @description 공감 아이콘의 클릭 여부를 확인합니다.
    */
-  author: string;
+  isLikeActive: boolean;
+
+  /**
+   * 공감 수
+   */
+  likeCount: number | null;
+
+  /**
+   * 주소 경로
+   * @example '/1'
+   */
+  path: string;
+
+  /**
+   * 글 요약 내용
+   */
+  summary: string;
+
+  /**
+   * 썸네일 주소
+   */
+  thumbnailURL: string;
+
+  /**
+   * 글 제목
+   */
+  title: string;
 }
 
 const INITIAL_COVER_ARTICLE: CoverArticle = {
   articleNo: 0,
-  title: '',
-  summary: '',
-  path: '',
-  thumbnailURL: '',
   category: '',
   categoryPath: '',
   commentCount: 0,
-  likeCount: null,
-  isLikeActive: false,
   date: '',
   dateTime: '',
-};
-
-const INITIAL_ARTICLE: Article = {
-  ...INITIAL_COVER_ARTICLE,
-  content: '',
-  author: '',
+  isLikeActive: false,
+  likeCount: null,
+  path: '',
+  summary: '',
+  thumbnailURL: '',
+  title: '',
 };
 
 export function getCoverArticles(name: string) {
@@ -120,9 +98,9 @@ export function getCoverArticles(name: string) {
         ...coverArticle,
         articleNo: Number(coverArticle.path.replace(/[\D]/g, '')),
         category: coverArticle.category === '카테고리 없음' ? blog.title : `#${coverArticle.category}`,
-        summary: truncateWithPeriod(coverArticle.summary, 150),
-        likeCount: null,
         isLikeActive: false,
+        likeCount: null,
+        summary: truncateWithPeriod(coverArticle.summary, 150),
       };
     } catch (error) {
       console.error(error);
@@ -131,6 +109,28 @@ export function getCoverArticles(name: string) {
     }
   });
 }
+
+/**
+ * 글
+ * @description 홈 화면을 제외한 화면에서 사용합니다.
+ */
+export interface Article extends CoverArticle {
+  /**
+   * 작성자
+   */
+  author: string;
+
+  /**
+   * 글 본문
+   */
+  content: string;
+}
+
+const INITIAL_ARTICLE: Article = {
+  ...INITIAL_COVER_ARTICLE,
+  author: '',
+  content: '',
+};
 
 export function getArticles() {
   const blog = getBlog();
@@ -169,14 +169,14 @@ export function getArticles() {
       return {
         ...article,
         articleNo: Number(article.path.replace(/[\D]/g, '')),
-        summary: truncateWithPeriod(summary.trim() || article.summary, 150),
-        content,
         category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
         commentCount,
+        content,
         date: dayjs.formatDate(article.date),
         dateTime: dayjs.formatDateTime(article.dateTime),
-        likeCount: null,
         isLikeActive: false,
+        likeCount: null,
+        summary: truncateWithPeriod(summary.trim() || article.summary, 150),
       };
     } catch (error) {
       console.error(error);
