@@ -1,5 +1,5 @@
 import { getBlog } from '@/entities/blog/api';
-import { truncateWithPeriod } from '@/shared/lib';
+import { dayjs, truncateWithPeriod } from '@/shared/lib';
 
 /**
  * 홈 커버 글
@@ -173,6 +173,8 @@ export function getArticles() {
         content,
         category: article.category === '카테고리 없음' ? blog.title : `#${article.category}`,
         commentCount,
+        date: dayjs.formatDate(article.date),
+        dateTime: dayjs.formatDateTime(article.dateTime),
         likeCount: null,
         isLikeActive: false,
       };

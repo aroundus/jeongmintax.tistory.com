@@ -6,7 +6,6 @@ import { FaHeart as FaHeartIcon, FaRegHeart as FaRegHeartIcon } from 'react-icon
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
 import { useIsDarkMode, useIsMobile } from '@/shared/lib';
-import { dayjs } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
@@ -66,7 +65,7 @@ export function ArticleListItem({
         {summary}
       </p>
       <div {...stylex.props(metaStyles.container)}>
-        <span {...stylex.props(metaStyles.date, mixinStyles.font(16, 400))}>{dayjs.formatDate(date)}</span>
+        <span {...stylex.props(metaStyles.date, mixinStyles.font(16, 400))}>{date}</span>
         {typeof commentCount === 'number' && commentCount > 0 && (
           <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
             <MdOutlineCommentIcon
