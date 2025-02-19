@@ -13,21 +13,13 @@ export function format(date?: DateType, template?: string) {
     const units = date.split('. ');
 
     if (units.length === 3) {
-      return dayjs('1900-01-01 00:00:00')
-        .set('year', Number(units[0]))
-        .set('month', Number(units[1]))
-        .set('day', Number(units[2]))
-        .format(template);
+      return dayjs(`${units[0]}-${units[1].padStart(2, '0')}-${units[2].padStart(2, '0')} 00:00:00`).format(template);
     }
 
     if (units.length === 4) {
-      return dayjs('1900-01-01 00:00:00')
-        .set('year', Number(units[0]))
-        .set('month', Number(units[1]))
-        .set('day', Number(units[2]))
-        .set('hour', Number(units[3].split(':')[0]))
-        .set('minute', Number(units[3].split(':')[1]))
-        .format(template);
+      return dayjs(`${units[0]}-${units[1].padStart(2, '0')}-${units[2].padStart(2, '0')} ${units[3]}:00`).format(
+        template,
+      );
     }
   }
 
