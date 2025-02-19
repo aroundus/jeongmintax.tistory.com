@@ -16,6 +16,8 @@ export default function HomePage() {
   const preloadedArticles = articleService.getArticles();
   const articleListElement = document.getElementById('article-list');
 
+  const pagination = articleService.getPagination();
+
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 
   async function fetchArticlesLikeCount() {
@@ -82,6 +84,8 @@ export default function HomePage() {
       <CategoryField categories={categories} />
       <ArticleListSection articles={articles} />
       <FloatingWidget.Container target={articleListElement}>
+        {pagination.prevPath && <FloatingWidget.GoPrevPageButton path={pagination.prevPath} />}
+        {pagination.nextPath && <FloatingWidget.GoNextPageButton path={pagination.nextPath} />}
         <FloatingWidget.ScrollToTopButton />
       </FloatingWidget.Container>
     </div>

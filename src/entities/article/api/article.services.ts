@@ -185,3 +185,47 @@ export function getArticles() {
     }
   });
 }
+
+interface Page {
+  isSelected: boolean;
+  pageNo: number;
+  path: string;
+}
+
+interface Pagination {
+  nextPath: string | null;
+  pages: Page[];
+  prevPath: string | null;
+}
+
+export function getPagination() {
+  const pagination = {} as Pagination;
+
+  const paginationElement = document.getElementById('tistory')!.querySelector('#pagination')!;
+  const prevPageElement = paginationElement.querySelector('#prev-page') as HTMLAnchorElement;
+  const nextPageElement = paginationElement.querySelector('#next-page') as HTMLAnchorElement;
+  const pageElements = paginationElement.querySelectorAll('.page') as NodeListOf<HTMLAnchorElement>;
+
+  if (prevPageElement.className === 'no-more-prev') {
+    pagination.prevPath = null;
+  } else {
+    pagination.prevPath = prevPageElement.getAttribute('href');
+  }
+
+  if (nextPageElement.className === 'no-more-next') {
+    pagination.nextPath = null;
+  } else {
+    pagination.nextPath = nextPageElement.getAttribute('href');
+  }
+
+  pagination.pages = Array.from(pageElements).map(
+    (element) =>
+      ({
+        isSelected: element.querySelector('.selected') ? true : false,
+        pageNo: Number(element.textContent),
+        path: element.href,
+      }) as Page,
+  );
+
+  return pagination;
+}

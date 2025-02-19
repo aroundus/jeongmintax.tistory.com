@@ -16,6 +16,7 @@
       <div id="root"></div>
 
       <div id="tistory" style="display: none">
+
         <pre id="blog">
           {
             "title": "[##_title_##]",
@@ -107,6 +108,20 @@
         </div>
 
         <div data-tistory-react-app="Comment"></div>
+
+        <div id="pagination">
+          <s_paging>
+            <a id="prev-page" [##_prev_page_##] class="[##_no_more_prev_##]">이전
+              페이지</a>
+            <s_paging_rep>
+              <a [##_paging_rep_link_##]
+                class="page">[##_paging_rep_link_num_##]</a>
+            </s_paging_rep>
+            <a id="next-page" [##_next_page_##] class="[##_no_more_next_##]">다음
+              페이지</a>
+          </s_paging>
+        </div>
+
       </div>
     </s_t3>
     <script type="text/javascript" src="./images/script.js"></script>

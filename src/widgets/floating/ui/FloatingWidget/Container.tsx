@@ -64,8 +64,11 @@ export function Container({ children, target }: ContainerProps) {
 const styles = stylex.create({
   container: {
     bottom: sizes[24],
-    gap: sizes[16],
+    display: 'flex',
+    flexDirection: 'column',
+    gap: sizes[8],
     position: 'fixed',
+    transition: '200ms ease-out',
     zIndex: 3,
   },
 });
