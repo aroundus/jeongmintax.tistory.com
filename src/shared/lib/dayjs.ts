@@ -13,7 +13,7 @@ export function format(date?: DateType, template?: string) {
     const units = date.split('. ');
 
     if (units.length === 3) {
-      return dayjs(`${units[0]}-${units[1].padStart(2, '0')}-${units[2].padStart(2, '0')} 00:00:00`).format(template);
+      return dayjs(`${units[0]}-${units[1].padStart(2, '0')}-${units[2].padStart(2, '0')}`).format(template);
     }
 
     if (units.length === 4) {
