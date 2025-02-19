@@ -7,12 +7,15 @@ import type { Article } from '@/entities/article/api';
 import { ArticleListSection } from '@/entities/article/ui';
 import * as categoryService from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
+import { FloatingWidget } from '@/widgets/floating/ui';
 
 import { CategoryHeader } from './_ui';
 
 export default function CategoryPage() {
   const preloadedArticles = articleService.getArticles();
+  const pagination = articleService.getPagination();
   const categories = categoryService.getCategories();
+  const articleListElement = document.getElementById('article-list');
   const keyword = location.pathname.split('/')[2];
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
@@ -52,6 +55,11 @@ export default function CategoryPage() {
       />
       <CategoryField categories={categories} />
       <ArticleListSection articles={articles} />
+      <FloatingWidget.Container target={articleListElement}>
+        {pagination.prevPath && <FloatingWidget.GoPrevPageButton path={pagination.prevPath} />}
+        {pagination.nextPath && <FloatingWidget.GoNextPageButton path={pagination.nextPath} />}
+        <FloatingWidget.ScrollToTopButton />
+      </FloatingWidget.Container>
     </div>
   );
 }

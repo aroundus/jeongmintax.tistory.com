@@ -13,10 +13,9 @@ import { FloatingWidget } from '@/widgets/floating/ui';
 
 export default function HomePage() {
   const categories = categoryService.getCategories();
+  const pagination = articleService.getPagination();
   const preloadedArticles = articleService.getArticles();
   const articleListElement = document.getElementById('article-list');
-
-  const pagination = articleService.getPagination();
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 

@@ -5,11 +5,14 @@ import * as stylex from '@stylexjs/stylex';
 import * as articleService from '@/entities/article/api';
 import type { Article } from '@/entities/article/api';
 import { ArticleListSection } from '@/entities/article/ui';
+import { FloatingWidget } from '@/widgets/floating/ui';
 
 import { SearchResultHeader } from './_ui';
 
 export default function SearchResultPage() {
   const preloadedArticles = articleService.getArticles();
+  const pagination = articleService.getPagination();
+  const articleListElement = document.getElementById('article-list');
   const keyword = decodeURIComponent(location.pathname.split('/')[2]);
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
@@ -48,6 +51,11 @@ export default function SearchResultPage() {
         keyword={keyword}
       />
       <ArticleListSection articles={articles} />
+      <FloatingWidget.Container target={articleListElement}>
+        {pagination.prevPath && <FloatingWidget.GoPrevPageButton path={pagination.prevPath} />}
+        {pagination.nextPath && <FloatingWidget.GoNextPageButton path={pagination.nextPath} />}
+        <FloatingWidget.ScrollToTopButton />
+      </FloatingWidget.Container>
     </div>
   );
 }
