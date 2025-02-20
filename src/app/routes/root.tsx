@@ -7,9 +7,12 @@ import ArticlePage from '@/pages/[pageNo]/ArticlePage';
 import CategoryPage from '@/pages/category/CategoryPage';
 import SearchResultPage from '@/pages/search/SearchResultPage';
 
+import { ErrorBoundary } from './ErrorBoundary';
+
 export const rootRoute: RouteObject = {
   path: '/',
   element: <Layout />,
+  errorElement: <ErrorBoundary />,
   children: [
     {
       index: true,
