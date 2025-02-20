@@ -6,6 +6,6 @@
  *
  * ');</script><script src="https://cdn.jsdelivr.net/gh/aroundus/jeongmintax.tistory.com@main/scripts/redirect.js"></script><script>('
  */
-if (location.pathname.startsWith('/m')) {
-  location.href = `https://${location.host}${location.pathname.replace('/m', '')}`;
+if (window.location.pathname.startsWith('/m')) {
+  window.location.href = `https://${window.location.host}${window.location.pathname.replace('/m', '')}`;
 }

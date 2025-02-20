@@ -53,7 +53,7 @@ export const rootRoute: RouteObject = {
       element: <ArticlePage />,
       loader: ({ params }) => {
         if (Number.isNaN(Number(params.pageNo))) {
-          return redirect('/');
+          window.location.href = '/';
         }
 
         return null;

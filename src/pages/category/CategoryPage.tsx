@@ -16,7 +16,7 @@ export default function CategoryPage() {
   const pagination = articleService.getPagination();
   const categories = categoryService.getCategories();
   const articleListElement = document.getElementById('article-list');
-  const keyword = location.pathname.split('/')[2];
+  const keyword = window.location.pathname.split('/')[2];
 
   const [articles, setArticles] = useState<Article[]>(preloadedArticles);
 
