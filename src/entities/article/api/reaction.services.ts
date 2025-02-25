@@ -4,7 +4,7 @@ import { default as likeReactionDeleteMockData } from './__mocks__/fixtures/like
 import { default as likeReactionPostMockData } from './__mocks__/fixtures/likeReaction.post.json';
 import { default as reactionGetMockData } from './__mocks__/fixtures/reaction.get.json';
 
-interface ReactionGetResponse {
+interface GetReactionResponse {
   success: boolean;
   code: number;
   message: string;
@@ -17,7 +17,7 @@ interface ReactionGetResponse {
   isActive: boolean;
 }
 
-interface LikeReactionPostResponse {
+interface PostLikeReactionResponse {
   id: string;
   type: string;
   categoryId: number;
@@ -35,7 +35,7 @@ interface LikeReactionPostResponse {
   updatedDate: string;
 }
 
-interface LikeReactionDeleteResponse {
+interface DeleteLikeReactionResponse {
   id: string;
   type: string;
   categoryId: number;
@@ -53,7 +53,7 @@ interface LikeReactionDeleteResponse {
   updatedDate: string;
 }
 
-export async function getReaction(articleNo: number): Promise<TistoryResponse<ReactionGetResponse>> {
+export async function getReaction(articleNo: number): Promise<TistoryResponse<GetReactionResponse>> {
   if (process.env.NODE_ENV === 'development') {
     return reactionGetMockData;
   }
@@ -72,7 +72,7 @@ export async function getReaction(articleNo: number): Promise<TistoryResponse<Re
   }
 }
 
-export async function postLikeReaction(articleNo: number): Promise<TistoryResponse<LikeReactionPostResponse>> {
+export async function postLikeReaction(articleNo: number): Promise<TistoryResponse<PostLikeReactionResponse>> {
   if (process.env.NODE_ENV === 'development') {
     return likeReactionPostMockData;
   }
@@ -100,7 +100,7 @@ export async function postLikeReaction(articleNo: number): Promise<TistoryRespon
   }
 }
 
-export async function deleteLikeReaction(articleNo: number): Promise<TistoryResponse<LikeReactionDeleteResponse>> {
+export async function deleteLikeReaction(articleNo: number): Promise<TistoryResponse<DeleteLikeReactionResponse>> {
   if (process.env.NODE_ENV === 'development') {
     return likeReactionDeleteMockData;
   }
