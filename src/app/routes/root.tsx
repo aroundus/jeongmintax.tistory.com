@@ -1,11 +1,10 @@
-import { redirect } from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 
 import HomePage from '@/pages/(home)/HomePage';
 import Layout from '@/pages/Layout';
 import ArticlePage from '@/pages/[pageNo]/ArticlePage';
 import CategoryPage from '@/pages/category/CategoryPage';
-import SearchResultPage from '@/pages/search/SearchResultPage';
+import SearchPage from '@/pages/search/SearchPage';
 
 import { ErrorBoundary } from './ErrorBoundary';
 
@@ -44,7 +43,7 @@ export const rootRoute: RouteObject = {
         },
         {
           path: ':keyword',
-          element: <SearchResultPage />,
+          element: <SearchPage />,
         },
       ],
     },

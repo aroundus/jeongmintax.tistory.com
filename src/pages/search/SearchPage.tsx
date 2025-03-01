@@ -9,7 +9,7 @@ import { FloatingWidget } from '@/widgets/floating/ui';
 
 import { SearchResultHeader } from './_ui';
 
-export default function SearchResultPage() {
+export default function SearchPage() {
   const preloadedArticles = articleService.getArticles();
   const pagination = articleService.getPagination();
   const articleListElement = document.getElementById('article-list');
