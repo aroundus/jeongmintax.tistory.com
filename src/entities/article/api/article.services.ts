@@ -3,7 +3,9 @@ import { dayjs, truncateWithPeriod } from '@/shared/lib';
 
 /**
  * 홈 커버 글
- * @description 홈 화면에서 사용합니다.
+ *
+ * @description 홈 화면에 홈 커버 글을 노출할 때 사용합니다.
+ * @see https://tistory.github.io/document-tistory-skin/common/cover.html
  */
 export interface CoverArticle {
   /**
@@ -112,7 +114,6 @@ export function getCoverArticles(name: string) {
 
 /**
  * 글
- * @description 홈 화면을 제외한 화면에서 사용합니다.
  */
 export interface Article extends CoverArticle {
   /**
