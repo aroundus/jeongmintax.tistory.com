@@ -23,30 +23,25 @@ export default function ArticlePage() {
   const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
 
-  const preloadedArticles = articleService.getArticles();
+  const preloadedArticle = articleService.getArticles()[0];
   const articleElement = document.getElementById('root')!.querySelector('#article') as HTMLElement;
 
-  const [articles, setArticles] = useState<Article[]>(preloadedArticles);
+  const [article, setArticle] = useState<Article>(preloadedArticle);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [progressBarOffset, setProgressBarOffset] = useState<number>(0);
   const [scrollY, setScrollY] = useState<number>(0);
 
-  const fetchArticlesLikeCount = useCallback(async () => {
-    const articlesWithLikeCount: Article[] = [];
+  const fetchArticleLikeCount = useCallback(async () => {
+    const fetchedReaction = await articleService.getReaction(article.articleNo);
 
-    for (let index = 0; index < articles.length; index += 1) {
-      const article = articles[index];
-      const fetchedReaction = await articleService.getReaction(article.articleNo);
+    const articleWithLikeCount = {
+      ...article,
+      likeCount: fetchedReaction.data.reactionCounter.like,
+      isLikeActive: fetchedReaction.data.isActive,
+    };
 
-      articlesWithLikeCount.push({
-        ...article,
-        likeCount: fetchedReaction.data.reactionCounter.like,
-        isLikeActive: fetchedReaction.data.isActive,
-      });
-    }
-
-    setArticles(articlesWithLikeCount);
-  }, [articles]);
+    setArticle(articleWithLikeCount);
+  }, [article]);
 
   const handleCommentClick = useCallback(() => {
     const commentElement = document.getElementById('comment')!;
@@ -55,34 +50,27 @@ export default function ArticlePage() {
       top: commentElement.offsetTop - progressBarOffset,
       behavior: 'smooth',
     });
-  }, [articles]);
+  }, [article]);
 
-  const handleLikeClick = useCallback(
-    async (articleIndex: number) => {
-      const article = articles[articleIndex];
+  const handleLikeClick = useCallback(async () => {
+    if (article.isLikeActive) {
+      await articleService.deleteLikeReaction(article.articleNo);
+    } else {
+      await articleService.postLikeReaction(article.articleNo);
+    }
 
-      if (article.isLikeActive) {
-        await articleService.deleteLikeReaction(article.articleNo);
-      } else {
-        await articleService.postLikeReaction(article.articleNo);
+    setArticle((prevArticle) => {
+      if (typeof article.likeCount === 'number') {
+        return {
+          ...prevArticle,
+          likeCount: article.likeCount + (article.isLikeActive ? -1 : 1),
+          isLikeActive: article.isLikeActive ? false : true,
+        };
       }
 
-      setArticles((prevArticles) =>
-        prevArticles.map((prevArticle, prevArticleIndex) => {
-          if (prevArticleIndex === articleIndex && typeof article.likeCount === 'number') {
-            return {
-              ...prevArticle,
-              likeCount: article.likeCount + (article.isLikeActive ? -1 : 1),
-              isLikeActive: article.isLikeActive ? false : true,
-            };
-          }
-
-          return prevArticle;
-        }),
-      );
-    },
-    [articles],
-  );
+      return prevArticle;
+    });
+  }, [article]);
 
   useEffect(() => {
     const main = document.getElementsByTagName('main')[0]!;
@@ -105,7 +93,7 @@ export default function ArticlePage() {
   }, [ref.current, isMobile]);
 
   useEffect(() => {
-    fetchArticlesLikeCount();
+    fetchArticleLikeCount();
   }, []);
 
   useLayoutEffect(() => {
@@ -120,7 +108,7 @@ export default function ArticlePage() {
       ref={ref}
     >
       <KeyVisualSection
-        article={articles[0]}
+        article={article}
         onCommentClick={handleCommentClick}
         onLikeClick={handleLikeClick}
       />
@@ -130,7 +118,7 @@ export default function ArticlePage() {
       />
       {isDesktop && (
         <FloatingArticleAside
-          article={articles[0]}
+          article={article}
           target={articleElement}
         />
       )}
@@ -140,7 +128,7 @@ export default function ArticlePage() {
           target={articleElement}
         />
       )}
-      <ArticleSection html={articles[0].content} />
+      <ArticleSection html={article.content} />
       <ContactSection />
       <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
