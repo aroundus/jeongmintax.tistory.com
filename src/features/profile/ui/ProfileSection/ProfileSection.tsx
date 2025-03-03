@@ -1,14 +1,14 @@
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
-import { getBlog } from '@/entities/blog/api';
-import { getMenu } from '@/entities/menu/api';
+import * as blogService from '@/entities/blog/api';
+import * as menuService from '@/entities/menu/api';
 
 import { Profile } from './Profile';
 
 export function ProfileSection() {
-  const blog = getBlog();
-  const menu = getMenu();
+  const blog = blogService.getBlog();
+  const menu = menuService.getMenu();
 
   return (
     <section {...stylex.props(styles.container)}>

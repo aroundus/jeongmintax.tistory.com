@@ -1,6 +1,17 @@
 export interface Category {
+  /**
+   * 카테고리 글 수
+   */
   articleCount: number;
+
+  /**
+   * 카테고리 이름
+   */
   name: string;
+
+  /**
+   * 하위 카테고리 목록
+   */
   children?: Category[];
 }
 
