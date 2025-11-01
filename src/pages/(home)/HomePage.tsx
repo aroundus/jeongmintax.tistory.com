@@ -67,6 +67,8 @@ export default function HomePage() {
     fetchArticlesLikeCount();
   }, []);
 
+  console.log(articles);
+
   useLayoutEffect(() => {
     if (import.meta.env.DEV) {
       document.querySelector('body')!.id = 'tt-body-index';

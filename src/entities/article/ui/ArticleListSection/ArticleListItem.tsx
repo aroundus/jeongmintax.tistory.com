@@ -26,7 +26,7 @@ export function ArticleListItem({
   likeCount,
   path,
   summary,
-  thumbnailURL,
+  thumbnailUrl,
   title,
 }: ArticleListItemProps) {
   const isDarkMode = useIsDarkMode();
@@ -48,7 +48,7 @@ export function ArticleListItem({
         <img
           {...stylex.props(styles.image, isMouseEnter && styles.isMouseEnterImage)}
           aria-hidden="true"
-          src={thumbnailURL}
+          src={thumbnailUrl}
         />
       </div>
       <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>{category}</div>

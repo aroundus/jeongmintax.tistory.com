@@ -19,7 +19,7 @@ interface TOCStep {
 export function FloatingActiveHeading({ offset, target }: FloatingActiveHeadingProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [tocSteps, setTOCSteps] = useState<TOCStep[]>([]);
+  const [tocSteps, setTocSteps] = useState<TOCStep[]>([]);
 
   function setTOCStepsOffset() {
     if (target === null) {
@@ -39,7 +39,7 @@ export function FloatingActiveHeading({ offset, target }: FloatingActiveHeadingP
       });
     });
 
-    setTOCSteps(steps);
+    setTocSteps(steps);
   }
 
   function handleClick(top: number) {

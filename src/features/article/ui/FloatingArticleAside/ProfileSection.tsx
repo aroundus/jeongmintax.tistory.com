@@ -19,7 +19,7 @@ export function ProfileSection({ article }: ProfileSectionProps) {
     <section {...stylex.props(styles.container)}>
       <Profile
         article={article}
-        imageURL={blog.imageURL}
+        imageUrl={blog.imageUrl}
         menu={menu}
         name={blog.blogger}
       />

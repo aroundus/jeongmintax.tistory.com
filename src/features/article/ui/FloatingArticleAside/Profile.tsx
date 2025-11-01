@@ -14,7 +14,7 @@ interface ProfileProps {
   article: {
     title: string;
   };
-  imageURL: string;
+  imageUrl: string;
   menu?: MenuItem[];
   name: string;
 }
@@ -25,7 +25,7 @@ const DESCRIPTIONS = [
   '내용과 관련된 일을 진행 중인가요?',
 ];
 
-export function Profile({ article, imageURL, menu, name }: ProfileProps) {
+export function Profile({ article, imageUrl, menu, name }: ProfileProps) {
   const [descriptions] = useState(DESCRIPTIONS);
 
   const description = useMemo(() => shuffle(descriptions)[0], [descriptions]);
@@ -34,7 +34,7 @@ export function Profile({ article, imageURL, menu, name }: ProfileProps) {
     <section {...stylex.props(styles.container)}>
       <div
         {...stylex.props(imageStyles.container)}
-        style={{ backgroundImage: `url(${imageURL})` }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
       />
       <div {...stylex.props(contentStyles.container)}>
         <div {...stylex.props(contentStyles.name, mixinStyles.font(18, 700))}>{name}</div>

@@ -65,7 +65,7 @@ export interface CoverArticle {
   /**
    * 썸네일 주소
    */
-  thumbnailURL: string;
+  thumbnailUrl: string;
 
   /**
    * 글 제목
@@ -84,7 +84,7 @@ const INITIAL_COVER_ARTICLE: CoverArticle = {
   likeCount: null,
   path: '',
   summary: '',
-  thumbnailURL: '',
+  thumbnailUrl: '',
   title: '',
 };
 

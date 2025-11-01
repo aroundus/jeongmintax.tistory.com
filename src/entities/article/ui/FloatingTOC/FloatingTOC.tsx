@@ -19,12 +19,12 @@ interface TOCStep {
 
 export function FloatingTOC({ target }: FloatingTOCProps) {
   const [activeStep, setActiveStep] = useState(1);
-  const [tocSteps, setTOCSteps] = useState<TOCStep[]>([]);
+  const [tocSteps, setTocSteps] = useState<TOCStep[]>([]);
   const [position, setPosition] = useState<React.CSSProperties['position']>('absolute');
   const [xOffset, setXOffset] = useState(0);
   const [yOffset, setYOffset] = useState(0);
 
-  function setTOCStepsOffset() {
+  function setTocStepsOffset() {
     if (target === null) {
       return;
     }
@@ -50,7 +50,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
       }
     });
 
-    setTOCSteps(steps);
+    setTocSteps(steps);
   }
 
   function handleStepClick(top: number) {
@@ -116,7 +116,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
       window.addEventListener(type, throttledScroll);
     });
 
-    setTOCStepsOffset();
+    setTocStepsOffset();
 
     return () => {
       ['resize', 'orientationChange', 'scroll'].forEach((type) => {

@@ -10,17 +10,17 @@ import { Button } from '@/shared/ui';
 
 interface ProfileProps {
   description: string;
-  imageURL: string;
+  imageUrl: string;
   menu?: MenuItem[];
   name: string;
 }
 
-export function Profile({ description, imageURL, menu, name }: ProfileProps) {
+export function Profile({ description, imageUrl, menu, name }: ProfileProps) {
   return (
     <div {...stylex.props(styles.container)}>
       <div
         {...stylex.props(imageStyles.container)}
-        style={{ backgroundImage: `url(${imageURL})` }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
       />
       <div {...stylex.props(contentStyles.container)}>
         <div {...stylex.props(contentStyles.name, mixinStyles.font(18, 700))}>{name}</div>

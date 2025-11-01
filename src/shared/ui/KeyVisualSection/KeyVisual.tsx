@@ -23,7 +23,7 @@ interface KeyVisualProps {
   likeCount: number | null;
   path: string;
   summary: string;
-  thumbnailURL: string;
+  thumbnailUrl: string;
   title: string;
   onCommentClick?: () => void;
   onLikeClick: () => void;
@@ -40,7 +40,7 @@ export function KeyVisual({
   likeCount,
   path,
   summary,
-  thumbnailURL,
+  thumbnailUrl,
   title,
   onCommentClick: handleCommentClick,
   onLikeClick: handleLikeClick,
@@ -58,7 +58,7 @@ export function KeyVisual({
       {...stylex.props(styles.container, isGradientEnabled && styles.isGradientEnabled)}
       key={path}
       style={{
-        backgroundImage: `url(${thumbnailURL}), url(https://c.pxhere.com/photos/32/a0/bamboo_plant-108294.jpg!d)`,
+        backgroundImage: `url(${thumbnailUrl}), url(https://c.pxhere.com/photos/32/a0/bamboo_plant-108294.jpg!d)`,
       }}
     >
       {isMounted && (

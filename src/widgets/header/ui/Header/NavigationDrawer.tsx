@@ -57,7 +57,7 @@ export function NavigationDrawer({ isOpen, onClose: handleClose }: NavigationDra
                   <img
                     alt={`${session.user.name} 이미지`}
                     height={80}
-                    src={session.user.imageURL}
+                    src={session.user.imageUrl}
                     width={80}
                   />
                 </div>
