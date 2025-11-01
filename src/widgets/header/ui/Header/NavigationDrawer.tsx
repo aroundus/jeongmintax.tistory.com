@@ -4,9 +4,9 @@ import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { RiMenuFold2Line as RiMenuFold2LineIcon } from 'react-icons/ri';
 
-import * as categoryService from '@/entities/category/api';
+import { categoryService } from '@/entities/category/api';
 import { SearchTextField } from '@/entities/search/ui';
-import * as userService from '@/entities/user/api';
+import { userService } from '@/entities/user/api';
 import { useBrowser, useMediaQuery } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';

@@ -3,8 +3,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
-import * as articleService from '@/entities/article/api';
-import type { Article } from '@/entities/article/api';
+import { articleService, reactionService } from '@/entities/article/api';
+import type { ArticleService } from '@/entities/article/api';
 import {
   ArticleSection,
   CommentSection,
@@ -26,13 +26,13 @@ export default function ArticlePage() {
   const preloadedArticle = articleService.getArticles()[0];
   const articleElement = document.getElementById('root')!.querySelector('#article') as HTMLElement;
 
-  const [article, setArticle] = useState<Article>(preloadedArticle);
+  const [article, setArticle] = useState<ArticleService.Article>(preloadedArticle);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
   const [progressBarOffset, setProgressBarOffset] = useState<number>(0);
   const [scrollY, setScrollY] = useState<number>(0);
 
   const fetchArticleLikeCount = useCallback(async () => {
-    const fetchedReaction = await articleService.getReaction(article.articleId);
+    const fetchedReaction = await reactionService.getReaction(article.articleId);
 
     const articleWithLikeCount = {
       ...article,
@@ -54,9 +54,9 @@ export default function ArticlePage() {
 
   const handleLikeClick = useCallback(async () => {
     if (article.isLikeActive) {
-      await articleService.deleteLikeReaction(article.articleId);
+      await reactionService.deleteLikeReaction(article.articleId);
     } else {
-      await articleService.postLikeReaction(article.articleId);
+      await reactionService.postLikeReaction(article.articleId);
     }
 
     setArticle((prevArticle) => {

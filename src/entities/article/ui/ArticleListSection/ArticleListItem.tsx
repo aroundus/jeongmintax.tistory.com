@@ -11,9 +11,9 @@ import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
 
-import type { Article } from '../../api';
+import type { ArticleService } from '../../api';
 
-export interface ArticleListItemProps extends Article {
+export interface ArticleListItemProps extends ArticleService.Article {
   isLast?: boolean;
 }
 

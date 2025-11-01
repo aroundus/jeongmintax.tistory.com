@@ -5,7 +5,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 import { shuffle } from 'lodash'; // BUG: production 모드에서 lodash-es 패키지로 shuffle 함수 사용시 오류 발생
 
-import type { MenuItem } from '@/entities/menu/api';
+import type { MenuService } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { Button } from '@/shared/ui';
@@ -15,7 +15,7 @@ interface ProfileProps {
     title: string;
   };
   imageUrl: string;
-  menu?: MenuItem[];
+  menu?: MenuService.MenuItem[];
   name: string;
 }
 

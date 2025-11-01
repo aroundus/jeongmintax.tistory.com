@@ -2,12 +2,12 @@ import * as stylex from '@stylexjs/stylex';
 
 import { viewports } from '@/shared/stylex/viewports.stylex';
 
-import type { Article } from '../../api';
+import type { ArticleService } from '../../api';
 
 import { ArticleList } from './ArticleList';
 
 interface ArticleListSectionProps {
-  articles: Article[];
+  articles: ArticleService.Article[];
 }
 
 export function ArticleListSection({ articles }: ArticleListSectionProps) {

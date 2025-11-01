@@ -7,10 +7,10 @@ import { colors } from '@/shared/stylex/colors.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
 
-import type { Category } from '../../api';
+import type { CategoryService } from '../../api';
 
 interface CategoryFieldProps {
-  categories: Category[];
+  categories: CategoryService.Category[];
 }
 
 export function CategoryField({ categories }: CategoryFieldProps) {

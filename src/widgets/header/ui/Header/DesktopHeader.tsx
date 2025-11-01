@@ -5,7 +5,7 @@ import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
 import { SearchTextField } from '@/entities/search/ui';
-import * as userService from '@/entities/user/api';
+import { userService } from '@/entities/user/api';
 import Logo from '@/shared/assets/logo.svg?react';
 import { useIsDarkMode } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';

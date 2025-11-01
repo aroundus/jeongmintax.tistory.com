@@ -5,19 +5,19 @@ import 'swiper/css/navigation';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import type { Article } from '@/entities/article/api';
+import type { ArticleService } from '@/entities/article/api';
 
 import { KeyVisual } from './KeyVisual';
 
 type KeyVisualContentsProps =
   | {
-      article: Article;
+      article: ArticleService.Article;
       articles?: never;
       onCommentClick: () => void;
     }
   | {
       article?: never;
-      articles: Article[];
+      articles: ArticleService.Article[];
       onCommentClick?: never;
     };
 

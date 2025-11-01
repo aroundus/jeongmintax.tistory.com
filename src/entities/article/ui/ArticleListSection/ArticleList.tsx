@@ -1,13 +1,12 @@
 import * as stylex from '@stylexjs/stylex';
 
+import type { ArticleService } from '@/entities/article/api';
 import { sizes } from '@/shared/stylex/sizes.stylex';
-
-import type { Article } from '../../api';
 
 import { ArticleListItem } from './ArticleListItem';
 
 interface ListProps {
-  articles: Article[];
+  articles: ArticleService.Article[];
 }
 
 export function ArticleList({ articles }: ListProps) {

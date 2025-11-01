@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
-import * as blogService from '@/entities/blog/api';
-import * as menuService from '@/entities/menu/api';
+import { blogService } from '@/entities/blog/api';
+import { menuService } from '@/entities/menu/api';
 
 import { Profile } from './Profile';
 

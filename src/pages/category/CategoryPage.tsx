@@ -2,10 +2,10 @@ import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
 import * as stylex from '@stylexjs/stylex';
 
-import * as articleService from '@/entities/article/api';
-import type { Article } from '@/entities/article/api';
+import { articleService, reactionService } from '@/entities/article/api';
+import type { ArticleService } from '@/entities/article/api';
 import { ArticleListSection } from '@/entities/article/ui';
-import * as categoryService from '@/entities/category/api';
+import { categoryService } from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
 import { FloatingWidget } from '@/widgets/floating/ui';
 
@@ -18,14 +18,14 @@ export default function CategoryPage() {
   const articleListElement = document.getElementById('article-list');
   const keyword = window.location.pathname.split('/')[2];
 
-  const [articles, setArticles] = useState<Article[]>(preloadedArticles);
+  const [articles, setArticles] = useState<ArticleService.Article[]>(preloadedArticles);
 
   const fetchArticlesLikeCount = useCallback(async () => {
-    const articlesWithLikeCount: Article[] = [];
+    const articlesWithLikeCount: ArticleService.Article[] = [];
 
     for (let index = 0; index < articles.length; index += 1) {
       const article = articles[index];
-      const fetchedReaction = await articleService.getReaction(article.articleId);
+      const fetchedReaction = await reactionService.getReaction(article.articleId);
 
       articlesWithLikeCount.push({
         ...article,

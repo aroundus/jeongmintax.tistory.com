@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
-import type { Article } from '@/entities/article/api';
+import type { ArticleService } from '@/entities/article/api';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 
 import { ProfileSection } from './ProfileSection';
 
 interface FloatingArticleAsideProps {
-  article: Article;
+  article: ArticleService.Article;
   target: HTMLElement | null;
 }
 

@@ -2,7 +2,7 @@ import { colors } from '@stylexjs/open-props/lib/colors.stylex';
 import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
 import * as stylex from '@stylexjs/stylex';
 
-import type { MenuItem } from '@/entities/menu/api';
+import type { MenuService } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
@@ -11,7 +11,7 @@ import { Button } from '@/shared/ui';
 interface ProfileProps {
   description: string;
   imageUrl: string;
-  menu?: MenuItem[];
+  menu?: MenuService.MenuItem[];
   name: string;
 }
 
