@@ -32,7 +32,7 @@ export default function ArticlePage() {
   const [scrollY, setScrollY] = useState<number>(0);
 
   const fetchArticleLikeCount = useCallback(async () => {
-    const fetchedReaction = await articleService.getReaction(article.articleNo);
+    const fetchedReaction = await articleService.getReaction(article.articleId);
 
     const articleWithLikeCount = {
       ...article,
@@ -54,9 +54,9 @@ export default function ArticlePage() {
 
   const handleLikeClick = useCallback(async () => {
     if (article.isLikeActive) {
-      await articleService.deleteLikeReaction(article.articleNo);
+      await articleService.deleteLikeReaction(article.articleId);
     } else {
-      await articleService.postLikeReaction(article.articleNo);
+      await articleService.postLikeReaction(article.articleId);
     }
 
     setArticle((prevArticle) => {

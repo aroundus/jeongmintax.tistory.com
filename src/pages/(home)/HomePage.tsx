@@ -24,7 +24,7 @@ export default function HomePage() {
 
     for (let index = 0; index < articles.length; index += 1) {
       const article = articles[index];
-      const fetchedReaction = await articleService.getReaction(article.articleNo);
+      const fetchedReaction = await articleService.getReaction(article.articleId);
 
       articlesWithLikeCount.push({
         ...article,
@@ -41,9 +41,9 @@ export default function HomePage() {
       const article = articles[articleIndex];
 
       if (article.isLikeActive) {
-        await articleService.deleteLikeReaction(article.articleNo);
+        await articleService.deleteLikeReaction(article.articleId);
       } else {
-        await articleService.postLikeReaction(article.articleNo);
+        await articleService.postLikeReaction(article.articleId);
       }
 
       setArticles((prevArticles) =>
