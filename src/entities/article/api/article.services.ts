@@ -94,7 +94,7 @@ export function getCoverArticles(name: string) {
 
   return Array.from(elements).map((element) => {
     try {
-      const coverArticle = JSON.parse(element.innerHTML) as CoverArticle;
+      const coverArticle = JSON.parse(element.textContent!) as CoverArticle;
 
       return {
         ...coverArticle,
@@ -140,7 +140,7 @@ export function getArticles() {
   return Array.from(elements).map((element) => {
     try {
       const articleElement = element.querySelector('[data-article="article"]')!;
-      const article = JSON.parse(articleElement.innerHTML) as Article;
+      const article = JSON.parse(articleElement.textContent!) as Article;
       const contentElement = element.querySelector('[data-article="content"] .contents_style')!;
       const commentCountElement = element.querySelector('[data-article="commentCount"]')!;
 
