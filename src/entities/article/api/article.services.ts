@@ -144,18 +144,6 @@ export function getArticles() {
       const contentElement = element.querySelector('[data-article="content"] .contents_style')!;
       const commentCountElement = element.querySelector('[data-article="commentCount"]')!;
 
-      // 테이블 속성 삭제
-      contentElement.querySelectorAll('table').forEach((element) => {
-        element.removeAttribute('border');
-        element.removeAttribute('data-ke-align');
-        element.removeAttribute('style');
-      });
-
-      // 티스토리 data-ke-size 속성 삭제
-      contentElement.querySelectorAll('[data-ke-size]').forEach((element) => {
-        element.removeAttribute('data-ke-size');
-      });
-
       // <h*> 요소에 id 설정
       const headings = contentElement.querySelectorAll('h1, h2, h3, h4, h5, h6') as NodeListOf<HTMLHeadingElement>;
 
