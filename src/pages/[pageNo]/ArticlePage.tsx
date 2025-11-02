@@ -14,8 +14,8 @@ import {
 } from '@/entities/article/ui';
 import { FloatingArticleAside } from '@/features/article/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
-import { KeyVisualSection } from '@/shared/ui';
-import { ProgressBar } from '@/shared/ui';
+import { KeyVisualSection } from '@/shared/ui-deprecated';
+import { ProgressBar } from '@/shared/ui-deprecated';
 import { FloatingWidget } from '@/widgets/floating/ui';
 
 export default function ArticlePage() {

@@ -10,7 +10,7 @@ import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui-deprecated';
 
 interface KeyVisualProps {
   category: string;

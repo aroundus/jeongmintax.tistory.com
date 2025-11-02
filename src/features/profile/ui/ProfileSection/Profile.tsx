@@ -6,7 +6,7 @@ import type { MenuService } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui-deprecated';
 
 interface ProfileProps {
   description: string;

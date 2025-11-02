@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { useIsMobile } from '@/shared/lib';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button, PublicImage } from '@/shared/ui';
+import { Button, PublicImage } from '@/shared/ui-deprecated';
 
 export function ContactSection() {
   const isMobile = useIsMobile();

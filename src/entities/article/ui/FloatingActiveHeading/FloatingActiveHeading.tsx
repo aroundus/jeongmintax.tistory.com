@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex';
 import { throttle } from 'lodash-es';
 
 import { sizes } from '@/shared/stylex/sizes.stylex';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui-deprecated';
 
 interface FloatingActiveHeadingProps {
   offset?: number;

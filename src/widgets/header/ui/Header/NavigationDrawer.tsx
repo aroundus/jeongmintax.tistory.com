@@ -10,7 +10,7 @@ import { userService } from '@/entities/user/api';
 import { useBrowser, useMediaQuery } from '@/shared/lib';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui-deprecated';
 
 import { getConfig } from '../../config';
 
