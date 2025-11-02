@@ -68,7 +68,6 @@
   h6 {
     margin-top: 4.8em;
     margin-bottom: 0.4em;
-    font-weight: 700;
     line-height: 1.35;
 
     // 헤더 바로 뒤에 오는 헤더의 간격을 조정합니다.
@@ -79,6 +78,10 @@
     & + h5,
     & + h6 {
       margin-top: 1.2em;
+    }
+
+    &[data-ke-size] {
+      font-weight: 700;
     }
   }
 
