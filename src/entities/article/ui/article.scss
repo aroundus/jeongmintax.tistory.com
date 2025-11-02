@@ -68,6 +68,7 @@
   h6 {
     margin-top: 4.8em;
     margin-bottom: 0.4em;
+    font-weight: 700;
     line-height: 1.35;
 
     // 헤더 바로 뒤에 오는 헤더의 간격을 조정합니다.
@@ -182,7 +183,6 @@
 
       font-size: 20px;
       line-height: inherit;
-      color: CanvasText;
 
       background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
       border-color: color-mix(in srgb, var(--secondary-color) 40%, black 10%);
@@ -203,7 +203,9 @@
       color: inherit;
     }
 
-    ol, // stylelint-disable-line no-descending-specificity
+    /* stylelint-disable-next-line no-descending-specificity */
+    ol,
+    /* stylelint-disable-next-line no-descending-specificity */
     ul {
       padding-left: 0;
 
@@ -240,7 +242,6 @@
             font-size: 20px;
             font-weight: 700;
             line-height: inherit;
-            color: CanvasText;
           }
 
           p.og-desc {
@@ -299,7 +300,6 @@
           .filename {
             margin-top: 24px;
             font-size: 16px;
-            color: CanvasText;
 
             .name {
               max-width: initial;
@@ -331,13 +331,9 @@
 
       vertical-align: middle;
 
-      border-color: $color-sand-2;
+      border-color: var(--border);
       border-style: solid;
       border-width: 1px;
-
-      @supports (color: color-mix(in srgb, black 50%, white)) {
-        border-color: color-mix(in srgb, var(--secondary-color) 50%, white 50%);
-      }
 
       code {
         zoom: 0.9;
@@ -370,12 +366,7 @@
     th {
       padding: 8px 16px;
       font-weight: 700;
-      color: CanvasText;
-      background-color: $color-sand-1;
-
-      @supports (color: color-mix(in srgb, black 50%, white)) {
-        background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
-      }
+      background-color: var(--secondary);
     }
 
     td {

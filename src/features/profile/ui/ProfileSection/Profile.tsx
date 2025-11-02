@@ -6,7 +6,7 @@ import type { MenuService } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button } from '@/shared/ui-deprecated';
+import { Button } from '@/shared/ui/button';
 
 interface ProfileProps {
   description: string;
@@ -31,12 +31,16 @@ export function Profile({ description, imageUrl, menu, name }: ProfileProps) {
               {menu?.map((menuItem) => (
                 <li key={menuItem.path}>
                   <Button
-                    href={menuItem.path}
+                    asChild
                     size="sm"
-                    target={menuItem.target}
-                    variant="outlined"
+                    variant="outline"
                   >
-                    {menuItem.name}
+                    <a
+                      href={menuItem.path}
+                      target={menuItem.target}
+                    >
+                      {menuItem.name}
+                    </a>
                   </Button>
                 </li>
               ))}

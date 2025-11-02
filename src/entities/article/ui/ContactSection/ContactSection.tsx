@@ -4,7 +4,8 @@ import * as stylex from '@stylexjs/stylex';
 import { useIsMobile } from '@/shared/lib';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button, PublicImage } from '@/shared/ui-deprecated';
+import { Button } from '@/shared/ui/button';
+import { PublicImage } from '@/shared/ui-deprecated';
 
 export function ContactSection() {
   const isMobile = useIsMobile();
@@ -22,24 +23,28 @@ export function ContactSection() {
       </p>
       <div {...stylex.props(buttonStyles.container)}>
         <Button
-          color="primary"
-          href="http://talk.naver.com/w5igl2?frm=pnmb&frm=nmb_detail"
-          isFullWidth={isMobile}
-          size={isMobile ? 'md' : 'lg'}
-          target="_blank"
-          variant="outlined"
+          asChild
+          size={isMobile ? 'default' : 'lg'}
+          variant="outline"
         >
-          💬 네이버 톡톡 실시간 문의
+          <a
+            href="http://talk.naver.com/w5igl2?frm=pnmb&frm=nmb_detail"
+            target="_blank"
+          >
+            💬 네이버 톡톡 실시간 문의
+          </a>
         </Button>
         <Button
-          color="primary"
-          href="https://forms.gle/Boiaf1ViKZErxTLY8"
-          isFullWidth={isMobile}
-          size={isMobile ? 'md' : 'lg'}
-          target="_blank"
-          variant="outlined"
+          asChild
+          size={isMobile ? 'default' : 'lg'}
+          variant="outline"
         >
-          📝 상담 신청
+          <a
+            href="https://forms.gle/Boiaf1ViKZErxTLY8"
+            target="_blank"
+          >
+            📝 상담 신청
+          </a>
         </Button>
       </div>
     </section>

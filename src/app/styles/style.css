@@ -1,0 +1,51 @@
+@layer reset, theme, base, components, utilities;
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --font-sans: 'Pretendard', 'SF Pro KR', 'SF Pro Text', 'SF Pro Display', 'SF Pro Icons', 'Apple Gothic', -apple-system, 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring)
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    font-feature-settings:
+      'case' 1,
+      'ss01' 1,
+      'ss03' 1;
+    font-weight: 400;
+    -webkit-font-smoothing: auto;
+    line-height: 1.6;
+    color: theme('colors.neutral.900');
+    -webkit-text-size-adjust: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}

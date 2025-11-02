@@ -43,6 +43,7 @@ const styles = stylex.create({
   },
   icon: {
     height: sizes[24],
+    margin: 'auto',
     width: sizes[24],
   },
 });

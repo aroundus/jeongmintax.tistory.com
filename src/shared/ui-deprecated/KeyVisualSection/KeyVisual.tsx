@@ -10,7 +10,7 @@ import { colors } from '@/shared/stylex/colors.stylex';
 import { keyframes } from '@/shared/stylex/keyframes.stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
 import { viewports } from '@/shared/stylex/viewports.stylex';
-import { Button } from '@/shared/ui-deprecated';
+import { Button } from '@/shared/ui/button';
 
 interface KeyVisualProps {
   category: string;
@@ -118,13 +118,12 @@ export function KeyVisual({
           </div>
           {isButtonVisible && (
             <Button
-              color="secondary"
-              href={path}
+              asChild
+              className="mt-5"
               size="lg"
-              stylexStyles={styles.button}
-              variant="contained"
+              variant="outline"
             >
-              내용 읽기
+              <a href={path}>내용 읽기</a>
             </Button>
           )}
         </div>
@@ -215,10 +214,6 @@ const styles = stylex.create({
   },
   summary: {
     marginTop: sizes[16],
-  },
-  button: {
-    color: 'white',
-    marginTop: sizes[24],
   },
 });
 
