@@ -1,11 +1,11 @@
 @use '~@/styles' as *;
 
-$primary-color: $color-jungle-7;
-$primary-color-alpha: #{$primary-color}AA;
-$secondary-color: $color-stone-6;
+$primary-color: var(--color-primary);
+$primary-color-alpha: #{var(--color-primary)}AA;
+$secondary-color: var(--color-secondary);
 
 :root {
-  --primary-color: #{$primary-color};
+  --primary-color: $primary-color;
   --primary-color-alpha: #{$primary-color-alpha};
   --secondary-color: #{$secondary-color};
   --swiper-navigation-color: white;
@@ -40,7 +40,6 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: auto;
   line-height: 1.6;
-  color: $color-gray-10;
   -webkit-text-size-adjust: none;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -60,21 +59,6 @@ section {
   position: relative;
 }
 
-a,
-u {
-  text-decoration: none;
-}
-
-a {
-  transition: 200ms ease;
-
-  @media (hover: hover) {
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
-}
-
 u {
   border-bottom: 0.2em solid var(--primary-color);
 }
@@ -87,10 +71,4 @@ mark {
 
 hr {
   border: 0.5px solid var(--primary-color-alpha);
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: $color-gray-2;
-  }
 }

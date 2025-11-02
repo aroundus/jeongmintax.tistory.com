@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["jeongmintax", "stylex", "stylexjs", "tistory"]
+  "cSpell.words": ["jeongmintax", "shadcn", "stylex", "stylexjs", "tistory"],
+  "css.lint.unknownAtRules": "ignore"
 }

@@ -9,9 +9,9 @@ interface GetReactionResponse {
   code: number;
   message: string;
   reactionCounter: {
-    sum: number;
     like: number;
     sad: number;
+    sum: number;
   };
   reactionActivated: string;
   isActive: boolean;
@@ -22,14 +22,14 @@ interface PostLikeReactionResponse {
   type: string;
   categoryId: number;
   meta: {
-    serviceId: string;
     blogId: number;
     entryId: number;
+    serviceId: string;
   };
   reactionCounter: {
-    sum: number;
     like: number;
     sad: number;
+    sum: number;
   };
   createdDate: string;
   updatedDate: string;
@@ -40,14 +40,14 @@ interface DeleteLikeReactionResponse {
   type: string;
   categoryId: number;
   meta: {
-    serviceId: string;
     blogId: number;
     entryId: number;
+    serviceId: string;
   };
   reactionCounter: {
-    sum: number;
     like: number;
     sad: number;
+    sum: number;
   };
   createdDate: string;
   updatedDate: string;

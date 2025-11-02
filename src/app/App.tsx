@@ -7,8 +7,8 @@ import { dayjs } from '@/shared/lib';
 import Preview from './Preview';
 import { rootRoute } from './routes';
 
-import './styles/reset.scss';
-import './styles/global.scss'; // eslint-disable-line
+import './styles/tailwind.css';
+import './styles/style.scss'; // eslint-disable-line
 
 import 'virtual:stylex.css';
 
