@@ -25,7 +25,7 @@
 
 - 프로그래밍 언어: React TypeScript
 - 번들러: Vite
-- 라이브러리: React Router, StyleX
+- 라이브러리: React Router, StyleX, shadcn/ui
 
 ### 백엔드
 
