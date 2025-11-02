@@ -20,6 +20,14 @@ $secondary-color: var(--color-secondary);
   }
 }
 
+// 티스토리 기본 스타일(font.css) 덮어쓰기
+body {
+  font-feature-settings:
+    'case' 1,
+    'ss01' 0,
+    'ss03' 1;
+}
+
 section {
   position: relative;
 }
