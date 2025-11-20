@@ -43,7 +43,7 @@ export function FloatingTOC({ target }: FloatingTOCProps) {
           yOffset: headingRect.top + scrollY - 120,
         });
       } else if (heading.tagName.toLowerCase() === 'h3') {
-        steps[steps.length - 1].children!.push({
+        steps[steps.length - 1]?.children!.push({
           text: heading.textContent!,
           yOffset: headingRect.top + scrollY - 120,
         });
