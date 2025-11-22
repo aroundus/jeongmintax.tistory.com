@@ -1,7 +1,4 @@
-import * as stylex from '@stylexjs/stylex';
-
 import type { ArticleService } from '@/entities/article/api';
-import { sizes } from '@/shared/stylex/sizes.stylex';
 
 import { ArticleListItem } from './ArticleListItem';
 
@@ -11,7 +8,7 @@ interface ListProps {
 
 export function ArticleList({ articles }: ListProps) {
   return (
-    <div {...stylex.props(styles.container)}>
+    <div className="flex flex-col">
       {articles.map((article, index) => (
         <ArticleListItem
           {...article}
@@ -22,12 +19,3 @@ export function ArticleList({ articles }: ListProps) {
     </div>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingLeft: sizes[12],
-    paddingRight: sizes[12],
-  },
-});

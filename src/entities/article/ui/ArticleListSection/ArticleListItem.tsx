@@ -1,15 +1,6 @@
-import { useState } from 'react';
-
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
-import * as stylex from '@stylexjs/stylex';
+import classNames from 'classnames';
 import { GoHeart as GoHeartIcon, GoHeartFill as GoHeartFillIcon } from 'react-icons/go';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
-
-import { useIsDarkMode, useIsMobile } from '@/shared/lib';
-import { mixinStyles } from '@/shared/stylex';
-import { keyframes } from '@/shared/stylex/keyframes.stylex';
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import type { ArticleService } from '../../api';
 
@@ -29,70 +20,45 @@ export function ArticleListItem({
   thumbnailUrl,
   title,
 }: ArticleListItemProps) {
-  const isDarkMode = useIsDarkMode();
-  const isMobile = useIsMobile();
-  const [isMouseEnter, setIsMouseEnter] = useState(false);
-
   return (
     <a
-      {...stylex.props(styles.container, isLast && styles.isLast)}
+      className={classNames(
+        'group mx-auto block cursor-pointer border-b border-solid px-6 py-12',
+        isLast && 'border-b-transparent',
+      )}
       href={path}
-      onMouseEnter={() => {
-        setIsMouseEnter(true);
-      }}
-      onMouseLeave={() => {
-        setIsMouseEnter(false);
-      }}
     >
-      <div {...stylex.props(styles.imageWrapper)}>
+      <div className="h-40 w-full overflow-hidden">
         <img
-          {...stylex.props(styles.image, isMouseEnter && styles.isMouseEnterImage)}
           aria-hidden="true"
           src={thumbnailUrl}
         />
       </div>
-      <div {...stylex.props(styles.category, mixinStyles.font(14, 500))}>{category}</div>
+      <div className="mt-8 text-base font-medium text-stone-500">{category}</div>
       <div
-        {...stylex.props(
-          styles.title,
-          mixinStyles.font(isMobile ? 32 : 36, 700),
-          isMouseEnter && styles.isMouseEnter(isDarkMode),
+        className={classNames(
+          'group-hover:text-primary mt-2 text-3xl font-bold transition-colors duration-300 ease-in-out group-hover:opacity-80 md:text-4xl',
         )}
       >
         {title}
       </div>
-      <p {...stylex.props(styles.summary, isMouseEnter && styles.isMouseEnterSummary, mixinStyles.font(18, 400))}>
+      <p className="mt-4 transition-colors duration-200 ease-in-out group-hover:text-neutral-600 md:text-lg">
         {summary}
       </p>
-      <div {...stylex.props(metaStyles.container)}>
-        <span {...stylex.props(metaStyles.date, mixinStyles.font(16, 400))}>{date}</span>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <span className="text-base text-stone-600">{date}</span>
         {typeof commentCount === 'number' && commentCount > 0 && (
-          <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
-            <MdOutlineCommentIcon
-              style={{
-                height: 20,
-                width: 20,
-              }}
-            />
+          <div className="flex items-center gap-0.5 text-sm">
+            <MdOutlineCommentIcon className="h-5 w-5 text-neutral-800" />
             {new Intl.NumberFormat().format(commentCount)}
           </div>
         )}
         {typeof likeCount === 'number' && (
-          <div {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}>
+          <div className="flex items-center gap-0.5 text-sm">
             {isLikeActive ? (
-              <GoHeartFillIcon
-                style={{
-                  height: 20,
-                  width: 20,
-                }}
-              />
+              <GoHeartFillIcon className="h-5 w-5 text-neutral-800" />
             ) : (
-              <GoHeartIcon
-                style={{
-                  height: 20,
-                  width: 20,
-                }}
-              />
+              <GoHeartIcon className="h-5 w-5 text-neutral-800" />
             )}
             {new Intl.NumberFormat().format(likeCount)}
           </div>
@@ -101,87 +67,3 @@ export function ArticleListItem({
     </a>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    borderBottomColor: colors.gray2,
-    borderBottomStyle: 'solid',
-    borderBottomWidth: 1,
-    color: {
-      ':hover': {
-        '@media (hover: hover)': 'initial',
-      },
-    },
-    cursor: 'pointer',
-    display: 'block',
-    margin: 'auto',
-    maxWidth: '100%',
-    padding: `${sizes[48]} ${sizes[24]}`,
-    width: viewports.contentInnerWidth,
-  },
-  isLast: {
-    borderBottomColor: 'rgba(0, 0, 0, 0)',
-  },
-  isMouseEnter: (isDarkMode: boolean) => ({
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'rgba(0, 0, 0, 0)',
-    animationDuration: '1s',
-    animationFillMode: 'forwards',
-    animationIterationCount: 1,
-    animationName: keyframes.gradient2,
-    animationTimingFunction: 'ease-in-out',
-    backgroundClip: 'text',
-    backgroundImage: `linear-gradient(
-      to left,
-      CanvasText 10%,
-      ${colors.stone6} 20%,
-      ${isDarkMode ? colors.yellow5 : colors.jungle7} 70%
-    )`,
-    backgroundSize: '500% auto',
-    textFillColor: 'rgba(0, 0, 0, 0)',
-  }),
-  imageWrapper: {
-    height: 160,
-    overflow: 'hidden',
-    width: '100%',
-  },
-  image: {
-    transition: '400ms ease',
-  },
-  isMouseEnterImage: {
-    transform: `scale(1.01)`,
-  },
-  category: {
-    color: colors.stone6,
-    marginTop: sizes[32],
-  },
-  title: {
-    marginTop: sizes[8],
-    transition: '200ms ease-out',
-  },
-  summary: {
-    marginTop: sizes[16],
-    transition: '200ms ease-out',
-  },
-  isMouseEnterSummary: {
-    color: colors.stone6,
-  },
-});
-
-const metaStyles = stylex.create({
-  container: {
-    alignItems: 'center',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: sizes[12],
-    marginTop: sizes[16],
-  },
-  date: {
-    color: colors.stone6,
-  },
-  count: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: sizes[2],
-  },
-});

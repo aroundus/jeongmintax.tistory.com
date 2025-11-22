@@ -1,62 +1,88 @@
 @use '~@/styles' as *;
 
 #article {
+  font-size: var(--text-lg);
+
   // 헤더
   h1 {
     counter-reset: heading-2;
-    font-size: 40px;
+    font-size: var(--text-4xl);
+
+    @media (width >= 768px) {
+      font-size: var(--text-5xl);
+    }
   }
 
   h2 {
     counter-increment: heading-2;
     counter-reset: heading-3;
-    font-size: 36px;
+    font-size: var(--text-3xl);
 
     &::before {
       content: counter(heading-2) '. ';
+    }
+
+    @media (width >= 768px) {
+      font-size: var(--text-4xl);
     }
   }
 
   h3 {
     counter-increment: heading-3;
     counter-reset: heading-4;
-    font-size: 32px;
+    font-size: var(--text-2xl);
 
     &::before {
       content: counter(heading-2) '-' counter(heading-3) '. ';
+    }
+
+    @media (width >= 768px) {
+      font-size: var(--text-3xl);
     }
   }
 
   h4 {
     counter-increment: heading-4;
     counter-reset: heading-5;
-    font-size: 28px;
+    font-size: var(--text-xl);
     line-height: 1.6;
 
     &::before {
       content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '. ';
+    }
+
+    @media (width >= 768px) {
+      font-size: var(--text-2xl);
     }
   }
 
   h5 {
     counter-increment: heading-5;
     counter-reset: heading-6;
-    font-size: 24px;
+    font-size: var(--text-lg);
     line-height: 1.6;
 
     &::before {
       content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '-' counter(heading-5) '. ';
     }
+
+    @media (width >= 768px) {
+      font-size: var(--text-2xl);
+    }
   }
 
   h6 {
     counter-increment: heading-6;
-    font-size: 20px;
+    font-size: var(--text-base);
     line-height: 1.6;
 
     &::before {
       content: counter(heading-2) '-' counter(heading-3) '-' counter(heading-4) '-' counter(heading-5) '-'
         counter(heading-6) '. ';
+    }
+
+    @media (width >= 768px) {
+      font-size: var(--text-xl);
     }
   }
 
@@ -170,7 +196,7 @@
     border-left: 4px solid color-mix(in srgb, var(--secondary-color) 30%, white 30%);
 
     &[data-ke-style='style1'] {
-      font-size: 24px;
+      font-size: var(--text-2xl);
       font-style: italic;
       line-height: inherit;
       color: color-mix(in srgb, var(--secondary-color) 60%, CanvasText 40%);
@@ -178,14 +204,14 @@
 
     // 기본 스타일과 동일합니다.
     &[data-ke-style='style2'] {
-      font-size: 20px;
+      font-size: var(--text-xl);
       color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 30%);
     }
 
     &[data-ke-style='style3'] {
       padding: 24px;
 
-      font-size: 20px;
+      font-size: var(--text-xl);
       line-height: inherit;
 
       background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
@@ -243,7 +269,7 @@
         div.og-text {
           p.og-title {
             font-family: inherit;
-            font-size: 20px;
+            font-size: var(--text-xl);
             font-weight: 700;
             line-height: inherit;
           }
@@ -269,7 +295,7 @@
 
           div.og-text {
             p.og-title {
-              font-size: 16px;
+              font-size: var(--text-base);
             }
 
             p.og-host {
@@ -303,7 +329,7 @@
 
           .filename {
             margin-top: 24px;
-            font-size: 16px;
+            font-size: var(--text-base);
 
             .name {
               max-width: initial;
@@ -312,7 +338,7 @@
 
           .size {
             margin-top: 4px;
-            font-size: 14px;
+            font-size: var(--text-sm);
             color: var(--secondary-color);
           }
         }
@@ -327,7 +353,7 @@
 
     margin: 1.8em auto;
 
-    font-size: 16px;
+    font-size: var(--text-base);
 
     th,
     td {
