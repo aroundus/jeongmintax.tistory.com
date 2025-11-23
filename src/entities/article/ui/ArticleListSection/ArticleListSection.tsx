@@ -9,7 +9,7 @@ interface ArticleListSectionProps {
 export function ArticleListSection({ articles }: ArticleListSectionProps) {
   return (
     <section
-      className="mx-auto w-xl max-w-full"
+      className="mx-auto w-3xl max-w-full"
       id="article-list"
     >
       <ArticleList articles={articles} />

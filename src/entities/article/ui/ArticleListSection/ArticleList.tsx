@@ -8,7 +8,7 @@ interface ListProps {
 
 export function ArticleList({ articles }: ListProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-6">
       {articles.map((article, index) => (
         <ArticleListItem
           {...article}

@@ -8,7 +8,7 @@ const meta = {
   component: ArticleListItem,
   decorators: [
     (Story) => (
-      <div style={{ width: 640 }}>
+      <div className="w-3xl">
         <Story />
       </div>
     ),
