@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
-import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
-import * as stylex from '@stylexjs/stylex';
-
 import { SearchTextField } from '@/entities/search/ui';
 import { userService } from '@/entities/user/api';
 import Logo from '@/shared/assets/logo.svg?react';
 import { useIsDarkMode } from '@/shared/lib';
-import { mixinStyles } from '@/shared/stylex';
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
 
 export function DesktopHeader() {
   const isDarkMode = useIsDarkMode();
@@ -23,21 +16,21 @@ export function DesktopHeader() {
   const session = userService.getSession();
 
   return (
-    <header {...stylex.props(styles.container)}>
-      <div {...stylex.props(styles.inner)}>
+    <header className="sticky top-0 z-2 bg-white shadow-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-10 py-4">
         <a
-          {...stylex.props(styles.title, mixinStyles.font(18, 900))}
+          className="flex items-center gap-2"
           href="/"
         >
           <Logo
-            fill={isDarkMode ? colors.stone2 : colors.stone8}
+            className="fill-stone-500"
             height={40}
           />
         </a>
         {isMounted && (
-          <div {...stylex.props(styles.content)}>
+          <div className="flex items-center gap-2 overflow-hidden">
             {session.isLoggedIn && (
-              <div {...stylex.props(mixinStyles.ellipsis(1), mixinStyles.font(16, 400))}>
+              <div className="text-base">
                 <strong>{session.user.name}</strong> 님,
               </div>
             )}
@@ -48,36 +41,3 @@ export function DesktopHeader() {
     </header>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    backgroundColor: 'Canvas',
-    boxShadow: shadows.shadow2,
-    position: 'sticky',
-    top: 0,
-    zIndex: 2,
-  },
-  inner: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: sizes[16],
-    justifyContent: 'space-between',
-    margin: 'auto',
-    maxWidth: viewports.layoutWidth,
-    padding: `${sizes[16]} ${sizes[40]}`,
-  },
-  title: {
-    alignItems: 'center',
-    color: 'CanvasText',
-    display: 'flex',
-    gap: sizes[8],
-    letterSpacing: '0.04em',
-    whiteSpace: 'nowrap',
-  },
-  content: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: sizes[8],
-    overflow: 'hidden',
-  },
-});

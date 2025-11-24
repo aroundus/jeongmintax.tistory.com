@@ -1,20 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
-import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
-import * as stylex from '@stylexjs/stylex';
 import { RiMenuFoldLine as RiMenuFoldLineIcon } from 'react-icons/ri';
 
 import Logo from '@/shared/assets/logo.svg?react';
-import { useIsDarkMode } from '@/shared/lib';
-import { mixinStyles } from '@/shared/stylex';
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import { NavigationDrawer } from './NavigationDrawer';
 
 export function MobileHeader() {
-  const isDarkMode = useIsDarkMode();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -24,20 +16,20 @@ export function MobileHeader() {
 
   return (
     <>
-      <header {...stylex.props(styles.container)}>
-        <div {...stylex.props(styles.inner)}>
+      <header className="z-2 bg-white shadow-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
           <a
-            {...stylex.props(styles.title, mixinStyles.font(18, 900))}
+            className="flex items-center gap-2"
             href="/"
           >
             <Logo
-              fill={isDarkMode ? colors.stone2 : colors.stone8}
+              className="fill-stone-500"
               height={40}
             />
           </a>
           {isMounted && (
             <RiMenuFoldLineIcon
-              style={{ height: 28, width: 28 }}
+              className="h-7 w-7"
               onClick={() => {
                 setIsDrawerOpen(true);
               }}
@@ -54,28 +46,3 @@ export function MobileHeader() {
     </>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    backgroundColor: 'Canvas',
-    boxShadow: shadows.shadow2,
-    zIndex: 2,
-  },
-  inner: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: sizes[16],
-    justifyContent: 'space-between',
-    margin: 'auto',
-    maxWidth: viewports.layoutWidth,
-    padding: `${sizes[16]} ${sizes[24]}`,
-  },
-  title: {
-    alignItems: 'center',
-    color: 'CanvasText',
-    display: 'flex',
-    gap: sizes[8],
-    letterSpacing: '0.04em',
-    whiteSpace: 'nowrap',
-  },
-});
