@@ -7,8 +7,8 @@ import type { ArticleService } from '@/entities/article/api';
 import { ArticleListSection } from '@/entities/article/ui';
 import { categoryService } from '@/entities/category/api';
 import { CategoryField } from '@/entities/category/ui';
+import { KeyVisualSection } from '@/features/key-visual/ui';
 import { ProfileSection } from '@/features/profile/ui';
-import { KeyVisualSection } from '@/shared/ui-deprecated';
 import { FloatingWidget } from '@/widgets/floating/ui';
 
 export default function HomePage() {

@@ -5,16 +5,10 @@ import { throttle } from 'lodash-es';
 
 import { articleService, reactionService } from '@/entities/article/api';
 import type { ArticleService } from '@/entities/article/api';
-import {
-  ArticleSection,
-  CommentSection,
-  ContactSection,
-  FloatingActiveHeading,
-  FloatingTOC,
-} from '@/entities/article/ui';
+import { ArticleSection, CommentSection, FloatingActiveHeading, FloatingTOC } from '@/entities/article/ui';
 import { FloatingArticleAside } from '@/features/article/ui';
+import { KeyVisualSection } from '@/features/key-visual/ui';
 import { useIsDesktop, useIsMobile } from '@/shared/lib';
-import { KeyVisualSection } from '@/shared/ui-deprecated';
 import { ProgressBar } from '@/shared/ui-deprecated';
 import { FloatingWidget } from '@/widgets/floating/ui';
 

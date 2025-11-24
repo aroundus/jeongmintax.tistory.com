@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  title: 'shared/KeyVisualSection/KeyVisual',
+  title: 'features/key-visual/KeyVisualSection/KeyVisual',
 } satisfies Meta<typeof KeyVisual>;
 
 export default meta;
