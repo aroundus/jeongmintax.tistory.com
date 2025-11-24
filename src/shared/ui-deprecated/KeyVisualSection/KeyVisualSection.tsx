@@ -1,5 +1,3 @@
-import { shadows } from '@stylexjs/open-props/lib/shadows.stylex';
-import * as stylex from '@stylexjs/stylex';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
@@ -27,7 +25,7 @@ type KeyVisualSectionProps = KeyVisualContentsProps & {
 
 export function KeyVisualSection({ onLikeClick, ...props }: KeyVisualSectionProps) {
   return (
-    <section {...stylex.props(styles.container)}>
+    <section className="shadow-md">
       <Swiper
         autoplay={{ delay: 1000 * 60 }}
         loop={true}
@@ -64,9 +62,3 @@ export function KeyVisualSection({ onLikeClick, ...props }: KeyVisualSectionProp
     </section>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    boxShadow: shadows.shadow2,
-  },
-});

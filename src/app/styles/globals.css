@@ -66,3 +66,23 @@
   --sidebar-border: oklch(100% 0 0deg / 10%);
   --sidebar-ring: oklch(40.5% 0.101 131.063deg);
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.key-visual-gradient::before {
+  background-image: linear-gradient(-45deg, #1f2937, pink, blue, white);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}

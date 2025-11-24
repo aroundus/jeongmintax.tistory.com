@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import * as stylex from '@stylexjs/stylex';
-
 import { cloneEventListeners } from '@/shared/lib';
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
 
 import '../comment.scss';
 
@@ -28,17 +24,9 @@ export function CommentSection() {
 
   return (
     <section
-      {...stylex.props(styles.container)}
+      className="mx-auto max-w-3xl px-6 py-10"
       id="comment"
       ref={ref}
     />
   );
 }
-
-const styles = stylex.create({
-  container: {
-    margin: 'auto',
-    maxWidth: viewports.contentWidth,
-    padding: `${sizes[40]} ${sizes[24]}`,
-  },
-});

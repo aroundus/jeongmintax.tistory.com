@@ -129,7 +129,6 @@ export default function ArticlePage() {
         />
       )}
       <ArticleSection html={article.content} />
-      <ContactSection />
       <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
       <FloatingWidget.Container target={articleElement}>

@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import * as stylex from '@stylexjs/stylex';
 import { GoHeart as GoHeartIcon, GoHeartFill as GoHeartFillIcon } from 'react-icons/go';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import { useIsMobile } from '@/shared/lib';
-import { mixinStyles } from '@/shared/stylex';
-import { colors } from '@/shared/stylex/colors.stylex';
-import { keyframes } from '@/shared/stylex/keyframes.stylex';
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
 import { Button } from '@/shared/ui/button';
 
 interface KeyVisualProps {
@@ -45,8 +38,6 @@ export function KeyVisual({
   onCommentClick: handleCommentClick,
   onLikeClick: handleLikeClick,
 }: KeyVisualProps) {
-  const isMobile = useIsMobile();
-
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -55,32 +46,29 @@ export function KeyVisual({
 
   return (
     <div
-      {...stylex.props(styles.container, isGradientEnabled && styles.isGradientEnabled)}
+      className={`relative h-[640px] bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-gray-900 before:opacity-50 ${
+        isGradientEnabled ? 'key-visual-gradient' : ''
+      }`}
       key={path}
       style={{
         backgroundImage: `url(${thumbnailUrl}), url(https://c.pxhere.com/photos/32/a0/bamboo_plant-108294.jpg!d)`,
       }}
     >
       {isMounted && (
-        <div {...stylex.props(styles.inner, mixinStyles.absoluteCenter())}>
+        <div className="absolute top-1/2 left-1/2 mx-auto w-4/5 max-w-3xl min-w-80 -translate-x-1/2 -translate-y-1/2 p-6 text-white">
           <a
-            {...stylex.props(styles.category, mixinStyles.font(16, 500))}
+            className="text-base font-medium opacity-60 hover:text-white hover:opacity-100"
             href={categoryPath}
           >
             {category}
           </a>
-          <h1 {...stylex.props(styles.title, mixinStyles.font(isMobile ? 36 : 48, 700))}>{title}</h1>
-          <p {...stylex.props(styles.summary, mixinStyles.font(18, 400))}>{summary}</p>
-          <div></div>
-          <div {...stylex.props(metaStyles.container)}>
-            <span {...stylex.props(metaStyles.date)}>{date}</span>
+          <div className="mt-2 text-4xl leading-[1.2] font-bold md:text-5xl">{title}</div>
+          <p className="mt-4 text-lg leading-normal">{summary}</p>
+          <div className="mt-4 flex items-center gap-3">
+            <span className="text-stone-100 opacity-60">{date}</span>
             {typeof commentCount === 'number' && commentCount > 0 && (
               <div
-                {...stylex.props(
-                  metaStyles.count,
-                  handleCommentClick === undefined && metaStyles.isPointerInactive,
-                  mixinStyles.font(14, 400),
-                )}
+                className={`flex items-center gap-0.5 text-sm leading-normal ${handleCommentClick === undefined ? 'cursor-default' : 'cursor-pointer'}`}
                 onClick={handleCommentClick}
               >
                 <MdOutlineCommentIcon
@@ -94,7 +82,7 @@ export function KeyVisual({
             )}
             {typeof likeCount === 'number' && (
               <div
-                {...stylex.props(metaStyles.count, mixinStyles.font(14, 400))}
+                className="flex cursor-pointer items-center gap-0.5 text-sm leading-normal"
                 onClick={handleLikeClick}
               >
                 {isLikeActive ? (
@@ -131,109 +119,3 @@ export function KeyVisual({
     </div>
   );
 }
-
-const styles = stylex.create({
-  container: {
-    background: 'no-repeat center / cover',
-    backgroundColor: {
-      '::before': colors.black,
-    },
-    backgroundSize: {
-      '::before': '400% 400%',
-    },
-    bottom: {
-      '::before': 0,
-    },
-    content: {
-      '::before': '', // eslint-disable-line
-    },
-    height: 640,
-    left: {
-      '::before': 0,
-    },
-    opacity: {
-      '::before': 0.5,
-    },
-    position: {
-      default: 'relative',
-      '::before': 'absolute',
-    },
-    right: {
-      '::before': 0,
-    },
-    top: {
-      '::before': 0,
-    },
-  },
-  isGradientEnabled: {
-    animationDuration: {
-      '::before': '10s',
-    },
-    animationIterationCount: {
-      '::before': 'infinite',
-    },
-    animationName: {
-      '::before': keyframes.gradient,
-    },
-    animationTimingFunction: {
-      '::before': 'ease',
-    },
-    backgroundImage: {
-      '::before': `linear-gradient(
-        -45deg,
-        ${colors.black},
-        pink,
-        blue,
-        white
-      )`,
-    },
-  },
-  inner: {
-    color: 'white',
-    margin: 'auto',
-    maxWidth: viewports.contentWidth,
-    minWidth: 320,
-    padding: sizes[24],
-    width: '80%',
-  },
-  category: {
-    color: {
-      ':hover': {
-        '@media (hover: hover)': 'white',
-      },
-    },
-    opacity: {
-      default: 0.6,
-      ':hover': {
-        '@media (hover: hover)': 1,
-      },
-    },
-  },
-  title: {
-    marginTop: sizes[8],
-  },
-  summary: {
-    marginTop: sizes[16],
-  },
-});
-
-const metaStyles = stylex.create({
-  container: {
-    alignItems: 'center',
-    display: 'flex',
-    gap: sizes[12],
-    marginTop: sizes[16],
-  },
-  date: {
-    color: colors.gray,
-  },
-  count: {
-    alignItems: 'center',
-    cursor: 'pointer',
-    display: 'flex',
-    gap: sizes[2],
-  },
-  isPointerInactive: {
-    cursor: 'default',
-  },
-});

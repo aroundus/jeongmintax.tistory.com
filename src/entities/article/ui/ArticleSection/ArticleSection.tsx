@@ -1,10 +1,5 @@
 import { memo } from 'react';
 
-import * as stylex from '@stylexjs/stylex';
-
-import { sizes } from '@/shared/stylex/sizes.stylex';
-import { viewports } from '@/shared/stylex/viewports.stylex';
-
 import '../article.scss';
 
 interface ArticleSectionProps {
@@ -14,18 +9,10 @@ interface ArticleSectionProps {
 export const ArticleSection = memo(({ html }: ArticleSectionProps) => {
   return (
     <section
+      className="mx-auto max-w-3xl px-6 py-10"
       id="article"
-      {...stylex.props(styles.container)}
     >
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </section>
   );
-});
-
-const styles = stylex.create({
-  container: {
-    margin: 'auto',
-    maxWidth: viewports.contentWidth,
-    padding: `${sizes[40]} ${sizes[24]}`,
-  },
 });
