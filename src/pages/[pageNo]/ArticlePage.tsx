@@ -116,12 +116,6 @@ export default function ArticlePage() {
           target={articleElement}
         />
       )}
-      {!isDesktop && (
-        <FloatingActiveHeading
-          offset={progressBarOffset + 8}
-          target={articleElement}
-        />
-      )}
       <ArticleSection html={article.content} />
       <CommentSection />
       {isDesktop && <FloatingTOC target={articleElement} />}
