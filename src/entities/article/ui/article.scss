@@ -118,26 +118,26 @@
     margin-bottom: 1.8em;
   }
 
-  u {
-    background-image: linear-gradient(to top, var(--primary-color-alpha) 40%, transparent 10%, transparent 50%);
-    border-bottom: none;
-  }
-
   a {
-    color: var(--primary-color);
-    border-bottom: 0.2em solid var(--primary-color);
+    color: var(--color-primary);
+    border-bottom: 0.2em solid var(--color-primary);
 
     @media (hover: hover) {
       &:hover {
-        color: color-mix(in srgb, var(--primary-color) 70%, CanvasText 30%);
-        border-bottom-color: color-mix(in srgb, var(--primary-color) 70%, CanvasText 30%);
+        color: color-mix(in srgb, var(--color-primary) 70%, CanvasText 30%);
+        border-bottom-color: color-mix(in srgb, var(--color-primary) 70%, CanvasText 30%);
       }
     }
   }
 
+  b,
+  strong {
+    background-image: linear-gradient(to top, color-mix(in srgb, var(--color-primary) 50%, transparent) 50%, transparent 10%, transparent 40%);
+  }
+
   // 이미지
   img {
-    box-shadow: 0 4px 24px -16px var(--secondary-color);
+    box-shadow: 0 4px 24px -16px var(--color-secondary);
   }
 
   ol {
@@ -191,21 +191,21 @@
     padding-left: 1em;
 
     font-size: 0.96em;
-    color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 30%);
+    color: color-mix(in srgb, var(--color-secondary) 40%, CanvasText 30%);
 
-    border-left: 4px solid color-mix(in srgb, var(--secondary-color) 30%, white 30%);
+    border-left: 4px solid color-mix(in srgb, var(--color-secondary) 30%, white 30%);
 
     &[data-ke-style='style1'] {
       font-size: var(--text-2xl);
       font-style: italic;
       line-height: inherit;
-      color: color-mix(in srgb, var(--secondary-color) 60%, CanvasText 40%);
+      color: color-mix(in srgb, var(--color-secondary) 60%, CanvasText 40%);
     }
 
     // 기본 스타일과 동일합니다.
     &[data-ke-style='style2'] {
       font-size: var(--text-xl);
-      color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 30%);
+      color: color-mix(in srgb, var(--color-secondary) 40%, CanvasText 30%);
     }
 
     &[data-ke-style='style3'] {
@@ -214,8 +214,8 @@
       font-size: var(--text-xl);
       line-height: inherit;
 
-      background-color: color-mix(in srgb, var(--secondary-color) 20%, white 30%);
-      border-color: color-mix(in srgb, var(--secondary-color) 40%, black 10%);
+      background-color: color-mix(in srgb, var(--color-secondary) 20%, white 30%);
+      border-color: color-mix(in srgb, var(--color-secondary) 40%, black 10%);
     }
 
     h1,
@@ -263,7 +263,7 @@
         transition: 200ms;
 
         @supports (color: color-mix(in srgb, black 50%, white)) {
-          border-color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 10%);
+          border-color: color-mix(in srgb, var(--color-secondary) 40%, CanvasText 10%);
         }
 
         div.og-text {
@@ -278,13 +278,13 @@
             font-family: inherit;
             font-weight: inherit;
             line-height: inherit;
-            color: var(--secondary-color);
+            color: var(--color-secondary);
           }
 
           p.og-host {
             font-family: inherit;
-            color: var(--primary-color);
-            border-bottom: 0.2em solid var(--primary-color);
+            color: var(--color-primary);
+            border-bottom: 0.2em solid var(--color-primary);
           }
         }
       }
@@ -310,7 +310,7 @@
     &.fileblock {
       width: 600px;
       height: 96px;
-      border-color: color-mix(in srgb, var(--secondary-color) 40%, CanvasText 10%);
+      border-color: color-mix(in srgb, var(--color-secondary) 40%, CanvasText 10%);
 
       a {
         height: initial;
@@ -339,7 +339,7 @@
           .size {
             margin-top: 4px;
             font-size: var(--text-sm);
-            color: var(--secondary-color);
+            color: var(--color-secondary);
           }
         }
       }
@@ -368,7 +368,7 @@
       code {
         zoom: 0.9;
         padding: 0 8px;
-        background-color: var(--secondary-color);
+        background-color: var(--color-secondary);
         border-radius: 4px;
       }
 
