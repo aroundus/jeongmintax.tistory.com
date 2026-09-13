@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { GoHeart as GoHeartIcon, GoHeartFill as GoHeartFillIcon } from 'react-icons/go';
 import { MdOutlineComment as MdOutlineCommentIcon } from 'react-icons/md';
 
-import { Button } from '@/shared/ui/button';
+import { LinkButton } from '@/shared/ui';
 
 interface KeyVisualProps {
   category: string;
@@ -105,14 +105,14 @@ export function KeyVisual({
             )}
           </div>
           {isButtonVisible && (
-            <Button
-              asChild
+            <LinkButton
               className="mt-5"
+              href={path}
               size="lg"
-              variant="outline"
+              variant="outlined"
             >
-              <a href={path}>내용 읽기</a>
-            </Button>
+              내용 읽기
+            </LinkButton>
           )}
         </div>
       )}
