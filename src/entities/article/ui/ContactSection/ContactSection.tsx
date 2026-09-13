@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/button';
+import { LinkButton } from '@/shared/ui';
 import { PublicImage } from '@/shared/ui-deprecated';
 
 export function ContactSection() {
@@ -14,30 +14,22 @@ export function ContactSection() {
         주세요. 성공을 위한 최적의 세무 파트너가 되기 위해 최선을 다하겠습니다.
       </p>
       <div className="flex max-w-full flex-wrap justify-center gap-2">
-        <Button
-          asChild
+        <LinkButton
+          href="http://talk.naver.com/w5igl2?frm=pnmb&frm=nmb_detail"
           size="lg"
-          variant="outline"
+          target="_blank"
+          variant="outlined"
         >
-          <a
-            href="http://talk.naver.com/w5igl2?frm=pnmb&frm=nmb_detail"
-            target="_blank"
-          >
-            💬 네이버 톡톡 실시간 문의
-          </a>
-        </Button>
-        <Button
-          asChild
+          💬 네이버 톡톡 실시간 문의
+        </LinkButton>
+        <LinkButton
+          href="https://forms.gle/Boiaf1ViKZErxTLY8"
           size="lg"
-          variant="outline"
+          target="_blank"
+          variant="outlined"
         >
-          <a
-            href="https://forms.gle/Boiaf1ViKZErxTLY8"
-            target="_blank"
-          >
-            📝 상담 신청
-          </a>
-        </Button>
+          📝 상담 신청
+        </LinkButton>
       </div>
     </section>
   );
