@@ -8,7 +8,7 @@ import { shuffle } from 'lodash'; // BUG: production 모드에서 lodash-es 패�
 import type { MenuService } from '@/entities/menu/api';
 import { mixinStyles } from '@/shared/stylex';
 import { sizes } from '@/shared/stylex/sizes.stylex';
-import { Button } from '@/shared/ui/button';
+import { LinkButton } from '@/shared/ui';
 
 interface ProfileProps {
   article: {
@@ -48,18 +48,14 @@ export function Profile({ article, imageUrl, menu, name }: ProfileProps) {
             <ul {...stylex.props(navigationStyles.list, mixinStyles.font(14, 500))}>
               {menu?.map((menuItem) => (
                 <li key={menuItem.path}>
-                  <Button
-                    asChild
+                  <LinkButton
+                    href={menuItem.path}
                     size="sm"
-                    variant="outline"
+                    target={menuItem.target}
+                    variant="outlined"
                   >
-                    <a
-                      href={menuItem.path}
-                      target={menuItem.target}
-                    >
-                      {menuItem.name}
-                    </a>
-                  </Button>
+                    {menuItem.name}
+                  </LinkButton>
                 </li>
               ))}
             </ul>
