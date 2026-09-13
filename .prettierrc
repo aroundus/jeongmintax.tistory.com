@@ -6,7 +6,8 @@
   "singleAttributePerLine": true,
   "singleQuote": true,
   "tabWidth": 2,
-  "tailwindFunctions": ["clsx", "cn", "cva", "cx"],
+  "tailwindFunctions": ["classNames"],
+  "tailwindStylesheet": "./src/app/styles/style.css",
   "trailingComma": "all",
   "useTabs": false
 }

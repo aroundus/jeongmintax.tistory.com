@@ -40,7 +40,7 @@ export function ArticleListItem({
           <div className="mt-8 text-base font-medium text-stone-500 md:mt-0">{category}</div>
           <div
             className={classNames(
-              'group-hover:text-primary mt-2 text-3xl leading-[1.2] font-bold transition-colors duration-300 ease-in-out md:text-4xl',
+              'mt-2 text-3xl leading-[1.2] font-bold transition-colors duration-300 ease-in-out group-hover:text-primary md:text-4xl',
             )}
           >
             {title}
