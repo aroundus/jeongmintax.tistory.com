@@ -14,14 +14,14 @@ export const LinkButton = ({ className, size = 'lg', variant = 'contained', ...p
   return (
     <a
       className={classNames(
-        'inline-flex shrink-0 items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-colors',
+        'inline-flex shrink-0 items-center justify-center gap-2 font-medium whitespace-nowrap transition-colors',
         {
           'bg-primary text-primary-foreground hover:bg-primary/90': variant === 'contained',
           'border bg-background/10 shadow-xs hover:bg-accent hover:text-accent-foreground': variant === 'outlined',
         },
         {
           'h-12 rounded-lg px-8 text-lg': size === 'lg',
-          'h-8 gap-1.5 px-3 text-sm': size === 'sm',
+          'h-8 gap-1.5 rounded-md px-3 text-sm': size === 'sm',
         },
         className,
       )}
